@@ -1,0 +1,216 @@
+<template>
+  <div class="page" data-name="settings">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="icon icon-back"></i>
+            <span class="if-not-md">Voltar</span>
+          </a>
+        </div>
+        <div class="title">Configurações</div>
+      </div>
+    </div>
+
+    <div class="page-content">
+      
+      <div class="block-title">
+        <h3><i class="f7-icons">archivebox</i> Armazenamento</h3>
+      </div>
+      <div class="list">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <i class="f7-icons">cloud_download</i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Baixar dados para acesso offline</div>
+                <div class="item-after">
+                  <label class="toggle toggle-init color-blue">
+                    <input type="checkbox" name="offlineStorage" {{#if settings}}{{#if settings.offlineStorage}}checked{{/if}}{{/if}} @change="toogleCheckbox">
+                    <span class="toggle-icon"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="item-link item-content" @click="clearStorage">
+              <div class="item-media">
+                <i class="f7-icons">trash</i>
+              </div>
+              <div class="item-inner">
+                Limpar armazenamento
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="block-title">
+        <h3><i class="f7-icons">bell</i> Notificações</h3>
+      </div>
+      <div class="list">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <i class="f7-icons">bell</i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Receber notificações no dispositivo</div>
+                <div class="item-after">
+                  <label class="toggle toggle-init color-blue">
+                    <input type="checkbox" name="allowNotifications" {{#if settings}}{{#if settings.allowNotifications}}checked{{/if}}{{/if}} @change="toogleCheckbox">
+                    <span class="toggle-icon"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="block-title">
+        <h3><i class="f7-icons">chevron_left_slash_chevron_right</i> Desenvolvimento</h3>
+      </div>
+      <div class="list">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-media">
+                <i class="f7-icons">exclamationmark_triangle</i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Modo de desenvolvedor</div>
+                <div class="item-after">
+                  <label class="toggle toggle-init color-blue">
+                    <input type="checkbox" name="devMode" {{#if settings}}{{#if settings.devMode}}checked{{/if}}{{/if}} @change="toogleCheckbox">
+                    <span class="toggle-icon"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+          {{#if settings}}
+            {{#if settings.devMode}}
+              <li>
+                <div class="item-content">
+                  <div class="item-media">
+                    <i class="f7-icons">ant</i>
+                  </div>
+                  <div class="item-inner">
+                    <div class="item-title">Usar API de testes</div>
+                    <div class="item-after">
+                      <label class="toggle toggle-init color-blue">
+                        <input type="checkbox" name="testApi" {{#if settings}}{{#if settings.testApi}}checked{{/if}}{{/if}} @change="toogleCheckbox">
+                        <span class="toggle-icon"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {{/if}}
+          {{/if}}
+        </ul>
+      </div>
+  
+  </div>
+</template>
+<script>
+  export default {
+    data: function () {
+      return {
+        settings: null
+      }
+    },
+
+    methods: {
+
+      loadData: function () {
+        var self = this
+        var app = self.$app
+
+        self.$setState({
+          settings: app.storage.getSettings(),
+        })
+      },
+
+      clearStorage: function () {
+        let self = this
+        let app = self.$app
+
+        app.dialog.confirm("Tem certeza que deseja limpar todos os dados salvos?", function () {
+          app.storage.clearAll()
+          app.view.main.router.navigate('/')
+        })
+      },
+
+      changeSetting: function (setting, value) {
+        let self = this
+        let app = self.$app
+
+        let settings = self.settings
+        settings[setting] = value
+        app.storage.setSettings(settings)
+
+        self.$setState({
+          settings: settings,
+        })
+      },
+
+      toogleCheckbox: async function (e) {
+        let self = this
+        let app = self.$app
+
+        if (e.target.name === 'devMode') {
+          // Disable all dev options
+          if (self.settings['devMode']) {
+            app.dialog.confirm('Deseja realmente desativar o modo de desenvolvimento?', function () {
+              self.changeSetting('devMode', false)
+              self.changeSetting('testApi', false)
+            })
+          }
+          // Enable dev options
+          else
+            app.dialog.password('Digite a senha:', function (password) {
+              if (password != 'dev!Practice5918?') {
+                app.dialog.alert('Senha incorreta, modo de desenvolvedor não permitido!')
+              }
+              else
+                self.changeSetting('devMode', true)
+            })
+        } else if (e.target.name === 'allowNotifications') {
+          if (e.target.checked) {
+            document.addEventListener('deviceready', async () => {
+              await app.storage.postFcmToken()
+              self.changeSetting(e.target.name, e.target.checked)  
+            });
+          } else {
+            app.storage.deleteFcmToken()
+            self.changeSetting( e.target.name, e.target.checked)
+          }
+        } else if (e.target.name === 'offlineStorage') {
+          self.changeSetting('offlineStorage', e.target.checked);
+          if (!e.target.checked){
+            let self = this
+            let app = self.$app
+            app.storage.removeAllButUserData()
+          }
+        }
+        // Toogle other options
+        else
+        self.changeSetting(e.target.name, e.target.checked)
+      }
+    },
+    on: {
+
+      pageInit: function () {
+        this.loadData()
+      },
+
+    }
+  }
+</script>
