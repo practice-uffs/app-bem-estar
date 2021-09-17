@@ -1,0 +1,170 @@
+<template>
+    <div class="page" data-name="wherePage">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Onde procurar ajuda</div>
+            </div>
+        </div>
+        <div class="page-content">
+
+            <div class="block block-strong">
+                <p class="item-text">
+                    A orientação é que você procure serviço de saúde presencial apenas se tiver com sintomas do Coronavírus ou apresentar problemas respiratórios.
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-50">
+                    <a href="/when-help/">
+                        <div class="card help-card no-margin-right">
+                            <div class="card-content padding">
+                                <div class="display-flex
+                                            flex-direction-column
+                                            align-items-center
+                                            padding"
+                                >
+                                    <img class="help-card__icon" src="static/images/question-2.svg">
+                                </div>
+
+                                <div class="help-card__text">
+                                    Quando procurar atendimento?
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-50">
+                    <a href="https://www.google.com.br/maps/search/UBS/@-27.0836588,-52.6696408,13z" class="external">
+                        <div class="card help-card no-margin-left">
+                            <div class="card-content card-content-padding">
+
+                                <div class="display-flex
+                                            flex-direction-column
+                                            align-items-center
+                                            padding"
+                                >
+                                    <img class="help-card__icon" src="static/images/map.svg">
+                                </div>
+
+                                <div class="help-card__text">
+                                    Serviço de Triagem Médica de Chapecó
+                                    <br>
+                                    <br>
+                                    Se apresentar sintomas de gripe, febre ou tosse
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-50">
+                    <a href="/other-places-help/">
+                        <div class="card help-card no-margin-right">
+                            <div class="card-content card-content-padding">
+
+                                <div class="display-flex
+                                            flex-direction-column
+                                            align-items-center
+                                            padding"
+                                >
+                                    <img class="help-card__icon" src="static/images/hospital.svg">
+                                </div>
+
+                                <div class="help-card__text">
+                                    Atendimento emergencial em Chapecó
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-50">
+                    <a href="/useful-phones/">
+                        <div class="card help-card no-margin-left">
+                            <div class="card-content card-content-padding">
+
+                                <div class="display-flex
+                                            flex-direction-column
+                                            align-items-center
+                                            padding"
+                                >
+                                    <img class="help-card__icon" src="static/images/call.svg">
+                                </div>
+
+                                <div class="help-card__text">
+                                    Lista de telefones úteis
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {};
+</script>
+
+<style>
+    /* extra small */
+    .help-card {
+        height: 40vh;
+        position: relative;
+    }
+
+    /* small */
+    @media (min-width: 576px) {
+        .help-card {
+            height: 35vh;
+        }
+    }
+
+    /* medium */
+    @media (min-width: 768px) {
+        .help-card {
+            height: 30vh;
+        }
+    }
+
+    /* large */
+    @media (min-width: 992px) {
+        .help-card {
+            height: 25vh;
+        }
+    }
+
+    /* extra large */
+    @media (min-width: 1200px) {
+        .help-card {
+            height: 20vh;
+        }
+    }
+
+    .help-card div .card-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .help-card__text {
+        color: #1e2f42;
+        text-align: center;
+    }
+
+    .help-card__icon {
+        height: 55px;
+    }
+</style>

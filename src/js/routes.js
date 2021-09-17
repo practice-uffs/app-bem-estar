@@ -10,6 +10,10 @@ import SettingsPage from "../pages/settings.f7.html";
 import AboutPage from "../pages/about.f7.html";
 import LoginPage from "../pages/login.f7.html";
 import NotFoundPage from "../pages/404.f7.html";
+import WherePage from "../pages/where-help.f7.html";
+import AboutMorePage from "../pages/about-more.f7.html";
+import PreventionPage from "../pages/prevention.f7.html";
+import ContactPage from "../pages/contact.f7.html";
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -58,6 +62,7 @@ const homePageRoute = function () {
       id: "env",
       component: EnvPage,
     });
+
 
   route.tabs = tabs;
 
@@ -110,6 +115,50 @@ const aboutPageRoute = function () {
 };
 
 
+const wherePageRoute = function () {
+  let route = {
+    path: '/where-help/',
+    component: WherePage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.wherePage) return route;
+}
+
+
+const aboutMorePageRoute = function () {
+  let route = {
+    path: '/about-more/',
+    component: AboutMorePage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.wherePage) return route;
+}
+
+const preventionPageRoute = function () {
+  let route = {
+    path: '/prevention/',
+    component: PreventionPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.preventionPage) return route;
+}
+
+const contactPageRoute = function () {
+  let route = {
+    path: '/contact/',
+    component: ContactPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.contactPage) return route;
+}
+
+
+
+
 const initialPageRoute = function () {
   return {
     path: "/initial/",
@@ -135,6 +184,8 @@ const notFoundPageRoute = function () {
   };
 };
 
+
+
 var routes = [
   // Authenticated routes
   homePageRoute(),
@@ -142,6 +193,12 @@ var routes = [
   notificationsPageRoute(),
   settingsPageRoute(),
   aboutPageRoute(),
+
+  // Routes imported from: app-covid
+  wherePageRoute(),
+  aboutMorePageRoute(),
+  preventionPageRoute(),
+  contactPageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),
