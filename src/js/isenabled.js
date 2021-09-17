@@ -18,7 +18,13 @@ var IsEnabled = {
 
     settingsPage: true,
 
+    preventionPage: true,
+
+    contactPage: true,
+
     aboutPage: true,
+
+    wherePage: true,
 }
 
 export default IsEnabled;
