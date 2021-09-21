@@ -1,28 +1,17 @@
 <p align="center">
-    <img width="600" src=".github/logo.png" title="Logo do projeto"><br /><br />
-    <img src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge" title="Status do projeto">
+    <img src="https://img.shields.io/maintenance/yes/2021?style=for-the-badge" title="Status do projeto">
     <img src="https://img.shields.io/github/workflow/status/ccuffs/template/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
 </p>
 
-# App PRACTICE
+# App SAE
 
-Esse repositório contém o código-fonte com o template para novos aplicativos do *PRACTICE*.
+Esse repositório possui o código fonte do aplicativo desenvolvido em conjunto com o SAE. 
 
 ### Descrição
 
 Como objetivo principal, o PRACTICE busca estruturar ambientes, capacitar agentes educacionais e produzir e mediar na produção de conteúdos que possibitem a produção de conteúdos de ensino e tecnologias baseadas em metodologias ativas para promover a inovação do processo de aprendizagem de estudantes em componentes curriculares e extracurriculares da UFFS. 
 
 Esse template é um dos facilitadores que está sendo criado para ajudar a produção de novos aplicativos.
-
-### Equipe
-
-**Coordenação:**
-* Fernando Bevilacqua - _Professor Ciência da Computação, UFFS Chapecó/SC - [fernando.bevilacqua@uffs.edu.br](mailto:fernando.bevilacqua@uffs.edu.br)_
-
-**[Equipe de desenvolvimento](https://github.com/orgs/practice-uffs/teams/dev):**
-
-**Suporte:**
-* [Equipe PRACTICE](https://practice.uffs.cc/)
 
 ## Informações para desenvolvedores
 
@@ -39,7 +28,7 @@ npm i framework7-cli cordova -g
 Faça um `fork` deste repositório em seu próprio GitHub e clone seu `fork` em seu computador:
 
 ```
-git clone https://github.com/SEU_USUARIO/template-apps-f7 && cd template-apps-f7
+git clone https://github.com/SEU_USUARIO/app-sae && cd app-sae
 ```
 
 Instale todas as dependências:
