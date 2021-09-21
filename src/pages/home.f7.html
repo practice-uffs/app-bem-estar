@@ -23,6 +23,9 @@
         {{#if isEnabled.envPage}}
           <a href="/env/" class="tab-link" data-route-tab-id="env"><i class="f7-icons">book</i></a>
         {{/if}}
+        {{#if isEnabled.affectiveSliderPage}}
+          <a href="/affectiveSlider/" class="tab-link" data-route-tab-id="affectiveSlider"><i class="f7-icons">app</i></a>
+        {{/if}}
       </div>
     </div>
     <!-- Tabs content -->
@@ -33,6 +36,9 @@
         {{/if}}
         {{#if isEnabled.envPage}}
           <div class="page-content tab" id="env"></div>
+        {{/if}}
+        {{#if isEnabled.affectiveSliderPage}}
+          <div class="page-content tab" id="affectiveSlider"></div>
         {{/if}}
       </div>
     </div>
