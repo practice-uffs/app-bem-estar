@@ -1,23 +1,23 @@
 <p align="center">
-    <img src="https://img.shields.io/maintenance/yes/2021?style=for-the-badge" title="Status do projeto">
-    <img src="https://img.shields.io/github/workflow/status/ccuffs/template/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
+    <img src="https://img.shields.io/badge/IN-CONSTRUCTION%20:)-brightgreen" title="Status do projeto">
 </p>
 
 # App SAE
 
-Esse repositório possui o código fonte do aplicativo desenvolvido em conjunto com o SAE. 
+Esse repositório contém o código-fonte para o aplicativo desenvolvido em conjunto com o *SAE*.
 
 ### Descrição
 
-Como objetivo principal, o PRACTICE busca estruturar ambientes, capacitar agentes educacionais e produzir e mediar na produção de conteúdos que possibitem a produção de conteúdos de ensino e tecnologias baseadas em metodologias ativas para promover a inovação do processo de aprendizagem de estudantes em componentes curriculares e extracurriculares da UFFS. 
+Como objetivo principal, o aplicativo busca criar um ambiente interativo, e mediador de conteúdos que informem e auxiliem na saúde mental no âmbito de ensino e de aprendizagem nos quais os estudantes se vêem situados. 
 
-Esse template é um dos facilitadores que está sendo criado para ajudar a produção de novos aplicativos.
+**Suporte:**
+* [Equipe PRACTICE](https://practice.uffs.cc/)
 
 ## Informações para desenvolvedores
 
 ### 1. Pré-requisitos
 
-Você precisa ter [NodeJS](https://nodejs.org/en/) versão `>=13.8` instalado no seu sistema. Depois, rode:
+Você precisa ter [NodeJS](https://nodejs.org/en/) versão `13.8 ou superior` instalado no seu sistema. Depois, rode:
 
 ```
 npm i framework7-cli cordova -g
@@ -28,7 +28,7 @@ npm i framework7-cli cordova -g
 Faça um `fork` deste repositório em seu próprio GitHub e clone seu `fork` em seu computador:
 
 ```
-git clone https://github.com/SEU_USUARIO/app-sae && cd app-sae
+git clone https://github.com/SEU_USUARIO/apps-sae && cd app-sae
 ```
 
 Instale todas as dependências:
