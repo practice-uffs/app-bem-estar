@@ -1,6 +1,5 @@
 <p align="center">
-    <img src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge" title="Status do projeto">
-    <img src="https://img.shields.io/github/workflow/status/ccuffs/template/ci.uffs.cc?label=Build&logo=github&logoColor=white&style=for-the-badge" title="Status do build">
+    <img src="https://img.shields.io/badge/IN-CONSTRUCTION%20:)-brightgreen" title="Status do projeto">
 </p>
 
 # App SAE
