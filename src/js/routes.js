@@ -4,6 +4,7 @@ import RightPanelPage from "../pages/right-panel.f7.html";
 
 import EnvPage from "../pages/env.f7.html";
 import ServicesPage from "../pages/services.f7.html";
+import AffectiveSliderPage from "../pages/affectiveSlider.f7.html";
 
 import NotificationsPage from "../pages/notifications.f7.html";
 import SettingsPage from "../pages/settings.f7.html";
@@ -27,7 +28,7 @@ const authenticated = function (to, from, resolve, reject) {
 
 const unauthenticated = function (to, from, resolve, reject) {
   let self = this;
-  
+
   if (!storage.getUserCredentials()) {
     resolve();
   } else {
@@ -57,6 +58,13 @@ const homePageRoute = function () {
       path: "/env/",
       id: "env",
       component: EnvPage,
+    });
+
+  if (IsEnabled.affectiveSliderPage)
+    tabs.push({
+      path: "/affectiveSlider/",
+      id: "affectiveSlider",
+      component: AffectiveSliderPage,
     });
 
   route.tabs = tabs;

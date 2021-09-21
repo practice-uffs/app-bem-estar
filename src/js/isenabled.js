@@ -11,7 +11,9 @@ var IsEnabled = {
     envPage: true,
 
     servicesPage: true,
-
+    
+    affectiveSliderPage: true,
+    
     rightPanel: true,
 
     notificationsPage: true,
