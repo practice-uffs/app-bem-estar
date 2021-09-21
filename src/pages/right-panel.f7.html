@@ -28,6 +28,17 @@
               </div>
             </a>
           </li>
+          {{/if}} {{#if isEnabled.coinPage}}
+          <li>
+            <a href="/coin/" class="item-link item-content">
+              <div class="item-media">
+                <i class="f7-icons">money_dollar_circle</i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">PR Coin</div>
+              </div>
+            </a>
+          </li>
           {{/if}} {{#if isEnabled.notificationsPage}}
           <li>
             <a href="/notifications/" class="item-link item-content">
@@ -46,7 +57,7 @@
               </div>
             </a>
           </li>
-
+          
           <hr class="no-margin" />
           {{/if}} {{#if isEnabled.settingsPage}}
           <li>

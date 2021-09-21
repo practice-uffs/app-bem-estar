@@ -12,7 +12,7 @@ import cordovaApp from './cordova-app.js'
 // Import Routes
 import routes from './routes.js'
 // Import analytics stuff 
-import Abalytics from './abalytics.js'
+// import Abalytics from './abalytics.js'
 import { storage } from './storage.js'
 
 // Import main app component
@@ -38,7 +38,7 @@ var app = new Framework7({
     scrollIntoViewOnFocus: Framework7.device.cordova && !Framework7.device.electron,
     scrollIntoViewCentered: Framework7.device.cordova && !Framework7.device.electron,
   },
-
+  
   // Cordova Statusbar settings
   statusbar: {
     iosOverlaysWebView: true,
@@ -51,7 +51,7 @@ var app = new Framework7({
   },
 
   on: {
-    init: function () {
+    init: function() {
       var f7 = this
       if (f7.device.cordova) {
         // Init cordova APIs (see cordova-app.js)
@@ -60,14 +60,14 @@ var app = new Framework7({
         // Save context to allow 'Add to home screen'
         f7.deferredInstallPrompt = null
 
-        window.addEventListener('beforeinstallprompt', function (e) {
+        window.addEventListener('beforeinstallprompt', function(e) {
           // Stash the event so it can be triggered later.
           f7.deferredInstallPrompt = e
           console.log('Saving beforeinstallprompt: ', e)
         })
       }
 
-      Abalytics.init(f7)
+      // Abalytics.init(f7)
       storage.init(f7)
     },
   },

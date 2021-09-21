@@ -11,16 +11,20 @@ var IsEnabled = {
     envPage: true,
 
     servicesPage: true,
-    
-    affectiveSliderPage: true,
-    
+
     rightPanel: true,
 
     notificationsPage: true,
 
     settingsPage: true,
 
+    preventionPage: true,
+
+    contactPage: true,
+
     aboutPage: true,
+
+    wherePage: true,
 }
 
 export default IsEnabled;
