@@ -1,92 +1,82 @@
 <template>
-  <div data-name="services">
-      <div class="tab tab-active" id="tab-1">
+    <div data-name="services">
+        <div class="tab tab-active" id="tab-1">
 
-        <!-- Conteúdo da página -->
-    
-        <div class="page-content">
-          <div class="menu-grid">
-            
-              <a href="/about-more/" class="menu-grid__item">
-                  <div class="item-inner">
-                      <img src="static/images/coronavirus.svg" class="menu-grid__icon">
-                      <div class="item-title">Mais sobre</div>
-                  </div>
-              </a>
+            <!-- Conteúdo da página -->
 
-  
-              <a href="/prevention/" class="menu-grid__item">
-                  <div class="item-inner">
-                      <img src="static/images/hand-wash.svg" class="menu-grid__icon">
-                      <div class="item-title">Medidas de prevenção</div>
-                  </div>
-              </a>
+            <div class="page-content">
+                <div class="menu-grid">
 
-              <a href="/where-help/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/hospital-building.svg" class="menu-grid__icon">
-                    <div class="item-title">Onde procurar atendimento</div>
+                    <a href="/about-more/" class="menu-grid__item">
+                        <div class="item-inner">
+                            <img src="static/images/stickers/mental-health.png" class="menu-grid__icon">
+                            <div class="item-title">Mais sobre</div>
+                        </div>
+                    </a>
+
+
+                    <a href="/prevention/" class="menu-grid__item">
+                        <div class="item-inner">
+                            <img src="static/images/stickers/mental-health (2).png" class="menu-grid__icon">
+                            <div class="item-title">Medidas de prevenção</div>
+                        </div>
+                    </a>
+
+                    <a href="/where-help/" class="menu-grid__item">
+                        <div class="item-inner">
+                            <img src="static/images/stickers/mental-health (3).png" class="menu-grid__icon">
+                            <div class="item-title">Onde procurar atendimento</div>
+                        </div>
+                    </a>
+
+                    <a href="/contact/" class="menu-grid__item">
+                        <div class="item-inner">
+                            <img src="static/images/stickers/mental-health (4).png" class="menu-grid__icon">
+                            <div class="item-title">Atendimento Emergencial</div>
+                        </div>
+                    </a>
+
                 </div>
-            </a>
-
-            <a href="/contact/" class="menu-grid__item">
-              <div class="item-inner">
-                  <img src="static/images/hospital-building.svg" class="menu-grid__icon">
-                  <div class="item-title">Atendimento Emergencial</div>
-              </div>
-          </a>
-
-              
-
-
-
-
-         
-          </div>
-
-
-      </div>
-  </div>
+            </div>
+        </div>
 </template>
 
 
 
 <style>
-  .menu-grid {
-      padding: 10px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, calc(50% - 5px));
-      grid-gap: 10px;
-  }
-  
-  .menu-grid__item {
-      background-color: #f6f6f6;
-      text-align: center;
-      text-transform: uppercase;
-      color: #1e2f42;
-      font-weight: bold;
-      padding: 10px;
-  }
-  
-  .menu-grid__item.small {
-      vertical-align: middle;
-      font-weight: 400;
-      padding: 8px;
-      text-align: left;
-      background-color: #dff1e0;
-      font-size: 0.8em;
-  }
-  
-  .menu-grid__item.small i {
-      float: left;
-      margin-top: 8px;
-      margin-right: 10px;
-      font-size: 1.8em;
-  }
-  
-  .menu-grid__icon {
-      height: 55px;
-  }
-  </style>
+    .menu-grid {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+        grid-gap: 10px;
+    }
 
+    .menu-grid__item {
+        background-color: #f6f6f6;
+        text-align: center;
+        text-transform: uppercase;
+        color: #1e2f42;
+        font-weight: bold;
+        padding: 10px;
+    }
 
+    .menu-grid__item.small {
+        vertical-align: middle;
+        font-weight: 400;
+        padding: 8px;
+        text-align: left;
+        background-color: #dff1e0;
+        font-size: 0.8em;
+    }
+
+    .menu-grid__item.small i {
+        float: left;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 1.8em;
+    }
+
+    .menu-grid__icon {
+        height: 55px;
+    }
+</style>
