@@ -15,7 +15,8 @@
       </div>
     </div>
     <!-- Tabs toolbar -->
-    <div class="toolbar tabbar toolbar-bottom">
+    {{#if isEnabled.bottomNavigationBar}}
+    <div class="toolbar tabbar toolbar-bottom"> 
       <div class="toolbar-inner">
         {{#if isEnabled.servicesPage}}
           <a href="/" class="tab-link" data-route-tab-id="services"><i class="f7-icons">app</i></a>
@@ -28,6 +29,7 @@
         {{/if}}
       </div>
     </div>
+    {{/if}}
     <!-- Tabs content -->
     <div class="tabs-animated-wrap">
       <div class="tabs tabs-routable">

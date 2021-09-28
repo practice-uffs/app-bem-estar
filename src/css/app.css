@@ -156,3 +156,148 @@ a.link {
   position: relative;
   top: 40%;
 }
+
+
+
+
+/* css imported from app-covid */
+
+.menu-grid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+  grid-gap: 10px;
+}
+
+.menu-grid__item {
+  background-color: #f6f6f6;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1e2f42;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.menu-grid__item.small {
+  vertical-align: middle;
+  font-weight: 400;
+  padding: 8px;
+  text-align: left;
+  background-color: #dff1e0;
+  font-size: 0.8em;
+}
+
+.menu-grid__item.small i {
+  float: left;
+  margin-top: 8px;
+  margin-right: 10px;
+  font-size: 1.8em;
+}
+
+.menu-grid__icon {
+  height: 90px;
+}
+
+.prevention-list .item-text {
+  overflow: initial;
+  display: block;
+  max-height: initial;
+}
+/* .prevention-list .item-inner {
+  display: flex;
+  vertical-align: center;
+} */
+.prevention-list__video{
+  width: 100%;
+  height: 40vh;
+}
+.w-inherit {
+  width: inherit;
+}
+.h-inherit {
+  height: inherit;
+}
+.source {
+  color: var(--f7-list-item-text-text-color);
+}
+
+.about-list .item-text {
+  overflow: initial;
+  display: block;
+  max-height: initial;
+}
+.transmitters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+  gap: 10px;
+}
+.transmitter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 2px 0 2px;
+  background-color: #f6f6f6;
+  text-align: center;
+}
+.transmitter__name {
+  line-height: 12px;
+  font-weight: 300;
+}
+.transmitter__name--fs, .info--fs {
+  font-size: 0.8rem;
+}
+.source {
+  color: var(--f7-list-item-text-text-color);
+}
+
+
+.help-card {
+  height: 40vh;
+  position: relative;
+}
+
+/* small */
+@media (min-width: 576px) {
+  .help-card {
+      height: 35vh;
+  }
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .help-card {
+      height: 30vh;
+  }
+}
+
+/* large */
+@media (min-width: 992px) {
+  .help-card {
+      height: 25vh;
+  }
+}
+
+/* extra large */
+@media (min-width: 1200px) {
+  .help-card {
+      height: 20vh;
+  }
+}
+
+.help-card div .card-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.help-card__text {
+  color: #1e2f42;
+  text-align: center;
+}
+
+.help-card__icon {
+  height: 55px;
+}
+
+
+/* end css app-covid */

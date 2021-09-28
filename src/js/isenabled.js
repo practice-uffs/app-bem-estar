@@ -8,15 +8,17 @@ var IsEnabled = {
     addToHomeScreen: false,
     shareAd: false,
 
-    envPage: true,
-
-    servicesPage: true,
-
-    affectiveSliderPage: true,
+    affectiveSliderPage: false,
 
     rightPanel: true,
 
-    notificationsPage: true,
+    bottomNavigationBar: false,
+
+    notificationsPage: false,
+
+    envPage: false,
+
+    servicesPage: true,
 
     settingsPage: true,
 
@@ -27,6 +29,8 @@ var IsEnabled = {
     aboutPage: true,
 
     wherePage: true,
+
+    reasonsPage: true,
 }
 
 export default IsEnabled;
