@@ -8,6 +8,8 @@ var IsEnabled = {
     addToHomeScreen: false,
     shareAd: false,
 
+    initialPage: true,
+    
     envPage: true,
 
     servicesPage: true,

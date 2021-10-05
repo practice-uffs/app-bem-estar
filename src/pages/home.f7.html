@@ -18,13 +18,13 @@
     <div class="toolbar tabbar toolbar-bottom">
       <div class="toolbar-inner">
         {{#if isEnabled.servicesPage}}
-          <a href="/" class="tab-link" data-route-tab-id="services"><i class="f7-icons">app</i></a>
+        <a href="/" class="tab-link" data-route-tab-id="services"><i class="f7-icons">app</i></a>
         {{/if}}
         {{#if isEnabled.envPage}}
-          <a href="/env/" class="tab-link" data-route-tab-id="env"><i class="f7-icons">book</i></a>
+        <a href="/env/" class="tab-link" data-route-tab-id="env"><i class="f7-icons">book</i></a>
         {{/if}}
         {{#if isEnabled.affectiveSliderPage}}
-          <a href="/affectiveSlider/" class="tab-link" data-route-tab-id="affectiveSlider"><i class="f7-icons">app</i></a>
+        <a href="/affectiveSlider/" class="tab-link" data-route-tab-id="affectiveSlider"><i class="f7-icons">app</i></a>
         {{/if}}
       </div>
     </div>
@@ -32,13 +32,13 @@
     <div class="tabs-animated-wrap">
       <div class="tabs tabs-routable">
         {{#if isEnabled.servicesPage}}
-          <div class="page-content tab" id="services"></div>
+        <div class="page-content tab" id="services"></div>
         {{/if}}
         {{#if isEnabled.envPage}}
-          <div class="page-content tab" id="env"></div>
+        <div class="page-content tab" id="env"></div>
         {{/if}}
         {{#if isEnabled.affectiveSliderPage}}
-          <div class="page-content tab" id="affectiveSlider"></div>
+        <div class="page-content tab" id="affectiveSlider"></div>
         {{/if}}
       </div>
     </div>
@@ -49,11 +49,11 @@
   import IsEnabled from '../js/isenabled.js'
 
   export default {
-    data: function() {
+    data: function () {
       return {
         isEnabled: IsEnabled,
         appShareURL: 'https://uffs.cc/app-covid-chapeco',
-        installAd: function() {
+        installAd: function () {
           return !window.matchMedia('(display-mode: standalone)').matches && IsEnabled.installAd;
         },
         shareAd: IsEnabled.shareAd
@@ -61,15 +61,15 @@
     },
 
     on: {
-      pageInit: function(e, page) {
+      pageInit: function (e, page) {
         var app = this.$app;
         var link = document.getElementById('link-install-app');
 
-        if(!link) {
+        if (!link) {
           return;
         }
 
-        window.addEventListener('appinstalled', function(evt) {
+        window.addEventListener('appinstalled', function (evt) {
           app.toast.create({
             text: 'Pronto! Adicionado à tela inicial.',
             closeTimeout: 3000,
@@ -81,11 +81,11 @@
     },
 
     methods: {
-      install: function() {
+      install: function () {
         var app = this.$app;
         var deferredPrompt = app.deferredInstallPrompt;
 
-        if(!deferredPrompt) {
+        if (!deferredPrompt) {
           app.toast.create({
             text: 'Não foi possível adicionar à tela inicial.',
             closeTimeout: 2000,
@@ -97,7 +97,7 @@
         deferredPrompt.prompt();
 
         // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice.then(function(choiceResult) {
+        deferredPrompt.userChoice.then(function (choiceResult) {
           if (choiceResult.outcome === 'accepted') {
             console.log('User accepted the install prompt');
           } else {
@@ -106,20 +106,20 @@
         });
       },
 
-      shareToClipboard: function() {
+      shareToClipboard: function () {
         var app = this.$app;
 
-        if(!navigator.clipboard) {
+        if (!navigator.clipboard) {
           return;
         }
 
-        navigator.clipboard.writeText(this.appShareURL).then(function() {
+        navigator.clipboard.writeText(this.appShareURL).then(function () {
           // success
           app.toast.create({
             text: 'Link copiado! Basta colar ele agora, ex. no WhatsApp.',
             closeTimeout: 5000,
           }).open();
-        }, function() {
+        }, function () {
           // fail
           app.toast.create({
             text: 'Hum, algum problema aconteceu. Desculpe.',
@@ -128,7 +128,7 @@
         });
       },
 
-      share: function() {
+      share: function () {
         var app = this.$app;
 
         app.toast.create({
@@ -136,14 +136,14 @@
           closeTimeout: 6000,
         }).open();
 
-        if(!navigator.share) {
+        if (!navigator.share) {
           this.shareToClipboard();
           return;
         }
 
         navigator.share({
-          title: 'PRACTICE',
-          text: 'Toda inovação do PRACTICE ao alcance de um toque!',
+          title: 'APP',
+          text: 'Nossa cartilha sobre saúde mental ao alcance de um toque!',
           url: this.appShareURL,
         });
       }

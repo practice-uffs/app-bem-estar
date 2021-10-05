@@ -1,7 +1,7 @@
 {
-  "name": "PRACTICE",
-  "short_name": "PRACTICE",
-  "description": "Aplicativo móvel do PRACTICE",
+  "name": "APP-SAE",
+  "short_name": "APP SAE",
+  "description": "Nossa cartilha sobre saúde mental ao alcance de um toque!",
   "lang": "pt-BR",
   "start_url": "/?source=pwa20200609",
   "display": "standalone",
