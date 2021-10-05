@@ -1,0 +1,147 @@
+<template>
+    <div class="page" data-name="infected">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Voltar</span>
+                    </a>
+                </div>
+                <div class="title">Dicas</div>
+            </div>
+        </div>
+
+        <!-- Load Facebook SDK for JavaScript -->
+        <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+
+        <div class="page-content">
+            <div class="block">
+                <div class="list media-list prevention-list">
+                    <ul>
+                        <li>
+                            <div class="item-content margin-top-half">
+                                <div class="item-media">
+                                    <img src="static/images/meditation.png" alt="hand-wash" height="60">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Praticar Meditação</div>
+                                    <div class="item-text">
+                                        Aprenda a praticar meditação nesta pequena aula experimental divulgada pelo Ministério da Saúde.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block">
+                <div class="item-content">
+                    <div class="reponsive reponsive--16x9">
+                        <iframe class="reponsive__item" src="https://www.youtube.com/embed/hSBG_oO3TG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="list media-list prevention-list">
+                    <ul>
+                        <li>
+                            <div class="item-content margin-top-half">
+                                <div class="item-media">
+                                    <img src="static/images/health-food.png" alt="medical-mask" height="60">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Alimentação saudável!</div>
+                                    <div class="item-text">
+                                        Como ter uma alimentação mais saudável.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block">
+                <div class="item-content">
+                    <div class="reponsive reponsive--16x9">
+                        <iframe class="reponsive__item" src="https://www.youtube.com/embed/VNYEgEWrJKw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="list media-list prevention-list">
+                    <ul>
+                        <li>
+                            <div class="item-content margin-top-half">
+                                <div class="item-media">
+                                    <img src="static/images/exercise.png" alt="physical" height="60">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Exerçicios físicos</div>
+                                    <div class="item-text">
+                                        Pesquisas comprovam influência de exercícios na saúde mental.
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block">
+                <div class="item-content">
+                    <div class="reponsive">
+                        <iframe class="reponsive__item" src="https://www.youtube.com/embed/VNYEgEWrJKw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="list media-list prevention-list">
+                    <ul>
+                        <li>
+                            <div class="item-content margin-top-half">
+                                <div class="item-media">
+                                    <img src="static/images/sleep.png" alt="cough-cancel" height="60">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">Mantenha um sono Regular</div>
+                                    <!-- <div class="item-text">
+                                        Ao tossir ou espirrar, cubra nariz e boca com lenço ou com o braço</p>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</template>
+<script>
+    export default {};
+</script>
+
+<style>
+    .reponsive {
+        position: relative;
+    }
+
+    .reponsive--16x9 {
+        padding-top: 56.25%
+            /* 9/16 */
+        ;
+    }
+
+    .reponsive__item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>

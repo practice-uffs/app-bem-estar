@@ -15,6 +15,7 @@ import WherePage from "../pages/where-help.f7.html";
 import AboutMorePage from "../pages/about-more.f7.html";
 import PreventionPage from "../pages/prevention.f7.html";
 import ContactPage from "../pages/contact.f7.html";
+import HealthTipsPage from '../pages/health-tips.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -178,6 +179,16 @@ const contactPageRoute = function () {
   if (IsEnabled.contactPage) return route;
 }
 
+const healthTipsPageRoute = function () {
+  let route = {
+    path: '/health-tips/',
+    component: HealthTipsPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.contactPage) return route;
+}
+
 
 const loginPageRoute = function () {
   return {
@@ -211,6 +222,7 @@ var routes = [
   aboutMorePageRoute(),
   preventionPageRoute(),
   contactPageRoute(),
+  healthTipsPageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),
