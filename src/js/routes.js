@@ -14,6 +14,7 @@ import NotFoundPage from "../pages/404.f7.html";
 import WherePage from "../pages/where-help.f7.html";
 import AboutMorePage from "../pages/about-more.f7.html";
 import PreventionPage from "../pages/prevention.f7.html";
+import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
 
@@ -169,6 +170,19 @@ const preventionPageRoute = function () {
   if (IsEnabled.preventionPage) return route;
 }
 
+const reasonsPageRoute = function () {
+  let route = {
+    path: '/reasons/',
+    component: ReasonsPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.reasonsPage) return route;
+}
+
+
+
+
 const contactPageRoute = function () {
   let route = {
     path: '/contact/',
@@ -221,6 +235,7 @@ var routes = [
   wherePageRoute(),
   aboutMorePageRoute(),
   preventionPageRoute(),
+  reasonsPageRoute(),
   contactPageRoute(),
   healthTipsPageRoute(),
 
