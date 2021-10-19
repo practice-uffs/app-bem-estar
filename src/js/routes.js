@@ -21,36 +21,51 @@ import HealthTipsPage from '../pages/health-tips.f7.html';
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
 
-const authenticated = function (to, from, resolve, reject) {
-  let self = this;
+// const authenticated = function (to, from, resolve, reject) {
+//   let self = this;
 
-  if (storage.getUserCredentials()) {
-    resolve();
-  } else {
-    reject();
-    self.navigate("/initial/");
-  }
-};
+//   if (storage.getUserCredentials()) {
+//     resolve();
+//   } else {
+//     reject();
+//     self.navigate("/initial/");
+//   }
+// };
 
-const unauthenticated = function (to, from, resolve, reject) {
-  let self = this;
-  
-  if (!storage.getUserCredentials()) {
-    resolve();
-  } else {
-    reject();
-    self.navigate("/");
-  }
+// const unauthenticated = function (to, from, resolve, reject) {
+//   let self = this;
+
+//   if (!storage.getUserCredentials()) {
+//     resolve();
+//   } else {
+//     reject();
+//     self.navigate("/initial/");
+//   }
+// };
+
+const initialPageRoute = function () {
+  return {
+    path: "/initial/",
+    component: InitialPage,
+    //beforeEnter: unauthenticated,
+  };
 };
 
 const homePageRoute = function () {
   let route = {
     path: "/",
     component: HomePage,
-    beforeEnter: authenticated,
+    //beforeEnter: unauthenticated,
   };
 
   let tabs = [];
+
+  // if (IsEnabled.initialPage)
+  //   tabs.push({
+  //     path: "/",
+  //     id: "initial",
+  //     component: InitialPage,
+  //   });
 
   if (IsEnabled.servicesPage)
     tabs.push({
@@ -65,7 +80,7 @@ const homePageRoute = function () {
       id: "env",
       component: EnvPage,
     });
- 
+
   if (IsEnabled.affectiveSliderPage)
     tabs.push({
       path: "/affectiveSlider/",
@@ -80,14 +95,13 @@ const homePageRoute = function () {
 };
 
 
-
 const rightPanelRoute = function () {
   let route = {
     path: "/right-panel/",
     panel: {
       component: RightPanelPage,
     },
-    beforeEnter: authenticated,
+    //beforeEnter: authenticated,
   };
 
   if (IsEnabled.rightPanel) return route;
@@ -98,7 +112,7 @@ const notificationsPageRoute = function () {
   let route = {
     path: "/notifications/",
     component: NotificationsPage,
-    beforeEnter: authenticated,
+    //beforeEnter: authenticated,
   };
 
   if (IsEnabled.notificationsPage) return route;
@@ -108,7 +122,7 @@ const settingsPageRoute = function () {
   let route = {
     path: "/settings/",
     component: SettingsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.settingsPage) return route;
@@ -118,7 +132,7 @@ const aboutPageRoute = function () {
   let route = {
     path: "/about/",
     component: AboutPage,
-    beforeEnter: authenticated,
+    //beforeEnter: authenticated,
   };
 
   if (IsEnabled.aboutPage) return route;
@@ -129,7 +143,7 @@ const wherePageRoute = function () {
   let route = {
     path: '/where-help/',
     component: WherePage,
-    beforeEnter: authenticated,
+    //beforeEnter: authenticated,
   };
 
   if (IsEnabled.wherePage) return route;
@@ -140,7 +154,7 @@ const aboutMorePageRoute = function () {
   let route = {
     path: '/about-more/',
     component: AboutMorePage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.wherePage) return route;
@@ -150,7 +164,7 @@ const preventionPageRoute = function () {
   let route = {
     path: '/prevention/',
     component: PreventionPage,
-    beforeEnter: authenticated,
+    //beforeEnter: authenticated,
   };
 
   if (IsEnabled.preventionPage) return route;
@@ -173,7 +187,7 @@ const contactPageRoute = function () {
   let route = {
     path: '/contact/',
     component: ContactPage,
-    beforeEnter: authenticated,
+    //  beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;
@@ -190,23 +204,13 @@ const healthTipsPageRoute = function () {
 }
 
 
-
-
-const initialPageRoute = function () {
-  return {
-    path: "/initial/",
-    component: InitialPage,
-    beforeEnter: unauthenticated,
-  };
-};
-
 const loginPageRoute = function () {
   return {
     path: "/login/",
     loginScreen: {
       component: LoginPage,
     },
-    beforeEnter: unauthenticated,
+    // beforeEnter: unauthenticated,
   };
 };
 

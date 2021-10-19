@@ -49,23 +49,45 @@
                 </div>
             </a>
 
-              
-
-
-
-
-         
           </div>
-
-
       </div>
   </div>
 </template>
 
-
-
 <style>
+    .menu-grid {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+        grid-gap: 10px;
+    }
 
-  </style>
+    .menu-grid__item {
+        background-color: #f6f6f6;
+        text-align: center;
+        text-transform: uppercase;
+        color: #1e2f42;
+        font-weight: bold;
+        padding: 10px;
+    }
 
+    .menu-grid__item.small {
+        vertical-align: middle;
+        font-weight: 400;
+        padding: 8px;
+        text-align: left;
+        background-color: #dff1e0;
+        font-size: 0.8em;
+    }
 
+    .menu-grid__item.small i {
+        float: left;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 1.8em;
+    }
+
+    .menu-grid__icon {
+        height: 55px;
+    }
+</style>
