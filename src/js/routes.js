@@ -174,7 +174,7 @@ const reasonsPageRoute = function () {
   let route = {
     path: '/reasons/',
     component: ReasonsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.reasonsPage) return route;
@@ -197,7 +197,7 @@ const healthTipsPageRoute = function () {
   let route = {
     path: '/health-tips/',
     component: HealthTipsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;

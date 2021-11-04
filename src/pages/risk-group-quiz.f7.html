@@ -1,0 +1,517 @@
+<template>
+    <div class="page" data-name="risks">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Grupos de risco</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block block-title-medium">
+                {{#js_if "this.$route.params.age == 'adult'"}}
+                Você se enquadra em alguma dessas condições?
+                {{else}}
+                A criança se enquadra em alguma dessas condições?
+                {{/js_if}}
+            </div>
+
+            {{#js_if "this.$route.params.age == 'adult'"}}
+            <div class="list no-hairlines" id="riskQuiz">
+                <ul>
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q1" value="r1" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Tem mais de 60 anos
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q2" value="r2" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Gravidez
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q3" value="r3" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Diabetes
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r4" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença do pulmão
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q5" value="r5" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença do coração
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q6" value="r6" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença do rim
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q7" value="r7" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Transplante
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q8" value="r8" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Em tratamento com corticoide ou imunossupressor.
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q9" value="r9" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    HIV/AIDS
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q10" value="r10" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Câncer
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q11" value="r11" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Quimioterapia
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q12" value="r12" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Cirurgia de grande porte nos últimos 30 dias
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r13" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Tabagismo
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r14" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Obesidade
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r15" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Hipertensão
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r16" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Profissional da saúde
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q13" value="r17" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Não me encaixo nessas condições
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            {{else}}
+            <div class="list no-hairlines" id="riskQuiz">
+                <ul>
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q1" value="r1" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Menor de 2 anos
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q2" value="r2" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Prematuro
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q3" value="r3" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Nasceu com baixo peso
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r4" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Desnutrido
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q5" value="r5" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Diabetes
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q6" value="r6" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença do coração
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q7" value="r7" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença do pulmão
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q8" value="r8" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Doença neurológica
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q9" value="r9" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Câncer
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q4" value="r10" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Obesidade
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+
+                    <!--  -->
+                    <li>
+                        <label class="item-checkbox item-content">
+                            <input type="checkbox" name="q13" value="r11" />
+                            <i class="icon icon-checkbox"></i>
+                            <div class="item-inner">
+                                <div class="item-text quiz__text">
+                                    Não se encaixa nessas condições
+                                </div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            {{/js_if}}
+
+            <div class=" block
+                    display-flex
+                    flex-direction-column
+                    justify-content-center
+                    align-content-space-around">
+                <a class="button
+                        button-fill
+                        button-large
+                        margin-top" @click="handleClick">
+                    Continuar
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data: function () {
+            return {
+                risks: [],
+            }
+        },
+
+        methods: {
+            handleClick: function () {
+                let risks = document.querySelectorAll("#riskQuiz input[type='checkbox']:checked");
+
+                if (risks.length) {
+                    risks.forEach(item => {
+                        this.risks.push(item.value);
+                    });
+                    this.getDiagnosis();
+                }
+                else {
+                    this.$app.dialog.alert("Selecione ao menos uma das opções anteriores.", "Coronavírus Chapecó");
+                }
+
+
+            },
+
+            sendDiagnosisAnalytics: function (age, symptoms, risks, diagnosis) {
+                let data = {
+                    age: age,
+                    risks: risks,
+                    symptoms: symptoms,
+                    diagnosis: diagnosis
+                };
+                let dataJson = JSON.stringify(data);
+
+                this.$app.abalytics.track('event', 'infected_quiz', {
+                    'event_category': diagnosis,
+                    'event_label': dataJson
+                });
+            },
+
+            getDiagnosis: function () {
+                let age = this.$route.params.age;
+                let symptoms = this.$route.params.symptoms.split(",");
+                let risks = this.risks;
+                let diagnosis = "unknown";
+
+                const SHORTNESS_BREATH = symptoms.includes("s3");
+
+                const FLU = (symptoms.includes("s1") ||
+                    symptoms.includes("s9")) &&
+                    (symptoms.includes("s2") ||
+                        symptoms.includes("s8") ||
+                        symptoms.includes("s11"));
+
+                const OTHER_SYMPTOMS = symptoms.length > 0 && !symptoms.includes("s13");
+
+                // No symptoms
+                if (symptoms.includes("s13")) {
+                    diagnosis = "blue";
+                }
+
+                if (age == "adult") {
+                    const ANY_RISK = risks.length > 0 && !risks.includes("r17");
+
+                    if (((!FLU || !SHORTNESS_BREATH) && OTHER_SYMPTOMS) ||
+                        (FLU && !ANY_RISK)) {
+                        diagnosis = "gray";
+                    }
+
+                    if (FLU && ANY_RISK) {
+                        diagnosis = "yellow";
+                    }
+
+                } else if (age == "child") {
+                    const ANY_RISK = risks.length > 0 && !risks.includes("r11");
+
+                    console.log(ANY_RISK, OTHER_SYMPTOMS, FLU, SHORTNESS_BREATH);
+
+                    if (OTHER_SYMPTOMS) {
+                        diagnosis = "gray";
+                    }
+
+                    if (FLU) {
+                        diagnosis = "yellow";
+                    }
+                }
+
+                if (SHORTNESS_BREATH) {
+                    diagnosis = "red";
+                }
+
+                this.sendDiagnosisAnalytics(age, symptoms, risks, diagnosis);
+                this.$router.navigate("/diagnosis/" + diagnosis);
+            }
+        },
+    };
+</script>
+
+<style>
+    .quiz__text {
+        text-transform: uppercase;
+        color: #1e2f42;
+        font-weight: bold;
+    }
+</style>
