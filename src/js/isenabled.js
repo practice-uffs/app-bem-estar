@@ -31,6 +31,8 @@ var IsEnabled = {
     wherePage: true,
 
     reasonsPage: true,
+
+    wellnessQuizPage: true,
 }
 
 export default IsEnabled;
