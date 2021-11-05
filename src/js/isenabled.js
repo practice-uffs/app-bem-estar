@@ -31,6 +31,8 @@ var IsEnabled = {
     wherePage: true,
 
     reasonsPage: true,
+
+    heartBeatPage: true,
 }
 
 export default IsEnabled;
