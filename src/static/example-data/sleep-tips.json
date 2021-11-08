@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": null,
+        "text": "Experimente ingerir alimentos leves no jantar.",
+        "video": null,
+        "image": null,
+        "icon": "static/images/health-food.png"
+        
+    },
+    {
+        "id": 2,
+        "title": "Praticar Meditação",
+        "text": "Meditação pode ajudar a melhorar a qualidade do sono. Aprenda a praticar meditação nesta pequena aula experimental divulgada pelo Ministério da Saúde.",
+        "video": "https://www.youtube.com/embed/hSBG_oO3TG4",
+        "image": null,
+        "icon": "static/images/meditation.png"
+    },
+    {
+        "id": 3,
+        "title": "Ler",
+        "text": "Ler coisas calmas e tranquilas antes de dormir pode ajudar a ter um sono melhor.",
+        "video": null,
+        "image": "https://cdn.pixabay.com/photo/2021/10/14/13/50/book-6709160_960_720.jpg",
+        "icon": null
+    }
+]

@@ -17,6 +17,7 @@ import PreventionPage from "../pages/prevention.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
+import SleepTipsPage from '../pages/sleep-tips.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -203,6 +204,16 @@ const healthTipsPageRoute = function () {
   if (IsEnabled.contactPage) return route;
 }
 
+const sleepTipsPagePageRoute = function () {
+  let route = {
+    path: '/sleep-tips/',
+    component: SleepTipsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.contactPage) return route;
+}
+
 
 const loginPageRoute = function () {
   return {
@@ -238,6 +249,7 @@ var routes = [
   reasonsPageRoute(),
   contactPageRoute(),
   healthTipsPageRoute(),
+  sleepTipsPagePageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),
