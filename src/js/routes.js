@@ -17,6 +17,9 @@ import PreventionPage from "../pages/prevention.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
+import LeisureTipsPage from '../pages/leisure-tips.f7.html';
+
+
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -174,13 +177,11 @@ const reasonsPageRoute = function () {
   let route = {
     path: '/reasons/',
     component: ReasonsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.reasonsPage) return route;
 }
-
-
 
 
 const contactPageRoute = function () {
@@ -197,10 +198,21 @@ const healthTipsPageRoute = function () {
   let route = {
     path: '/health-tips/',
     component: HealthTipsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;
+}
+
+
+const leisureTipsPageRoute = function () {
+  let route = {
+    path: '/leisure-tips/',
+    component: LeisureTipsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.leisurePage) return route;
 }
 
 
@@ -242,7 +254,9 @@ var routes = [
   // Unauthenticated routes
   initialPageRoute(),
   loginPageRoute(),
+  leisureTipsPageRoute(),
   notFoundPageRoute(),
+  
 ];
 
 // Removing undefined routes
