@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "title": "Parque Verdão",
+        "text": "O Verdão é um bom local para se divertir com a família ou os amigos",
+        "video": "https://www.youtube.com/embed/32K47NakQwU",
+        "image": "https://diregional.com.br/files/32673/8f56a34a5a675ef79f30a49c2eb878e2"
+    },
+    {
+        "id": 2,
+        "title": "Eco Parque",
+        "text": "O Eco Parque é um bom local para se divertir com a família ou os amigos",
+        "video": null,
+        "image": "https://cdnstatic8.com/viagensecaminhos.com/wp-content/uploads/2021/02/ecoparque-chapeco.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Praça central",
+        "text": "Fique ligado que sempre ocorrem eventos na praça central :3",
+        "video": "https://www.youtube.com/embed/32K47NakQwU",
+        "image": null
+    },
+    {
+        "id": 4,
+        "title": "Titulo aqui",
+        "text": "Uma dica aqui",
+        "video": null,
+        "image": null
+    },
+    {
+        "id": 5,
+        "title": "Titulo aqui",
+        "text":  null,
+        "video": null,
+        "image": null
+    }
+]

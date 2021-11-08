@@ -1,0 +1,72 @@
+<template>
+    <div class="page" data-name="leisure-tips">
+
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Lazer</div>
+            </div>
+        </div>
+
+        <div class="page-content" style="max-width: 100%;overflow-x: hidden;">
+        {{#each contents}}
+            <div class="card">
+                <div class="card-header text-align-center">{{ this.title}}</div>
+                {{#if this.text}}
+                <div class="card-content card-content-padding">
+                    {{ this.text }}
+                </div>
+                {{/if}}
+                {{#if this.video}}
+                <div class="card-content card-content-padding">
+                    <iframe src="{{this.video}}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: auto;"></iframe>
+                </div>
+                {{/if }}
+                {{#if this.image}}
+                <div class="card-content card-content-padding">
+                    <img src="{{this.image}}" style="border-radius: 5%" width="100%" />
+                </div>
+                {{/if }}
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data: function () {
+        return {
+            contents: null,
+            }
+        },
+        on: {
+            pageInit: function (e, page) {
+                this.loadData()
+            }
+        },
+        methods: {
+            loadData: function () {
+                var self = this;
+                var app = self.$app;
+                app.request.json('../static/example-data/leisure-tips.json', function (data) {
+                    setTimeout(function () {
+                        self.$setState({
+                        contents: data,
+                        });
+                    }, 1000);
+                });
+            },
+        },
+    }
+</script>
+
+<style>
+
+</style>
