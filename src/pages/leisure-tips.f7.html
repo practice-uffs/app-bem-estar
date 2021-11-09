@@ -17,22 +17,54 @@
         <div class="page-content" style="max-width: 100%;overflow-x: hidden;">
         {{#each contents}}
             <div class="card">
-                <div class="card-header text-align-center">{{ this.title}}</div>
-                {{#if this.text}}
-                <div class="card-content card-content-padding">
-                    {{ this.text }}
+                <div class="card-header text-align-center">
+                    {{ this.title}}
                 </div>
+
+                {{#if this.icon}}
+                    {{#if this.text}}
+                    <table>
+                        <tr>
+                            <td width="30%">
+                                <img class="padding" src="{{this.icon}}" width="100%" />
+                            </td> 
+                            <td width="70%"> 
+                                <p class="padding margin">{{ this.text }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                    {{else}}
+                    <table>
+                        <tr>
+                            <td width="30%">
+                            </td> 
+                            <td width="40%"> 
+                                <img class="padding-top" src="{{this.icon}}" width="100%">
+                            </td>
+                            <td width="30%"> 
+                            </td>
+                        </tr>
+                    </table>  
+                    {{/if}}
+                {{else}}
+                    {{#if this.text}}
+                    <div class="card-content card-content-padding">
+                        <p>{{ this.text }}</p>
+                    </div>
+                    {{/if}}
                 {{/if}}
+
                 {{#if this.video}}
                 <div class="card-content card-content-padding">
                     <iframe src="{{this.video}}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: auto;"></iframe>
                 </div>
-                {{/if }}
+                {{/if}}
+
                 {{#if this.image}}
                 <div class="card-content card-content-padding">
                     <img src="{{this.image}}" style="border-radius: 5%" width="100%" />
                 </div>
-                {{/if }}
+                {{/if}}
             </div>
         {{/each}}
         </div>
