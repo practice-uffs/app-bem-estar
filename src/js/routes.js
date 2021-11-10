@@ -18,22 +18,21 @@ import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
 import LeisureTipsPage from '../pages/leisure-tips.f7.html';
-
-
+import HeartBeatPage from '../pages/hr.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
 
-// const authenticated = function (to, from, resolve, reject) {
-//   let self = this;
+const authenticated = function (to, from, resolve, reject) {
+  let self = this;
 
-//   if (storage.getUserCredentials()) {
-//     resolve();
-//   } else {
-//     reject();
-//     self.navigate("/initial/");
-//   }
-// };
+  if (storage.getUserCredentials()) {
+    resolve();
+  } else {
+    reject();
+    self.navigate("/initial/");
+  }
+};
 
 // const unauthenticated = function (to, from, resolve, reject) {
 //   let self = this;
@@ -119,6 +118,16 @@ const notificationsPageRoute = function () {
   };
 
   if (IsEnabled.notificationsPage) return route;
+};
+
+const heartBeatPageRoute = function () {
+  let route = {
+    path: "/hr/",
+    component: HeartBeatPage,
+    //beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.heartBeatPage) return route;
 };
 
 const settingsPageRoute = function () {
@@ -242,6 +251,8 @@ var routes = [
   notificationsPageRoute(),
   settingsPageRoute(),
   aboutPageRoute(),
+  heartBeatPageRoute(),
+  leisureTipsPageRoute(),
 
   // Routes imported from: app-covid
   wherePageRoute(),
@@ -254,7 +265,6 @@ var routes = [
   // Unauthenticated routes
   initialPageRoute(),
   loginPageRoute(),
-  leisureTipsPageRoute(),
   notFoundPageRoute(),
   
 ];

@@ -33,6 +33,8 @@ var IsEnabled = {
     reasonsPage: true,
 
     leisurePage: true,
+    
+    heartBeatPage: true,
 }
 
 export default IsEnabled;
