@@ -18,6 +18,7 @@ import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
 import LeisureTipsPage from '../pages/leisure-tips.f7.html';
+import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
 
 import { storage } from "../js/storage.js";
@@ -192,6 +193,15 @@ const reasonsPageRoute = function () {
   if (IsEnabled.reasonsPage) return route;
 }
 
+const wellnessQuizPageRoute = function () {
+  let route = {
+    path: '/wellness-quiz/',
+    component: WellnessQuizPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.wellnessQuizPage) return route;
+}
 
 const contactPageRoute = function () {
   let route = {
@@ -251,6 +261,7 @@ var routes = [
   notificationsPageRoute(),
   settingsPageRoute(),
   aboutPageRoute(),
+  wellnessQuizPageRoute(),
   heartBeatPageRoute(),
   leisureTipsPageRoute(),
 

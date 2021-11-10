@@ -1,0 +1,158 @@
+<template>
+    <div class="page" data-name="risks">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Questionário de Bem-Estar</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <form class="list" id="quiz">
+                <div class="list inset">
+                    <ul>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">Text 1</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="text_1" placeholder="Text">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">Text 2</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" name="text_2" placeholder="Text">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-floating-label">Select</div>
+                                    <div class="item-input-wrap">
+                                        <select name="select">
+                                            <option value="option_1" selected>Opção 1</option>
+                                            <option value="option_2">Opção 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Switch</div>
+                                    <div class="item-after">
+                                        <label class="toggle">
+                                            <input type="checkbox" name="switch" value="yes"><i class="toggle-icon"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="block row">
+                        <a href="#" class="col button button-raised button-fill button-round" @click="getFormData()">Submit</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data: function () {
+            return {
+                risks: [],
+            }
+        },
+
+        methods: {
+            getFormData: function(){
+                var self = this;
+                var app = self.$app;
+
+                var formData = app.form.convertToData('#quiz');
+                alert(JSON.stringify(formData));
+            },
+            sendDiagnosisAnalytics: function (age, symptoms, risks, diagnosis) {
+                let data = {
+                    age: age,
+                    risks: risks,
+                    symptoms: symptoms,
+                    diagnosis: diagnosis
+                };
+                let dataJson = JSON.stringify(data);
+
+                this.$app.abalytics.track('event', 'infected_quiz', {
+                    'event_category': diagnosis,
+                    'event_label': dataJson
+                });
+            },
+            getDiagnosis: function () {
+                let age = this.$route.params.age;
+                let symptoms = this.$route.params.symptoms.split(",");
+                let risks = this.risks;
+                let diagnosis = "unknown";
+
+                const SHORTNESS_BREATH = symptoms.includes("s3");
+
+                const FLU = (symptoms.includes("s1") ||
+                    symptoms.includes("s9")) &&
+                    (symptoms.includes("s2") ||
+                        symptoms.includes("s8") ||
+                        symptoms.includes("s11"));
+
+                const OTHER_SYMPTOMS = symptoms.length > 0 && !symptoms.includes("s13");
+
+                // No symptoms
+                if (symptoms.includes("s13")) {
+                    diagnosis = "blue";
+                }
+
+                if (age == "adult") {
+                    const ANY_RISK = risks.length > 0 && !risks.includes("r17");
+
+                    if (((!FLU || !SHORTNESS_BREATH) && OTHER_SYMPTOMS) ||
+                        (FLU && !ANY_RISK)) {
+                        diagnosis = "gray";
+                    }
+
+                    if (FLU && ANY_RISK) {
+                        diagnosis = "yellow";
+                    }
+
+                } else if (age == "child") {
+                    const ANY_RISK = risks.length > 0 && !risks.includes("r11");
+
+                    console.log(ANY_RISK, OTHER_SYMPTOMS, FLU, SHORTNESS_BREATH);
+
+                    if (OTHER_SYMPTOMS) {
+                        diagnosis = "gray";
+                    }
+
+                    if (FLU) {
+                        diagnosis = "yellow";
+                    }
+                }
+
+                if (SHORTNESS_BREATH) {
+                    diagnosis = "red";
+                }
+
+                this.sendDiagnosisAnalytics(age, symptoms, risks, diagnosis);
+            }
+        },
+    };
+</script>
