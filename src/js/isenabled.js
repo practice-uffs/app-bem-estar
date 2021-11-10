@@ -32,6 +32,8 @@ var IsEnabled = {
 
     reasonsPage: true,
 
+    leisurePage: true,
+
     wellnessQuizPage: true,
     
     heartBeatPage: true,

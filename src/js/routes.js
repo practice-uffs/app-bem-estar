@@ -17,6 +17,7 @@ import PreventionPage from "../pages/prevention.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
+import LeisureTipsPage from '../pages/leisure-tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
 
@@ -223,6 +224,17 @@ const healthTipsPageRoute = function () {
 }
 
 
+const leisureTipsPageRoute = function () {
+  let route = {
+    path: '/leisure-tips/',
+    component: LeisureTipsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.leisurePage) return route;
+}
+
+
 const loginPageRoute = function () {
   return {
     path: "/login/",
@@ -251,6 +263,7 @@ var routes = [
   aboutPageRoute(),
   wellnessQuizPageRoute(),
   heartBeatPageRoute(),
+  leisureTipsPageRoute(),
 
   // Routes imported from: app-covid
   wherePageRoute(),
@@ -264,6 +277,7 @@ var routes = [
   initialPageRoute(),
   loginPageRoute(),
   notFoundPageRoute(),
+  
 ];
 
 // Removing undefined routes
