@@ -17,21 +17,24 @@ import PreventionPage from "../pages/prevention.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
+import LeisureTipsPage from '../pages/leisure-tips.f7.html';
 import SleepTipsPage from '../pages/sleep-tips.f7.html';
+import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
+import HeartBeatPage from '../pages/hr.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
 
-// const authenticated = function (to, from, resolve, reject) {
-//   let self = this;
+const authenticated = function (to, from, resolve, reject) {
+  let self = this;
 
-//   if (storage.getUserCredentials()) {
-//     resolve();
-//   } else {
-//     reject();
-//     self.navigate("/initial/");
-//   }
-// };
+  if (storage.getUserCredentials()) {
+    resolve();
+  } else {
+    reject();
+    self.navigate("/initial/");
+  }
+};
 
 // const unauthenticated = function (to, from, resolve, reject) {
 //   let self = this;
@@ -119,6 +122,16 @@ const notificationsPageRoute = function () {
   if (IsEnabled.notificationsPage) return route;
 };
 
+const heartBeatPageRoute = function () {
+  let route = {
+    path: "/hr/",
+    component: HeartBeatPage,
+    //beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.heartBeatPage) return route;
+};
+
 const settingsPageRoute = function () {
   let route = {
     path: "/settings/",
@@ -175,14 +188,21 @@ const reasonsPageRoute = function () {
   let route = {
     path: '/reasons/',
     component: ReasonsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.reasonsPage) return route;
 }
 
+const wellnessQuizPageRoute = function () {
+  let route = {
+    path: '/wellness-quiz/',
+    component: WellnessQuizPage,
+    // beforeEnter: authenticated,
+  };
 
-
+  if (IsEnabled.wellnessQuizPage) return route;
+}
 
 const contactPageRoute = function () {
   let route = {
@@ -198,11 +218,23 @@ const healthTipsPageRoute = function () {
   let route = {
     path: '/health-tips/',
     component: HealthTipsPage,
-    beforeEnter: authenticated,
+    // beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;
 }
+
+
+const leisureTipsPageRoute = function () {
+  let route = {
+    path: '/leisure-tips/',
+    component: LeisureTipsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.leisurePage) return route;
+}
+
 
 const sleepTipsPagePageRoute = function () {
   let route = {
@@ -211,7 +243,7 @@ const sleepTipsPagePageRoute = function () {
     // beforeEnter: authenticated,
   };
 
-  if (IsEnabled.contactPage) return route;
+  if (IsEnabled.sleepTipsPage) return route;
 }
 
 
@@ -241,6 +273,10 @@ var routes = [
   notificationsPageRoute(),
   settingsPageRoute(),
   aboutPageRoute(),
+  wellnessQuizPageRoute(),
+  heartBeatPageRoute(),
+  leisureTipsPageRoute(),
+  sleepTipsPagePageRoute(),
 
   // Routes imported from: app-covid
   wherePageRoute(),
@@ -249,12 +285,12 @@ var routes = [
   reasonsPageRoute(),
   contactPageRoute(),
   healthTipsPageRoute(),
-  sleepTipsPagePageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),
   loginPageRoute(),
   notFoundPageRoute(),
+  
 ];
 
 // Removing undefined routes

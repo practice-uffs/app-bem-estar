@@ -31,6 +31,14 @@ var IsEnabled = {
     wherePage: true,
 
     reasonsPage: true,
+
+    leisurePage: true,
+
+    sleepTipsPage: true,
+
+    wellnessQuizPage: true,
+    
+    heartBeatPage: true,
 }
 
 export default IsEnabled;
