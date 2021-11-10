@@ -34,6 +34,8 @@ var IsEnabled = {
 
     leisurePage: true,
 
+    sleepTipsPage: true,
+
     wellnessQuizPage: true,
     
     heartBeatPage: true,
