@@ -14,71 +14,118 @@
         </div>
         <div class="page-content">
             <form class="list" id="quiz">
-                <div class="list inset">
-                    <ul>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Text 1</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" name="text_1" placeholder="Text">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Text 2</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" name="text_2" placeholder="Text">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Select</div>
-                                    <div class="item-input-wrap">
-                                        <select name="select">
-                                            <option value="option_1" selected>Opção 1</option>
-                                            <option value="option_2">Opção 2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Switch</div>
-                                    <div class="item-after">
-                                        <label class="toggle">
-                                            <input type="checkbox" name="switch" value="yes"><i class="toggle-icon"></i>
+                <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">                 
+                        {{#each questions}}
+                        <div class="swiper-slide">
+                            <div class="list inset">
+                                <h4>{{this.question}}</h4>
+                                <ul>
+                                    {{#each this.options}}
+                                    <li>
+                                        <label class="item-radio item-radio-icon-end item-content">
+                                            <input type="radio" name="{{this.id}}" value="{{this.value}}" @change="nextQuestion()"/>
+                                            <i class="icon icon-radio"></i>
+                                            <div class="item-inner">
+                                                <div class="item-title">{{this.value}}</div>
+                                            </div>
                                         </label>
-                                    </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+
+                        {{#if this.extra}}
+                            <div class="swiper-slide">
+                                <div class="list inset">
+                                    <h4>{{this.extra.question}}</h4>
+                                    <ul>
+                                        {{#each this.extra.options}}
+                                        <li>
+                                            <label class="item-radio item-radio-icon-end item-content">
+                                                <input type="radio" name="{{this.id}}" value="{{this.value}}" @change="nextQuestion()" />
+                                                <i class="icon icon-radio"></i>
+                                                <div class="item-inner">
+                                                    <div class="item-title">{{this.value}}</div>
+                                                </div>
+                                            </label>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                    <div class="block row">
-                        <a href="#" class="col button button-raised button-fill button-round" @click="getFormData()">Submit</a>
+
+                            {{#if this.extra.extra}}
+                            <div class="swiper-slide">
+                                <div class="list inset">
+                                    <h4>{{this.extra.extra.question}}</h4>
+                                    <ul>
+                                        {{#each this.extra.extra.options}}
+                                        <li>
+                                            <label class="item-radio item-radio-icon-end item-content">
+                                                <input type="radio" name="{{this.id}}" value="{{this.value}}" @change="nextQuestion()" />
+                                                <i class="icon icon-radio"></i>
+                                                <div class="item-inner">
+                                                    <div class="item-title">{{this.value}}</div>
+                                                </div>
+                                            </label>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                            {{/if}}
+                        {{/if}}
+                        {{/each}}
                     </div>
                 </div>
             </form>
         </div>
+        <div class="fab fab-extended fab-center-bottom">
+            <a href="#" class="fab-text" @click="getFormData()">Submit</a>
+        </div>
     </div>
 </template>
+
+<style>
+    #quiz{
+        margin: 0;
+    }
+</style>
+
 <script>
+    import 'dom7/dist/dom7.js';
+
     export default {
         data: function () {
             return {
-                risks: [],
+                questions: [],
             }
         },
-
         methods: {
+            nextQuestion: function () {
+                var self = this;
+                var app = self.$app;
+                var swiper = app.swiper.get('.swiper-container');
+
+                console.log(swiper);
+
+                swiper.slideNext();
+            },
+            getQuestions: function () {
+                var self = this;
+                var app = self.$app;
+
+                app.request.json('../static/json/wellness-quiz.json', async (data) => {
+                    self.$setState({
+                        questions: data,
+                    }).then(() => {
+                        app.swiper.create('.swiper-container');
+                    })
+                });
+            },
             getFormData: function(){
                 var self = this;
                 var app = self.$app;
@@ -154,5 +201,11 @@
                 this.sendDiagnosisAnalytics(age, symptoms, risks, diagnosis);
             }
         },
+        on: {
+            pageInit: function() {
+                this.getQuestions();
+                // this.nextQuestion();
+            }
+        }
     };
 </script>
