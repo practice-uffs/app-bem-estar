@@ -4,35 +4,56 @@
         
         <div class="happynesslevel-questionnaire" >
             <div class="card no-margin" id="happynesslevel">
-                <div class="card-question card-content card-content-padding">
-                    Como você está se sentindo agora?
+                <div id="cardContent" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeUnhappyLevel()" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row padding">
-                    <div class="col-20" >
-                        <div>
-                            <a href="#" @click="storeUnhappyLevel()"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                <div class="display-none" id="thanks-for-response">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
                         </div>
                     </div>
-                    <div class="col-20" >
-                        <div>
-                            <a href="#" @click="storeSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
-                        </div>
-                    </div>
-                    <div class="col-20" >
-                        <div>
-                            <a href="#" @click="storeWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
-                        </div>
-                    </div>
-                    <div class="col-20" >
-                        <div>
-                            <a href="#" @click="storeMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
-                        </div>
-                    </div>
-                    <div class="col-20" >
-                        <div>
-                            <a href="#" @click="storeHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -117,19 +138,89 @@
 export default {
     methods: {
         storeUnhappyLevel: function(){
-            alert('Unhappy');
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+
+            // Storage content goes here
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    
+                    }, 30000);
         },
         storeSleepyLevel: function(){
-            alert('Sleepy');
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            // Storage content goes here
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    
+                    }, 30000);
         },
         storeWideawakeLevel: function(){
-            alert('wideawake');
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            // Storage content goes here
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    
+                    }, 30000);
         },
         storeMildlyHappyLevel: function(){
-            alert('MildlyHappy');
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            // Storage content goes here
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    
+                    }, 30000);
         },
         storeHappyLevel: function(){
-            alert('Happy');
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            // Storage content goes here
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    
+                    }, 30000);
         },
     },
 };
@@ -180,5 +271,8 @@ export default {
 
     .happynesslevel-questionnaire {
         padding: 10px;
+    }
+    .h100 {
+        height: 100%;
     }
 </style>
