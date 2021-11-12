@@ -1,8 +1,43 @@
 <template>
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
+        
+        <div class="happynesslevel-questionnaire" >
+            <div class="card no-margin" id="happynesslevel">
+                <div class="card-question card-content card-content-padding">
+                    Como você está se sentindo agora?
+                </div>
+                <div class="row padding">
+                    <div class="col-20" >
+                        <div>
+                            <a href="#" @click="storeUnhappyLevel()"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                        </div>
+                    </div>
+                    <div class="col-20" >
+                        <div>
+                            <a href="#" @click="storeSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                        </div>
+                    </div>
+                    <div class="col-20" >
+                        <div>
+                            <a href="#" @click="storeWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                        </div>
+                    </div>
+                    <div class="col-20" >
+                        <div>
+                            <a href="#" @click="storeMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                        </div>
+                    </div>
+                    <div class="col-20" >
+                        <div>
+                            <a href="#" @click="storeHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="menu-grid">
-            
             <a href="/about-more/" class="menu-grid__item">
                 <div class="item-inner">
                     <img src="static/images/ask-for-help.png" class="menu-grid__icon">
@@ -78,6 +113,28 @@
   </div>
 </template>
 
+<script>
+export default {
+    methods: {
+        storeUnhappyLevel: function(){
+            alert('Unhappy');
+        },
+        storeSleepyLevel: function(){
+            alert('Sleepy');
+        },
+        storeWideawakeLevel: function(){
+            alert('wideawake');
+        },
+        storeMildlyHappyLevel: function(){
+            alert('MildlyHappy');
+        },
+        storeHappyLevel: function(){
+            alert('Happy');
+        },
+    },
+};
+</script>
+
 <style>
     .menu-grid {
         padding: 10px;
@@ -113,5 +170,15 @@
 
     .menu-grid__icon {
         height: 55px;
+    }
+
+    .card-question {
+      font-size: 16px;
+      font-weight: 500;
+      text-align: justify;
+    }
+
+    .happynesslevel-questionnaire {
+        padding: 10px;
     }
 </style>
