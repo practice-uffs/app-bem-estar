@@ -589,7 +589,29 @@ const storage = {
 
   removeFcmToken: () => {
     localStorage.removeItem("fcmToken");
-  }
+  },
+
+  // Happyness history method
+  
+  setHappynessHistory: (awnser) => {
+    let oldHistory = localStorage.getItem("happynessHistory");
+    oldHistory = JSON.parse(oldHistory);
+    localStorage.removeItem("happynessHistory");
+    if (oldHistory != null){
+      	oldHistory['history'].push({
+			'created_at': Date.now(),
+			'awnser': awnser
+		});
+    } else {
+      	oldHistory = { 
+			"history":[{
+				'created_at': Date.now(),
+				'awnser': awnser
+			}]
+		};
+    }
+    localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
+  },
 
 };
 
