@@ -599,13 +599,13 @@ const storage = {
     localStorage.removeItem("happynessHistory");
     if (oldHistory != null){
       	oldHistory['history'].push({
-			'created_at': Date.now(),
+			'created_at': Date(),
 			'awnser': awnser
 		});
     } else {
       	oldHistory = { 
 			"history":[{
-				'created_at': Date.now(),
+				'created_at': Date(),
 				'awnser': awnser
 			}]
 		};
