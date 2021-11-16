@@ -1,8 +1,64 @@
 <template>
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
+        
+        <div class="happynesslevel-questionnaire" >
+            <div class="card no-margin" id="happynesslevel">
+                <div id="cardContent" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeUnhappyLevel()" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="storeHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="display-none" id="thanks-for-response">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
         <div class="menu-grid">
-            
             <a href="/about-more/" class="menu-grid__item">
                 <div class="item-inner">
                     <img src="static/images/ask-for-help.png" class="menu-grid__icon">
@@ -78,6 +134,93 @@
   </div>
 </template>
 
+<script>
+export default {
+    methods: {
+        storeUnhappyLevel: function(){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+
+            app.storage.setHappynessHistory(0);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');   
+                    }, 30000);
+        },
+        storeSleepyLevel: function(){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            app.storage.setHappynessHistory(1);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none'); 
+                    }, 30000);
+        },
+        storeWideawakeLevel: function(){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            app.storage.setHappynessHistory(2);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');  
+                    }, 30000);
+        },
+        storeMildlyHappyLevel: function(){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            app.storage.setHappynessHistory(3);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    }, 30000);
+        },
+        storeHappyLevel: function(){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+            
+            app.storage.setHappynessHistory(4);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');
+                    }, 30000);
+        },
+    },
+};
+</script>
+
 <style>
     .menu-grid {
         padding: 10px;
@@ -113,5 +256,18 @@
 
     .menu-grid__icon {
         height: 55px;
+    }
+
+    .card-question {
+      font-size: 16px;
+      font-weight: 500;
+      text-align: justify;
+    }
+
+    .happynesslevel-questionnaire {
+        padding: 10px;
+    }
+    .h100 {
+        height: 100%;
     }
 </style>
