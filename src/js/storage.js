@@ -589,7 +589,37 @@ const storage = {
 
   removeFcmToken: () => {
     localStorage.removeItem("fcmToken");
-  }
+  },
+
+  // Sleep history method
+  
+  getSleepHistory: () => {
+    let history = localStorage.getItem("sleepHistory");
+	history = JSON.parse(history);
+    return history;
+  },
+
+  setSleepHistory: (awnser) => {
+    let oldHistory = localStorage.getItem("sleepHistory");
+    oldHistory = JSON.parse(oldHistory);
+	console.log(oldHistory);
+    localStorage.removeItem("sleepHistory");
+    if (oldHistory != null){
+      	oldHistory['history'].push({
+			'created_at': Date(),
+			'awnser': awnser
+		});
+    } else {
+      	oldHistory = { 
+            "history":[{
+				'created_at': Date(),
+				'awnser': awnser
+            }]
+		};
+    }
+    localStorage["sleepHistory"] = JSON.stringify({history: oldHistory.history});
+  },
+
 
 };
 
