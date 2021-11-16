@@ -155,6 +155,11 @@
             </a>
 
             <a href="/sleep-tips/" class="menu-grid__item">
+                <div class="item-inner">
+                    <img src="static/images/sleep.png" class="menu-grid__icon">
+                    <div class="item-title">Sono</div>
+                </div>
+            </a>
             
             <a href="/contact/" class="menu-grid__item">
                 <div class="item-inner">
@@ -224,7 +229,7 @@
                 
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
-                    sleepCard.addClass('display-none');
+                    sleepCard.removeClass('display-none');
                     return false;
                 } else {
                     sleepCard.removeClass('display-none');
@@ -241,7 +246,7 @@
                 let quizButton = this.$$("#quiz-button");
 
                 app.storage.setSleepHistory(awnser);
-
+                
                 pollCard.addClass('display-none');
                 pollThanks.removeClass('display-none');
                 setTimeout(function () {
