@@ -591,6 +591,9 @@ const storage = {
     localStorage.removeItem("fcmToken");
   },
 
+
+
+
   // Sleep history method
   
   getSleepHistory: () => {
@@ -619,6 +622,27 @@ const storage = {
     localStorage["sleepHistory"] = JSON.stringify({history: oldHistory.history});
   },
 
+  // Happyness history method
+  
+	setHappynessHistory: (awnser) => {
+		let oldHistory = localStorage.getItem("happynessHistory");
+		oldHistory = JSON.parse(oldHistory);
+		localStorage.removeItem("happynessHistory");
+		if (oldHistory != null){
+			oldHistory['history'].push({
+				'created_at': Date(),
+				'awnser': awnser
+			});
+		} else {
+			oldHistory = { 
+				"history":[{
+					'created_at': Date(),
+					'awnser': awnser
+				}]
+			};
+		}
+		localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
+	},
 
 };
 

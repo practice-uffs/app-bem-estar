@@ -1,6 +1,7 @@
 <template>
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
+
         <div class="padding">
             <a id="quiz-button" href="#" @click="checkQuestionnaries()" class="col button button-fill color-pink">Questionários pendentes</a>
         </div>
@@ -60,8 +61,64 @@
             </div>
         </div>
 
+
+        <div class="happynesslevel-questionnaire" >
+            <div class="card no-margin" id="happynesslevel">
+                <div id="cardContent" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="happynessLevel(0)" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="happynessLevel(1)"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="happynessLevel(2)"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="happynessLevel(3)"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="happynessLevel(4)"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="display-none" id="thanks-for-response">
+                    <div class="card-question card-content card-content-padding">
+                        Como você está se sentindo agora?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
         <div class="menu-grid">
-            
             <a href="/about-more/" class="menu-grid__item">
                 <div class="item-inner">
                     <img src="static/images/ask-for-help.png" class="menu-grid__icon">
@@ -191,6 +248,22 @@
                         sleepCard.addClass('display-none');   
                         }, 3000);
             },
+            happynessLevel: function(awnser){
+            var self = this;
+            var app = self.$app;
+     
+            var pollCard = this.$$("#cardContent");
+            var pollThanks = this.$$("#thanks-for-response");
+
+            app.storage.setHappynessHistory(awnser);
+
+            pollCard.addClass('display-none');
+            pollThanks.removeClass('display-none');
+            setTimeout(function () {
+                    pollThanks.addClass('display-none');
+                    pollCard.removeClass('display-none');   
+                    }, 30000);
+        },
         },
     };
 </script>
@@ -231,10 +304,21 @@
         height: 55px;
     }
 
+    .card-question {
+      font-size: 16px;
+      font-weight: 500;
+      text-align: justify;
+    }
+
     .sleeplevel-questionnaire {
+        padding: 10px;
+    }
+    
+    .happynesslevel-questionnaire {
         padding: 10px;
     }
     .h100 {
         height: 100%;
     }
+
 </style>
