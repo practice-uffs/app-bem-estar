@@ -198,7 +198,7 @@
                 
                 let needSleepQuestionarie = this.checkNeedSleepQuestionnarie();
 
-                var quizButton = this.$$("#quiz-button");
+                let quizButton = this.$$("#quiz-button");
 
                 if (needSleepQuestionarie == false){
                     quizButton.text("Não há questionários pendentes");
@@ -212,7 +212,7 @@
 
                 let sleepCard = this.$$("#card-sleep");
                 let sleepHistory = app.storage.getSleepHistory();
-
+                
                 if(sleepHistory == null) {
                     sleepCard.removeClass('display-none');
                     return true;
@@ -221,6 +221,7 @@
                 let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
+                
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     sleepCard.addClass('display-none');
@@ -234,9 +235,10 @@
                 var self = this;
                 var app = self.$app;
         
-                var pollCard = this.$$("#card-content-sleep");
-                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let pollCard = this.$$("#card-content-sleep");
+                let pollThanks = this.$$("#thanks-for-response-sleep");
                 let sleepCard = this.$$("#card-sleep");
+                let quizButton = this.$$("#quiz-button");
 
                 app.storage.setSleepHistory(awnser);
 
@@ -246,6 +248,9 @@
                         pollThanks.addClass('display-none');
                         pollCard.removeClass('display-none');
                         sleepCard.addClass('display-none');   
+                        quizButton.text("Não há questionários pendentes");
+                        quizButton.removeClass("color-pink");
+                        quizButton.addClass("color-green");
                         }, 5000);
             },
             happynessLevel: function(awnser){
