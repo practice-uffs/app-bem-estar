@@ -602,7 +602,6 @@ const storage = {
   setSleepHistory: (awnser) => {
     let oldHistory = localStorage.getItem("sleepHistory");
     oldHistory = JSON.parse(oldHistory);
-	console.log(oldHistory);
     localStorage.removeItem("sleepHistory");
     if (oldHistory != null){
       	oldHistory['history'].push({

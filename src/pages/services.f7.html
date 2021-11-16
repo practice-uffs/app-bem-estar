@@ -1,8 +1,10 @@
 <template>
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
-
-        <div class="sleeplevel-questionnaire" >
+        <div class="padding">
+            <a href="#" @click="checkNeedToSleepQuestionarie()" class="col button button-fill color-pink">Questionários pendentes</a>
+        </div>
+        <div id="card-sleep" class="sleeplevel-questionnaire display-none" >
             <div class="card no-margin" id="happynesslevel">
                 <div id="card-content-sleep" class="h100">
                     <div class="card-question card-content card-content-padding">
@@ -11,7 +13,7 @@
                     <div class="row padding">
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepUnhappyLevel()" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepUnhappyLevel()"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
@@ -135,105 +137,125 @@
   </div>
 </template>
 <script>
-export default {
-    on: {
-        pageInit: function (e, page) {
-            var self = this;
-            var app = self.$app;
+    
+    export default {
+        methods: {
+            checkNeedToSleepQuestionarie: function () {
+                var self = this;
+                var app = self.$app;
 
-            let sleepHistory = app.storage.getSleepHistory();
-            lastUpdate = sleepHistory.history[sleepHistory.history.length - 1];
+                let sleepHistory = app.storage.getSleepHistory();
+                let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
+                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
+                let now = new Date();
 
-            // if (lastUpdate){
+                let sleepCard = this.$$("#card-sleep");
 
-            // }
-        }
-    },
-    methods: {
-        sleepUnhappyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#card-content-sleep");
-            var pollThanks = this.$$("#thanks-for-response-sleep");
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
+                    sleepCard.addClass('display-none');
+                } else {
+                    sleepCard.removeClass('display-none');
+                }
+            },
+            sleepUnhappyLevel: function(){
+                var self = this;
+                var app = self.$app;
+        
+                var pollCard = this.$$("#card-content-sleep");
+                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
 
-            console.log(Date());
+                console.log(Date());
 
-            app.storage.setSleepHistory(0);
+                app.storage.setSleepHistory(0);
 
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');   
-                    }, 3000);
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none');   
+                        }, 3000);
+                
+            },
+            sleepSleepyLevel: function(){
+                var self = this;
+                var app = self.$app;
+        
+                var pollCard = this.$$("#card-content-sleep");
+                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
+                
+                app.storage.setSleepHistory(1);
+
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none'); 
+                        }, 3000);
+                
+            },
+            sleepWideawakeLevel: function(){
+                var self = this;
+                var app = self.$app;
+        
+                var pollCard = this.$$("#card-content-sleep");
+                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
+                
+                app.storage.setSleepHistory(2);
+
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none');  
+                        }, 3000);
+                
+            },
+            sleepMildlyHappyLevel: function(){
+                var self = this;
+                var app = self.$app;
+        
+                var pollCard = this.$$("#card-content-sleep");
+                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
+                
+                app.storage.setSleepHistory(3);
+
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none');
+                        }, 3000);
+                
+            },
+            sleepHappyLevel: function(){
+                var self = this;
+                var app = self.$app;
+        
+                var pollCard = this.$$("#card-content-sleep");
+                var pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
+                
+                app.storage.setSleepHistory(4);
+
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none');
+                        }, 3000);
+                
+            },
         },
-        sleepSleepyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#card-content-sleep");
-            var pollThanks = this.$$("#thanks-for-response-sleep");
-            
-            app.storage.setSleepHistory(1);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none'); 
-                    }, 3000);
-        },
-        sleepWideawakeLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#card-content-sleep");
-            var pollThanks = this.$$("#thanks-for-response-sleep");
-            
-            app.storage.setSleepHistory(2);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');  
-                    }, 3000);
-        },
-        sleepMildlyHappyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#card-content-sleep");
-            var pollThanks = this.$$("#thanks-for-response-sleep");
-            
-            app.storage.setSleepHistory(3);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');
-                    }, 3000);
-        },
-        sleepHappyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#card-content-sleep");
-            var pollThanks = this.$$("#thanks-for-response-sleep");
-            
-            app.storage.setSleepHistory(4);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');
-                    }, 3000);
-        },
-    },
-};
+    };
 </script>
 <style>
     .menu-grid {
