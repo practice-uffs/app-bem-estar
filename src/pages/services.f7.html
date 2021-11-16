@@ -13,27 +13,27 @@
                     <div class="row padding">
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepUnhappyLevel()"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepLevel(0)"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepLevel(1)"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepLevel(2)"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepLevel(3)"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="sleepHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="sleepLevel(4)"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                     </div>
@@ -97,12 +97,7 @@
                 </div>
             </a>
 
-            <a href="/sleep-tips/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/sleep.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas de Sono</div>
-                </div>
-            </a>
+            <a href="/sleep-tips/" class="menu-grid__item">Unhappy
             
             <a href="/contact/" class="menu-grid__item">
                 <div class="item-inner">
@@ -173,7 +168,7 @@
                     return true;
                 }
             },
-            sleepUnhappyLevel: function(){
+            sleepLevel: function(awnser){
                 var self = this;
                 var app = self.$app;
         
@@ -181,9 +176,7 @@
                 var pollThanks = this.$$("#thanks-for-response-sleep");
                 let sleepCard = this.$$("#card-sleep");
 
-                console.log(Date());
-
-                app.storage.setSleepHistory(0);
+                app.storage.setSleepHistory(awnser);
 
                 pollCard.addClass('display-none');
                 pollThanks.removeClass('display-none');
@@ -192,83 +185,6 @@
                         pollCard.removeClass('display-none');
                         sleepCard.addClass('display-none');   
                         }, 3000);
-                
-            },
-            sleepSleepyLevel: function(){
-                var self = this;
-                var app = self.$app;
-        
-                var pollCard = this.$$("#card-content-sleep");
-                var pollThanks = this.$$("#thanks-for-response-sleep");
-                let sleepCard = this.$$("#card-sleep");
-                
-                app.storage.setSleepHistory(1);
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        sleepCard.addClass('display-none'); 
-                        }, 3000);
-                
-            },
-            sleepWideawakeLevel: function(){
-                var self = this;
-                var app = self.$app;
-        
-                var pollCard = this.$$("#card-content-sleep");
-                var pollThanks = this.$$("#thanks-for-response-sleep");
-                let sleepCard = this.$$("#card-sleep");
-                
-                app.storage.setSleepHistory(2);
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        sleepCard.addClass('display-none');  
-                        }, 3000);
-                
-            },
-            sleepMildlyHappyLevel: function(){
-                var self = this;
-                var app = self.$app;
-        
-                var pollCard = this.$$("#card-content-sleep");
-                var pollThanks = this.$$("#thanks-for-response-sleep");
-                let sleepCard = this.$$("#card-sleep");
-                
-                app.storage.setSleepHistory(3);
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        sleepCard.addClass('display-none');
-                        }, 3000);
-                
-            },
-            sleepHappyLevel: function(){
-                var self = this;
-                var app = self.$app;
-        
-                var pollCard = this.$$("#card-content-sleep");
-                var pollThanks = this.$$("#thanks-for-response-sleep");
-                let sleepCard = this.$$("#card-sleep");
-                
-                app.storage.setSleepHistory(4);
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        sleepCard.addClass('display-none');
-                        }, 3000);
-                
             },
         },
     };
