@@ -2,7 +2,7 @@
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
         <div class="padding">
-            <a href="#" @click="checkNeedToSleepQuestionarie()" class="col button button-fill color-pink">Questionários pendentes</a>
+            <a id="quiz-button" href="#" @click="checkQuestionnaries()" class="col button button-fill color-pink">Questionários pendentes</a>
         </div>
         <div id="card-sleep" class="sleeplevel-questionnaire display-none" >
             <div class="card no-margin" id="happynesslevel">
@@ -140,7 +140,21 @@
     
     export default {
         methods: {
-            checkNeedToSleepQuestionarie: function () {
+            checkQuestionnaries: function () {
+                var self = this;
+                var app = self.$app;
+                
+                let needSleepQuestionarie = this.checkNeedSleepQuestionnarie();
+
+                var quizButton = this.$$("#quiz-button");
+
+                if (needSleepQuestionarie == false){
+                    quizButton.text("Não há questionários pendentes");
+                    quizButton.removeClass("color-pink");
+                    quizButton.addClass("color-green");
+                }
+            },
+            checkNeedSleepQuestionnarie: function(){
                 var self = this;
                 var app = self.$app;
 
@@ -153,8 +167,10 @@
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     sleepCard.addClass('display-none');
+                    return false;
                 } else {
                     sleepCard.removeClass('display-none');
+                    return true;
                 }
             },
             sleepUnhappyLevel: function(){
