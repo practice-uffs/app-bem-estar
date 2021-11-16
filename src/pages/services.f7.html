@@ -153,12 +153,17 @@
                 var self = this;
                 var app = self.$app;
 
+                let sleepCard = this.$$("#card-sleep");
                 let sleepHistory = app.storage.getSleepHistory();
+
+                if(sleepHistory == null) {
+                    sleepCard.removeClass('display-none');
+                    return true;
+                }
+
                 let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
-
-                let sleepCard = this.$$("#card-sleep");
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     sleepCard.addClass('display-none');
