@@ -62,7 +62,7 @@
         white-space: unset;
     }
     .page-content{
-        padding-bottom: 50px;
+        padding-bottom: 70px;
     }
 </style>
 
@@ -90,8 +90,6 @@
 
                 for(let item of this.questions){
                     if(item.id == nQuestion && item.extra){
-                        console.log(item.id, nQuestion, item.extra);
-                        console.log(item.options);
                         if(item.options.indexOf(item.options.find(option => option.value == value.replace(/'/g, ''))) in item.choise){
                             for (let quest of this.questions) {
                                 if (quest.id == item.extra){
@@ -137,7 +135,6 @@
                 var app = self.$app;
 
                 app.request.json('../static/json/wellness-quiz.json', async (data) => {
-                    console.log(data);
                     for await (let question of data){
                         if(!question.hide){
                             self.activeQuestions.push(question);
@@ -146,14 +143,15 @@
                     self.$setState({
                         questions: data,
                     }).then(async () => {
-                        await app.swiper.create('.swiper-container');
+                        await app.swiper.create('.swiper-container', {
+                            pagination: {
+                            el: '.swiper-pagination',
+                                type: 'bullets',
+                            },
+                        });
                         await self.$setState({
                             swiper: app.swiper.get('.swiper-container'),
                         });
-                        console.log(self.swiper);
-                        self.swiper.observer = true;
-                        self.swiper.observeSlideChildren = true;
-
                     })
                 });
             },
