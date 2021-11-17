@@ -2,6 +2,7 @@
     {
         "id": 1,
         "question": "[Sintomas físicos] Nos últimos 7 dias você percebeu algum sintoma a seguir, associado a ansiedade?",
+        "hide": false,
         "options" : [
             {
                 "id":"1",
@@ -17,7 +18,7 @@
             },
             {
                 "id": "1",
-                "value": "Tremores" 
+                "value": "Tremores"
             },
             {
                 "id": "1",
@@ -44,6 +45,7 @@
     {
         "id": 2,
         "question": "[Sintomas físicos] Nos últimos sete 7 dias você evitou ou pensou em evitar alguma situação por medo/ansiedade? Marque as opções abaixo que representam o seu estado de humor na maioria dos dias, nos últimos 7 dias.",
+        "hide": false,
         "options": [
             {
                 "id": "2",
@@ -70,6 +72,7 @@
     {
         "id": 3,
         "question": "[Sintomas físicos] Nos últimos sete dias sentiu-se preocupado excessivamente ou angustiado pela proximidade de algo ruim acontecer?",
+        "hide": false,
         "options": [
             {
                 "id": "3",
@@ -84,6 +87,7 @@
     {
         "id": 4,
         "question": "[DSM] Nos últimos sete dias sentiu-se ansioso ou preocupado em excesso?",
+        "hide": false,
         "options": [
             {
                 "id": "4",
@@ -95,67 +99,72 @@
             }
         ],
         "choise" : [0],
-        "extra": {
-            "id": 4.1,
-            "question": "[DSM] O sentimento de ansiedade ou preocupação está associado a alguma(s) da(s) opções abaixo?",
-            "options": [
-                {
-                    "id": "4.1",
-                    "value": "Preocupação"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Irritabilidade"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Cansaço"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Dificuldade concentração ou sensação de branco"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Alteração do sono"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Tensão muscular"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Inquietação"
-                },
-                {
-                    "id": "4.1",
-                    "value": "Não se aplica"
-                }
-            ],
-            "choise": [0,1,2,3,4,5,6],
-            "extra": {
-                "id": 4.2,
-                "question": "Você percebe que os sintomas anteriores atrapalham significativamente uma ou mais áreas da sua vida (social, profissional e/ou acadêmica)?",
-                "options": [
-                    {
-                        "id": "4.2",
-                        "value": "Sim"
-                    },
-                    {
-                        "id": "4.2",
-                        "value": "Não"
-                    },
-                    {
-                        "id": "4.2",
-                        "value": "Não sei responder"
-                    }
-                ]
+        "extra": "4.1"   
+    },
+    {
+        "id": 4.1,
+        "question": "[DSM] O sentimento de ansiedade ou preocupação está associado a alguma(s) da(s) opções abaixo?",
+        "hide": true,
+        "options": [
+            {
+                "id": "4.1",
+                "value": "Preocupação"
+            },
+            {
+                "id": "4.1",
+                "value": "Irritabilidade"
+            },
+            {
+                "id": "4.1",
+                "value": "Cansaço"
+            },
+            {
+                "id": "4.1",
+                "value": "Dificuldade concentração ou sensação de branco"
+            },
+            {
+                "id": "4.1",
+                "value": "Alteração do sono"
+            },
+            {
+                "id": "4.1",
+                "value": "Tensão muscular"
+            },
+            {
+                "id": "4.1",
+                "value": "Inquietação"
+            },
+            {
+                "id": "4.1",
+                "value": "Não se aplica"
             }
-        }
+        ],
+        "choise": [0,1,2,3,4,5,6],
+        "extra": 4.2
+    },
+    {
+        "id": 4.2,
+        "question": "Você percebe que os sintomas anteriores atrapalham significativamente uma ou mais áreas da sua vida (social, profissional e/ou acadêmica)?",
+        "hide": true,
+        "options": [
+            {
+                "id": "4.2",
+                "value": "Sim"
+            },
+            {
+                "id": "4.2",
+                "value": "Não"
+            },
+            {
+                "id": "4.2",
+                "value": "Não sei responder"
+            }
+        ]
     },
     {
         "id": 5,
         "question": "Assinale as opções abaixo em relação ao uso de substâncias psicoativas:",
+        "hide": false,
         "options": [
             {
                 "id": "5",
