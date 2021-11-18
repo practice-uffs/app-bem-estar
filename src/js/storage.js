@@ -591,12 +591,21 @@ const storage = {
     localStorage.removeItem("fcmToken");
   },
 
-  // Happyness history method
+
+
+
+  // Sleep history method
   
-  setHappynessHistory: (awnser) => {
-    let oldHistory = localStorage.getItem("happynessHistory");
+  getSleepHistory: () => {
+    let history = localStorage.getItem("sleepHistory");
+	history = JSON.parse(history);
+    return history;
+  },
+
+  setSleepHistory: (awnser) => {
+    let oldHistory = localStorage.getItem("sleepHistory");
     oldHistory = JSON.parse(oldHistory);
-    localStorage.removeItem("happynessHistory");
+    localStorage.removeItem("sleepHistory");
     if (oldHistory != null){
       	oldHistory['history'].push({
 			'created_at': Date(),
@@ -604,14 +613,36 @@ const storage = {
 		});
     } else {
       	oldHistory = { 
-			"history":[{
+            "history":[{
 				'created_at': Date(),
 				'awnser': awnser
-			}]
+            }]
 		};
     }
-    localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
+    localStorage["sleepHistory"] = JSON.stringify({history: oldHistory.history});
   },
+
+  // Happyness history method
+  
+	setHappynessHistory: (awnser) => {
+		let oldHistory = localStorage.getItem("happynessHistory");
+		oldHistory = JSON.parse(oldHistory);
+		localStorage.removeItem("happynessHistory");
+		if (oldHistory != null){
+			oldHistory['history'].push({
+				'created_at': Date(),
+				'awnser': awnser
+			});
+		} else {
+			oldHistory = { 
+				"history":[{
+					'created_at': Date(),
+					'awnser': awnser
+				}]
+			};
+		}
+		localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
+	},
 
 };
 

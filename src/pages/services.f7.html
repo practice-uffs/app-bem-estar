@@ -1,7 +1,67 @@
 <template>
   <div data-name="services">
       <div class="tab tab-active" id="tab-1">
-        
+
+        <div class="padding">
+            <a id="quiz-button" href="#" @click="checkQuestionnaries()" class="col button button-fill color-pink">Questionários pendentes</a>
+        </div>
+        <div id="card-sleep" class="sleeplevel-questionnaire display-none" >
+            <div class="card no-margin" id="happynesslevel">
+                <div id="card-content-sleep" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Como tem sido a qualidade do seu sono nos últimos 7 dias?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="sleepLevel(0)"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="sleepLevel(1)"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="sleepLevel(2)"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="sleepLevel(3)"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                        <div class="col-20" >
+                            <div>
+                                <a href="#" @click="sleepLevel(4)"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="display-none" id="thanks-for-response-sleep">
+                    <div class="card-question card-content card-content-padding">
+                        Como tem sido a qualidade do seu sono nos últimos 7 dias?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
         <div class="happynesslevel-questionnaire" >
             <div class="card no-margin" id="happynesslevel">
                 <div id="cardContent" class="h100">
@@ -11,27 +71,27 @@
                     <div class="row padding">
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="storeUnhappyLevel()" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="happynessLevel(0)" id="unHappy"><img src="../static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="storeSleepyLevel()"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="happynessLevel(1)"><img src="../static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="storeWideawakeLevel()"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
+                                <a href="#" @click="happynessLevel(2)"><img src="../static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="storeMildlyHappyLevel()"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
+                                <a href="#" @click="happynessLevel(3)"><img src="../static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                         <div class="col-20" >
                             <div>
-                                <a href="#" @click="storeHappyLevel()"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+                                <a href="#" @click="happynessLevel(4)"><img src="../static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +157,7 @@
             <a href="/sleep-tips/" class="menu-grid__item">
                 <div class="item-inner">
                     <img src="static/images/sleep.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas de Sono</div>
+                    <div class="item-title">Sono</div>
                 </div>
             </a>
             
@@ -133,18 +193,79 @@
       </div>
   </div>
 </template>
-
 <script>
-export default {
-    methods: {
-        storeUnhappyLevel: function(){
+    
+    export default {
+        methods: {
+            checkQuestionnaries: function () {
+                var self = this;
+                var app = self.$app;
+                
+                let needSleepQuestionarie = this.checkNeedSleepQuestionnarie();
+
+                let quizButton = this.$$("#quiz-button");
+
+                if (needSleepQuestionarie == false){
+                    quizButton.text("Não há questionários pendentes");
+                    quizButton.removeClass("color-pink");
+                    quizButton.addClass("color-green");
+                }
+            },
+            checkNeedSleepQuestionnarie: function(){
+                var self = this;
+                var app = self.$app;
+
+                let sleepCard = this.$$("#card-sleep");
+                let sleepHistory = app.storage.getSleepHistory();
+                
+                if(sleepHistory == null) {
+                    sleepCard.removeClass('display-none');
+                    return true;
+                }
+
+                let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
+                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
+                let now = new Date();
+                
+
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
+                    sleepCard.addClass('display-none');
+                    return false;
+                } else {
+                    sleepCard.removeClass('display-none');
+                    return true;
+                }
+            },
+            sleepLevel: function(awnser){
+                var self = this;
+                var app = self.$app;
+        
+                let pollCard = this.$$("#card-content-sleep");
+                let pollThanks = this.$$("#thanks-for-response-sleep");
+                let sleepCard = this.$$("#card-sleep");
+                let quizButton = this.$$("#quiz-button");
+
+                app.storage.setSleepHistory(awnser);
+                
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        sleepCard.addClass('display-none');   
+                        quizButton.text("Não há questionários pendentes");
+                        quizButton.removeClass("color-pink");
+                        quizButton.addClass("color-green");
+                        }, 5000);
+            },
+            happynessLevel: function(awnser){
             var self = this;
             var app = self.$app;
      
             var pollCard = this.$$("#cardContent");
             var pollThanks = this.$$("#thanks-for-response");
 
-            app.storage.setHappynessHistory(0);
+            app.storage.setHappynessHistory(awnser);
 
             pollCard.addClass('display-none');
             pollThanks.removeClass('display-none');
@@ -153,74 +274,9 @@ export default {
                     pollCard.removeClass('display-none');   
                     }, 30000);
         },
-        storeSleepyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#cardContent");
-            var pollThanks = this.$$("#thanks-for-response");
-            
-            app.storage.setHappynessHistory(1);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none'); 
-                    }, 30000);
         },
-        storeWideawakeLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#cardContent");
-            var pollThanks = this.$$("#thanks-for-response");
-            
-            app.storage.setHappynessHistory(2);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');  
-                    }, 30000);
-        },
-        storeMildlyHappyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#cardContent");
-            var pollThanks = this.$$("#thanks-for-response");
-            
-            app.storage.setHappynessHistory(3);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');
-                    }, 30000);
-        },
-        storeHappyLevel: function(){
-            var self = this;
-            var app = self.$app;
-     
-            var pollCard = this.$$("#cardContent");
-            var pollThanks = this.$$("#thanks-for-response");
-            
-            app.storage.setHappynessHistory(4);
-
-            pollCard.addClass('display-none');
-            pollThanks.removeClass('display-none');
-            setTimeout(function () {
-                    pollThanks.addClass('display-none');
-                    pollCard.removeClass('display-none');
-                    }, 30000);
-        },
-    },
-};
+    };
 </script>
-
 <style>
     .menu-grid {
         padding: 10px;
@@ -264,10 +320,15 @@ export default {
       text-align: justify;
     }
 
+    .sleeplevel-questionnaire {
+        padding: 10px;
+    }
+    
     .happynesslevel-questionnaire {
         padding: 10px;
     }
     .h100 {
         height: 100%;
     }
+
 </style>
