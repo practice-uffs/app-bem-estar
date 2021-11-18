@@ -598,7 +598,7 @@ const storage = {
   
   getSleepHistory: () => {
     let history = localStorage.getItem("sleepHistory");
-	history = JSON.parse(history);
+	  history = JSON.parse(history);
     return history;
   },
 
@@ -622,8 +622,43 @@ const storage = {
     localStorage["sleepHistory"] = JSON.stringify({history: oldHistory.history});
   },
 
-  // Happyness history method
   
+  // Food history method
+  
+  getFoodHistory: () => {
+    let history = localStorage.getItem("foodHistory");
+	  history = JSON.parse(history);
+    return history;
+  },
+
+  setFoodHistory: (awnser) => {
+    let oldHistory = localStorage.getItem("foodHistory");
+    oldHistory = JSON.parse(oldHistory);
+    localStorage.removeItem("foodHistory");
+    if (oldHistory != null){
+      	oldHistory['history'].push({
+			'created_at': Date(),
+			'awnser': awnser
+		});
+    } else {
+      	oldHistory = { 
+            "history":[{
+                'created_at': Date(),
+                'awnser': awnser
+            }]
+		};
+    }
+    localStorage["foodHistory"] = JSON.stringify({history: oldHistory.history});
+  },
+
+
+  	// Happyness history method
+  
+	getHappynessHistory: () => {
+		let history = localStorage.getItem("happynessHistory");
+		history = JSON.parse(history);
+		return history;
+  	},
 	setHappynessHistory: (awnser) => {
 		let oldHistory = localStorage.getItem("happynessHistory");
 		oldHistory = JSON.parse(oldHistory);
