@@ -116,6 +116,56 @@
         </div>
 
 
+        <div id="card-physical-activity" class="physicalactivitylevel-questionnaire" >
+            <div class="card no-margin" id="happynesslevel">
+                <div id="card-content-physical-activity" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Quantas vezes praticou atividade física nos últimos 7 dias?
+                    </div>
+                    
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(0)" class="w100 p-5px"><button class="button button-fill">Nenhuma</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(1)" class="w100 p-5px"><button class="button button-fill">1</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(2)" class="w100 p-5px"><button class="button button-fill">2</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(3)" class="w100 p-5px"><button class="button button-fill">3</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(4)" class="w100 p-5px"><button class="button button-fill">4</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="physicalActivityLevel(5)" class="w100 p-5px"><button class="button button-fill">5 ou mais</button></a>
+                    </div>
+                    
+                </div>
+                <div class="display-none" id="thanks-for-response-physical-activity">
+                    <div class="card-question card-content card-content-padding">
+                        Como tem sido a qualidade da sua alimentação nos últimos 7 dias?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
         <div class="happynesslevel-questionnaire" >
             <div class="card no-margin" id="happynesslevel">
                 <div id="cardContent" class="h100">
@@ -315,6 +365,31 @@
                     return true;
                 }
             },
+            checkNeedPhysicalActivityQuestionnarie: function(){
+                var self = this;
+                var app = self.$app;
+
+                let physicalActivityCard = this.$$("#card-physical-activity");
+                let physicalActivityHistory = app.storage.getPhysicalActivityHistory();
+                
+                if(physicalActivityHistory == null) {
+                    physicalActivityCard.removeClass('display-none');
+                    return true;
+                }
+
+                let lastUpdateFromStorage = physicalActivityHistory.history[physicalActivityHistory.history.length - 1];
+                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
+                let now = new Date();
+                
+
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
+                    physicalActivityCard.addClass('display-none');
+                    return false;
+                } else {
+                    physicalActivityCard.removeClass('display-none');
+                    return true;
+                }
+            },
             sleepLevel: function(awnser){
                 var self = this;
                 var app = self.$app;
@@ -351,6 +426,24 @@
                         foodCard.addClass('display-none');   
                         }, 5000);
             },
+            physicalActivityLevel: function(awnser){
+                var self = this;
+                var app = self.$app;
+        
+                let pollCard = this.$$("#card-content-physical-activity");
+                let pollThanks = this.$$("#thanks-for-response-physical-activity");
+                let physicalActivityCard = this.$$("#card-physical-activity");
+
+                app.storage.setPhysicalActivityHistory(awnser);
+                
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        physicalActivityCard.addClass('display-none');   
+                        }, 5000);
+            },
             happynessLevel: function(awnser){
 				var self = this;
 				var app = self.$app;
@@ -372,6 +465,7 @@
             tabInit: function(){
                 this.checkNeedSleepQuestionnarie();
 				this.checkNeedFoodQuestionnarie();
+                this.checkNeedPhysicalActivityQuestionnarie();
             }
         }
     };
@@ -427,12 +521,27 @@
         padding: 10px;
     }
 
+    .physicalactivitylevel-questionnaire {
+        padding: 10px;
+    }
+    .pa-fontsize{
+        font-size:x-large;
+    }
+
     .happynesslevel-questionnaire {
         padding: 10px;
     }
 
     .h100 {
         height: 100%;
+    }
+
+    .w100 {
+        width: 100%;
+    }
+
+    .p-5px {
+        padding: 5px;
     }
 
 </style>
