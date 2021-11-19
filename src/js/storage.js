@@ -664,6 +664,33 @@ const storage = {
 			oldHistory['history'].push({
 			'created_at': Date(),
 			'awnser': awnser
+			});
+		} else {
+			oldHistory = { 
+				"history":[{
+					'created_at': Date(),
+					'awnser': awnser
+				}]
+			};
+		}
+		localStorage["physicalActivityHistory"] = JSON.stringify({history: oldHistory.history});
+	},
+
+	// Leisure history method
+	getLeisureHistory: () => {
+		let history = localStorage.getItem("leisureHistory");
+		history = JSON.parse(history);
+		return history;
+	},
+
+	setLeisureHistory: (awnser) => {
+		let oldHistory = localStorage.getItem("leisureHistory");
+		oldHistory = JSON.parse(oldHistory);
+		localStorage.removeItem("leisureHistory");
+		if (oldHistory != null){
+			oldHistory['history'].push({
+			'created_at': Date(),
+			'awnser': awnser
 		});
 		} else {
 			oldHistory = { 
@@ -671,9 +698,9 @@ const storage = {
 					'created_at': Date(),
 					'awnser': awnser
 				}]
-		};
+			};
 		}
-		localStorage["physicalActivityHistory"] = JSON.stringify({history: oldHistory.history});
+		localStorage["leisureHistory"] = JSON.stringify({history: oldHistory.history});
 	},
 
 	// Happyness history method
