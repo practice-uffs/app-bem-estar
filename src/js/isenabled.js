@@ -32,9 +32,7 @@ var IsEnabled = {
 
     reasonsPage: true,
 
-    leisurePage: true,
-
-    sleepTipsPage: true,
+    tipsPage: true,
 
     wellnessQuizPage: true,
     
