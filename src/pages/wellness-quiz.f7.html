@@ -17,25 +17,46 @@
                 <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container">
                     <div class="swiper-pagination"></div>
                     <div class="swiper-wrapper">
-                        {{#each activeQuestions}}
-                            <div class="swiper-slide">
-                                <div class="list inset">
-                                    <h4>{{this.question}}</h4>
-                                    <ul>
-                                        {{#each this.options}}
-                                        <li>
-                                            <label class="item-radio item-radio-icon-start item-content">
-                                                <input type="radio" name="{{this.id}}" value="'{{this.value}}'"/>
-                                                <i class="icon icon-radio"></i>
-                                                <div class="item-inner">
-                                                    <div class="item-title">{{this.value}}</div>
-                                                </div>
-                                            </label>
-                                        </li>
-                                        {{/each}}
-                                    </ul>
+                        {{#each questions}}
+                            {{#if this.hide}}
+                                <div class="swiper-slide hide on-demand" id="{{this.id}}">
+                                    <div class="list inset">
+                                        <h4>{{this.question}}</h4>
+                                        <ul>
+                                            {{#each this.options}}
+                                            <li>
+                                                <label class="item-radio item-radio-icon-start item-content">
+                                                    <input type="radio" name="{{this.id}}" value="'{{this.value}}'"/>
+                                                    <i class="icon icon-radio"></i>
+                                                    <div class="item-inner">
+                                                        <div class="item-title">{{this.value}}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            {{else}}
+                                <div class="swiper-slide" id="{{this.id}}">
+                                    <div class="list inset">
+                                        <h4>{{this.question}}</h4>
+                                        <ul>
+                                            {{#each this.options}}
+                                            <li>
+                                                <label class="item-radio item-radio-icon-start item-content">
+                                                    <input type="radio" name="{{this.id}}" value="'{{this.value}}'" />
+                                                    <i class="icon icon-radio"></i>
+                                                    <div class="item-inner">
+                                                        <div class="item-title">{{this.value}}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {{/if}}
                         {{/each}}
                     </div>
                 </div>
@@ -64,6 +85,9 @@
     .page-content{
         padding-bottom: 70px;
     }
+    .hide {
+        display: none;
+    }
 </style>
 
 <script>
@@ -84,57 +108,45 @@
             nextQuestion: function () {
                 this.swiper.slideNext();
             },
-            checkAnswer: async function (nQuestion, value) {
+            checkAnswer: async function (currentSlide) {
                 var self = this;
                 var app = self.$app;
 
-                for(let item of this.questions){
-                    if(item.id == nQuestion && item.extra){
-                        if(item.options.indexOf(item.options.find(option => option.value == value.replace(/'/g, ''))) in item.choise){
-                            for (let quest of this.questions) {
-                                if (quest.id == item.extra){
-                                    this.swiper.addSlide(nQuestion, await this.createSlide(quest));
+                let currentSlideInputChecked = app.$$(currentSlide).find('input[type="radio"]:checked');
+                var nQuestion = app.$$(currentSlide).attr('id');
+                var value = app.$$(currentSlideInputChecked).attr('value') || "";
 
-                                    app.$$(`input[name="${item.extra}"]`).on('change', (e) => {
-                                        self.checkAnswer(e.target.name, e.target.value)
-                                    });
+                console.log(nQuestion, value);
+
+                var currentQuest = self.questions.find(question => question.id == nQuestion && question.extra);
+                if(currentQuest){
+                    var onDemandQuest = self.questions.find(question => question.id == currentQuest.extra);
+                    var onDemandSlides = app.$$('.swiper-slide.on-demand');
+                    let inputName = `[name="${onDemandQuest.id}"]`;
+
+                    onDemandSlides.each((index, element) => {
+                        if (app.$$(element).find('input' + inputName).length > 0) {
+                            if (currentQuest.options.indexOf(currentQuest.options.find(option => option.value == value.replace(/'/g, ''))) in currentQuest.choise) {
+                                app.$$(element).removeClass('hide');
+                            } else {
+                                let checked = app.$$(element).find('input' + inputName + ':checked');
+                                if(checked.length > 0){
+                                    checked.prop('checked', false);
+                                    self.checkAnswer(element);
                                 }
+                    
+                                app.$$(element).addClass('hide');
                             }
+                            self.swiper.update();
                         }
-                    }
+                    });
                 }
-                this.nextQuestion();
-            },
-            createSlide: async function (question){
-                var options = "";
-                for await(let option of question.options) {
-                    options += `<li>
-                                <label class="item-radio item-radio-icon-start item-content">
-                                    <input type="radio" name="${option.id}" value="'${option.value}'"/>
-                                    <i class="icon icon-radio"></i>
-                                    <div class="item-inner">
-                                        <div class="item-title">${option.value}</div>
-                                    </div>
-                                </label>
-                            </li>`;
-                }
-
-                var slide = `<div class="swiper-slide">
-                                <div class="list inset">
-                                    <h4>${question.question}</h4>
-                                    <ul>
-                                        ${options}
-                                    </ul>
-                                </div>
-                            </div>`;
-
-                return slide;
             },
             getQuestions: function () {
                 var self = this;
                 var app = self.$app;
 
-                app.request.json('../static/json/wellness-quiz.json', async (data) => {
+                app.request.json('static/json/wellness-quiz.json', async (data) => {
                     for await (let question of data){
                         if(!question.hide){
                             self.activeQuestions.push(question);
@@ -239,7 +251,8 @@
                 var app = self.$app;
                 
                 app.$$('input[type="radio"]').on('change', (e) => {
-                    self.checkAnswer(e.target.name, e.target.value)
+                    self.checkAnswer(e.target.closest(".swiper-slide"));
+                    this.nextQuestion();
                 });
             }
         }
