@@ -165,6 +165,42 @@
             </div>
         </div>
 
+        <div id="card-leisure" class="leisurelevel-questionnaire" >
+            <div class="card no-margin" id="happynesslevel">
+                <div id="card-content-leisure" class="h100">
+                    <div class="card-question card-content card-content-padding">
+                        Realizou atividades de lazer nos últimos 7 dias?
+                    </div>
+                    
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="leisureLevel(1)" class="w100 p-5px"><button class="button button-fill">Sim</button></a>
+                    </div>
+                    <div class="row text-align-center pa-fontsize w100" >
+                        <a href="#" @click="leisureLevel(0)" class="w100 p-5px"><button class="button button-fill">Não</button></a>
+                    </div>
+                    
+                </div>
+                <div class="display-none" id="thanks-for-response-leisure">
+                    <div class="card-question card-content card-content-padding">
+                        Como tem sido a qualidade da sua alimentação nos últimos 7 dias?
+                    </div>
+                    <div class="row padding">
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-92 text-align-center" >
+                            <p>Obrigado pela sua resposta :)</p>
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                        <div class="col-2" >
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
         <div class="happynesslevel-questionnaire" >
             <div class="card no-margin" id="happynesslevel">
@@ -330,7 +366,6 @@
                 let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
-                
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     sleepCard.addClass('display-none');
@@ -355,7 +390,6 @@
                 let lastUpdateFromStorage = foodHistory.history[foodHistory.history.length - 1];
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
-                
 
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     foodCard.addClass('display-none');
@@ -381,12 +415,35 @@
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
                 
-
                 if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
                     physicalActivityCard.addClass('display-none');
                     return false;
                 } else {
                     physicalActivityCard.removeClass('display-none');
+                    return true;
+                }
+            },
+            checkNeedLeisureQuestionnarie: function(){
+                var self = this;
+                var app = self.$app;
+
+                let leisureCard = this.$$("#card-leisure");
+                let leisureHistory = app.storage.getLeisureHistory();
+                
+                if(leisureHistory == null) {
+                    leisureCard.removeClass('display-none');
+                    return true;
+                }
+
+                let lastUpdateFromStorage = leisureHistory.history[leisureHistory.history.length - 1];
+                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
+                let now = new Date();
+                
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
+                    leisureCard.addClass('display-none');
+                    return false;
+                } else {
+                    leisureCard.removeClass('display-none');
                     return true;
                 }
             },
@@ -444,6 +501,24 @@
                         physicalActivityCard.addClass('display-none');   
                         }, 5000);
             },
+            leisureLevel: function(awnser){
+                var self = this;
+                var app = self.$app;
+        
+                let pollCard = this.$$("#card-content-leisure");
+                let pollThanks = this.$$("#thanks-for-response-leisure");
+                let leisureCard = this.$$("#card-leisure");
+
+                app.storage.setLeisureHistory(awnser);
+                
+                pollCard.addClass('display-none');
+                pollThanks.removeClass('display-none');
+                setTimeout(function () {
+                        pollThanks.addClass('display-none');
+                        pollCard.removeClass('display-none');
+                        leisureCard.addClass('display-none');   
+                        }, 5000);
+            },
             happynessLevel: function(awnser){
 				var self = this;
 				var app = self.$app;
@@ -466,6 +541,7 @@
                 this.checkNeedSleepQuestionnarie();
 				this.checkNeedFoodQuestionnarie();
                 this.checkNeedPhysicalActivityQuestionnarie();
+                this.checkNeedLeisureQuestionnarie();
             }
         }
     };
@@ -521,9 +597,10 @@
         padding: 10px;
     }
 
-    .physicalactivitylevel-questionnaire {
+    .leisurelevel-questionnaire {
         padding: 10px;
     }
+    
     .pa-fontsize{
         font-size:x-large;
     }
