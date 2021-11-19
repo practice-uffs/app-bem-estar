@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "title": null,
+        "text": "Evite a ingestão de alimentos processados.",
+        "video": null,
+        "image": null,
+        "icon": "static/images/health-food.png"
+        
+    },
+    {
+        "id": 2,
+        "title": "Fibras",
+        "text": "Fibras são extremamente importantes para nosso organismo. Uma dieta rica em frutas, legumes e verduras é uma forma simples de inserir fibras na alimentação.",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 3,
+        "title": null,
+        "text": "Busque ingerir aproximadamente dois litros de água todos os dias.",
+        "video": null,
+        "image": null,
+        "icon": "https://cdn.pixabay.com/photo/2019/05/18/12/58/water-4211792_960_720.png"
+    }
+]

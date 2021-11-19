@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "title": "Caminhada",
+        "text": "A caminhada pode ser uma das maneiras mais simples de vencer o sedentarismo. Que tal começar agora?",
+        "video": null,
+        "image": "https://cdn.pixabay.com/photo/2017/08/12/19/01/legs-2635038_960_720.jpg",
+        "icon": null
+        
+    },
+    {
+        "id": 2,
+        "title": "Pular corda",
+        "text": "Além de poder ser realizada em praticamente qualquer espaço é uma boa forma de ganhar condicionamento físico.",
+        "video": null,
+        "image": null,
+        "icon": null
+    }
+]
