@@ -116,8 +116,6 @@
                 var nQuestion = app.$$(currentSlide).attr('id');
                 var value = app.$$(currentSlideInputChecked).attr('value') || "";
 
-                console.log(nQuestion, value);
-
                 var currentQuest = self.questions.find(question => question.id == nQuestion && question.extra);
                 if(currentQuest){
                     var onDemandQuest = self.questions.find(question => question.id == currentQuest.extra);
@@ -134,7 +132,6 @@
                                     checked.prop('checked', false);
                                     self.checkAnswer(element);
                                 }
-                    
                                 app.$$(element).addClass('hide');
                             }
                             self.swiper.update();
