@@ -1,0 +1,58 @@
+<template>
+    <div class="page" data-name="about-more">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Batimentos Cardíacos</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block">
+                <div class="block block-strong text-align-center">
+                    <p>Coloque seu dedo indicador sobre a câmera do seu celular.</p>
+                </div>
+                <div class="block text-align-center">
+                    <img class="padding" src="static/images/smartphone-hearbeat.png" alt="" width="70%">
+                </div>
+                <div class="block block-strong text-align-center">
+                    <p>Pressione o botão <b>Medir Agora</b> e mantenha o dedo sobre a câmera por 30 segundos.</p>
+                </div>
+            </div>
+
+            <div class="fab fab-extended fab-center-bottom color-purple">
+                <a href="#" @click="measureHeartbeat">
+                    <i class="f7-icons">heart</i>
+                    <div class="fab-text">Medir Agora</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+
+</style>
+
+<script>
+    import 'dom7/dist/dom7.js';
+
+    export default {
+        methods: {
+            measureHeartbeat: function() {
+                var self = this;
+                var app = self.$app;
+
+                app.dialog.progress();
+                setTimeout(function () {
+                    app.dialog.close();
+                }, 3000);
+            }
+        },
+    };
+</script>

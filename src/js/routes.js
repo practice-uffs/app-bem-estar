@@ -17,21 +17,23 @@ import PreventionPage from "../pages/prevention.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
+import TipsPage from '../pages/tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
+import HeartBeatPage from '../pages/hr.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
 
-// const authenticated = function (to, from, resolve, reject) {
-//   let self = this;
+const authenticated = function (to, from, resolve, reject) {
+  let self = this;
 
-//   if (storage.getUserCredentials()) {
-//     resolve();
-//   } else {
-//     reject();
-//     self.navigate("/initial/");
-//   }
-// };
+  if (storage.getUserCredentials()) {
+    resolve();
+  } else {
+    reject();
+    self.navigate("/initial/");
+  }
+};
 
 // const unauthenticated = function (to, from, resolve, reject) {
 //   let self = this;
@@ -117,6 +119,16 @@ const notificationsPageRoute = function () {
   };
 
   if (IsEnabled.notificationsPage) return route;
+};
+
+const heartBeatPageRoute = function () {
+  let route = {
+    path: "/hr/",
+    component: HeartBeatPage,
+    //beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.heartBeatPage) return route;
 };
 
 const settingsPageRoute = function () {
@@ -212,6 +224,17 @@ const healthTipsPageRoute = function () {
 }
 
 
+const tipsPageRoute = function () {
+  let route = {
+    path: '/tips/:category',
+    component: TipsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.tipsPage) return route;
+}
+
+
 const loginPageRoute = function () {
   return {
     path: "/login/",
@@ -239,6 +262,8 @@ var routes = [
   settingsPageRoute(),
   aboutPageRoute(),
   wellnessQuizPageRoute(),
+  heartBeatPageRoute(),
+  tipsPageRoute(),
 
   // Routes imported from: app-covid
   wherePageRoute(),
@@ -252,6 +277,7 @@ var routes = [
   initialPageRoute(),
   loginPageRoute(),
   notFoundPageRoute(),
+  
 ];
 
 // Removing undefined routes

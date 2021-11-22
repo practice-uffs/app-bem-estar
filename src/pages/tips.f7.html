@@ -1,0 +1,149 @@
+<template>
+    <div class="page" data-name="infected">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Voltar</span>
+                    </a>
+                </div>
+                <div class="title">{{ pageTitle }}</div>
+            </div>
+        </div>
+
+        <!-- Load Facebook SDK for JavaScript -->
+        <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+
+        <div class="page-content">
+            {{#if content}}
+                {{#each content}}
+                    <div id="sleep-tip-{{this.id}}" class="block">
+                        <div class="list media-list prevention-list">
+                            <ul>
+                                <li>
+                                    <div class="item-content margin-top-half">
+                                        {{#if this.icon}}
+                                        <div class="item-media">
+                                            <img src="{{this.icon}}" alt="hand-wash" height="60">
+                                        </div>
+                                        {{/if}}
+                                        <div class="item-inner">
+                                            {{#if this.title}}
+                                                <div class="item-title">{{this.title}}</div>
+                                            {{/if}}
+                                            {{#if this.text}}
+                                                <div class="item-text">
+                                                    {{this.text}}
+                                                </div>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </li>
+                                {{#if this.image}}
+                                    <li class="padding">
+                                        <div class="card-content"> <img src="{{this.image}}"
+                                            width="100%" /></div>
+                                    </li>
+                                {{/if}}
+                                {{#if this.video}}
+                                    <li class="padding">
+                                        <div class="reponsive reponsive--16x9">
+                                            <iframe class="reponsive__item" src="{{this.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="block">
+                    <div class="list media-list prevention-list">
+                        <ul>
+                            <li>
+                                <div class="item-content margin-top-half">
+                                    <div class="item-inner">
+                                        <div class="item-text">
+                                            <p>Em breve as dicas serão adicionadas!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            
+            {{/if}}
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data: function () {
+            return {
+                content: null,
+                pageTitle: null
+            }
+        },
+        methods: {
+            loadData: async function (e, category) {
+                var self = this;
+                var app = self.$app;
+
+                switch (category) {
+                    case 'sleep':
+                        self.$setState({
+                            content: await app.tips.getSleepTips(),
+                            pageTitle: "Dicas de Sono",
+                        });
+                        break;
+                    case 'feeding':
+                        self.$setState({
+                            content: await app.tips.getFeedingTips(),
+                            pageTitle: "Dicas de Alimentação",
+                        });
+                        break;
+                    case 'activity':
+                        self.$setState({
+                            content: await app.tips.getActivityTips(),
+                            pageTitle: "Dicas de Atividade Física",
+                        });
+                        break;
+                    case 'leisure':
+                        self.$setState({
+                            content: await app.tips.getLeisureTips(),
+                            pageTitle: "Dicas de Lazer",
+                        });
+                        break;
+                }
+            },
+        },
+        on: {
+            pageInit: function (e, page) {
+                this.loadData(e, page.route.params.category)
+            },
+        },
+    };
+</script>
+
+<style>
+    .reponsive {
+        position: relative;
+    }
+
+    .reponsive--16x9 {
+        padding-top: 56.25%
+            /* 9/16 */
+        ;
+    }
+
+    .reponsive__item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>
