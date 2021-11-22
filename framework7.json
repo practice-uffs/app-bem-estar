@@ -1,10 +1,10 @@
 {
-  "cwd": "D:\\wamp\\www\\app-practice",
+  "cwd": "D:\\wamp\\www\\app-saude",
   "type": [
     "pwa",
     "cordova"
   ],
-  "name": "practice",
+  "name": "app-saude",
   "framework": "core",
   "template": "tabs",
   "bundler": "webpack",

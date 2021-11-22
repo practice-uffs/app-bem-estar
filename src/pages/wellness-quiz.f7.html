@@ -14,71 +14,156 @@
         </div>
         <div class="page-content">
             <form class="list" id="quiz">
-                <div class="list inset">
-                    <ul>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Text 1</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" name="text_1" placeholder="Text">
+                <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                        {{#each questions}}
+                            {{#if this.hide}}
+                                <div class="swiper-slide hide on-demand" id="{{this.id}}">
+                                    <div class="list inset">
+                                        <h4>{{this.question}}</h4>
+                                        <ul>
+                                            {{#each this.options}}
+                                            <li>
+                                                <label class="item-radio item-radio-icon-start item-content">
+                                                    <input type="radio" name="{{this.id}}" value="'{{this.value}}'"/>
+                                                    <i class="icon icon-radio"></i>
+                                                    <div class="item-inner">
+                                                        <div class="item-title">{{this.value}}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Text 2</div>
-                                    <div class="item-input-wrap">
-                                        <input type="text" name="text_2" placeholder="Text">
+                            {{else}}
+                                <div class="swiper-slide" id="{{this.id}}">
+                                    <div class="list inset">
+                                        <h4>{{this.question}}</h4>
+                                        <ul>
+                                            {{#each this.options}}
+                                            <li>
+                                                <label class="item-radio item-radio-icon-start item-content">
+                                                    <input type="radio" name="{{this.id}}" value="'{{this.value}}'" />
+                                                    <i class="icon icon-radio"></i>
+                                                    <div class="item-inner">
+                                                        <div class="item-title">{{this.value}}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content item-input">
-                                <div class="item-inner">
-                                    <div class="item-title item-floating-label">Select</div>
-                                    <div class="item-input-wrap">
-                                        <select name="select">
-                                            <option value="option_1" selected>Opção 1</option>
-                                            <option value="option_2">Opção 2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Switch</div>
-                                    <div class="item-after">
-                                        <label class="toggle">
-                                            <input type="checkbox" name="switch" value="yes"><i class="toggle-icon"></i>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="block row">
-                        <a href="#" class="col button button-raised button-fill button-round" @click="getFormData()">Submit</a>
+                            {{/if}}
+                        {{/each}}
                     </div>
                 </div>
             </form>
         </div>
+
+        <div class="fab fab-extended fab-left-bottom ">
+            <a href="#" class="fab-text" @click="prevQuestion()"><i class="f7-icons">arrowtriangle_left</i></a>
+        </div>
+        <div class="fab fab-extended fab-center-bottom">
+            <a href="#" class="fab-text" @click="getFormData()">Enviar</a>
+        </div>
+        <div class="fab fab-extended fab-right-bottom ">
+            <a href="#" class="fab-text" @click="nextQuestion()"><i class="f7-icons">arrowtriangle_right</i></a>
+        </div>
     </div>
 </template>
+
+<style>
+    #quiz{
+        margin: 0;
+    }
+    .list .item-title{
+        white-space: unset;
+    }
+    .page-content{
+        padding-bottom: 70px;
+    }
+    .hide {
+        display: none;
+    }
+</style>
+
 <script>
+    import 'dom7/dist/dom7.js';
+
     export default {
         data: function () {
             return {
-                risks: [],
+                activeQuestions: [],
+                questions: [],
+                swiper: null
             }
         },
-
         methods: {
+            prevQuestion: function () {
+                this.swiper.slidePrev();
+            },
+            nextQuestion: function () {
+                this.swiper.slideNext();
+            },
+            checkAnswer: async function (currentSlide) {
+                var self = this;
+                var app = self.$app;
+
+                let currentSlideInputChecked = app.$$(currentSlide).find('input[type="radio"]:checked');
+                var nQuestion = app.$$(currentSlide).attr('id');
+                var value = app.$$(currentSlideInputChecked).attr('value') || "";
+
+                var currentQuest = self.questions.find(question => question.id == nQuestion && question.extra);
+                if(currentQuest){
+                    var onDemandQuest = self.questions.find(question => question.id == currentQuest.extra);
+                    var onDemandSlides = app.$$('.swiper-slide.on-demand');
+                    let inputName = `[name="${onDemandQuest.id}"]`;
+
+                    onDemandSlides.each((index, element) => {
+                        if (app.$$(element).find('input' + inputName).length > 0) {
+                            if (currentQuest.options.indexOf(currentQuest.options.find(option => option.value == value.replace(/'/g, ''))) in currentQuest.choise) {
+                                app.$$(element).removeClass('hide');
+                            } else {
+                                let checked = app.$$(element).find('input' + inputName + ':checked');
+                                if(checked.length > 0){
+                                    checked.prop('checked', false);
+                                    self.checkAnswer(element);
+                                }
+                                app.$$(element).addClass('hide');
+                            }
+                            self.swiper.update();
+                        }
+                    });
+                }
+            },
+            getQuestions: function () {
+                var self = this;
+                var app = self.$app;
+
+                app.request.json('static/json/wellness-quiz.json', async (data) => {
+                    for await (let question of data){
+                        if(!question.hide){
+                            self.activeQuestions.push(question);
+                        }
+                    }
+                    self.$setState({
+                        questions: data,
+                    }).then(async () => {
+                        await app.swiper.create('.swiper-container', {
+                            pagination: {
+                            el: '.swiper-pagination',
+                                type: 'bullets',
+                            },
+                        });
+                        await self.$setState({
+                            swiper: app.swiper.get('.swiper-container'),
+                        });
+                    })
+                });
+            },
             getFormData: function(){
                 var self = this;
                 var app = self.$app;
@@ -154,5 +239,19 @@
                 this.sendDiagnosisAnalytics(age, symptoms, risks, diagnosis);
             }
         },
+        on: {
+            pageInit: function() {
+                this.getQuestions();
+            },
+            pageAfterIn: function(){
+                var self = this;
+                var app = self.$app;
+                
+                app.$$('input[type="radio"]').on('change', (e) => {
+                    self.checkAnswer(e.target.closest(".swiper-slide"));
+                    this.nextQuestion();
+                });
+            }
+        }
     };
 </script>

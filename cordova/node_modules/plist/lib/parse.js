@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-var DOMParser = require('./xmldom/dom-parser').DOMParser;
+var DOMParser = require('xmldom').DOMParser;
 
 /**
  * Module exports.
