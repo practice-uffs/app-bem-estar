@@ -540,22 +540,21 @@
                 app.storage.setPhysicalActivityHistory(awnser);
                 
                 if (awnser <= 1) {
-                    let history = await app.tips.getActivityTips();
-
+                    let tips = await app.tips.getActivityTips();
                     let randomTips = [];
-                    if ( history.length >= 3){
+                    if ( tips.length >= 3){
                         let randomNumbers = [];
                         while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * history.length);
+                            let candidate = Math.floor(Math.random() * tips.length);
                             if(randomNumbers.indexOf(candidate) === -1){
                                 randomNumbers.push(candidate)
                             }
                         }
-                        randomTips.push(history[randomNumbers[0]]);
-                        randomTips.push(history[randomNumbers[1]]);
-                        randomTips.push(history[randomNumbers[2]]);
+                        randomTips.push(tips[randomNumbers[0]]);
+                        randomTips.push(tips[randomNumbers[1]]);
+                        randomTips.push(tips[randomNumbers[2]]);
                     } else {
-                        randomTips = history;
+                        randomTips = tips;
                     }
 
                     self.$setState({
@@ -582,22 +581,21 @@
                 app.storage.setLeisureHistory(awnser);
 
                 if (awnser == 0) {
-                    let history = await app.tips.getLeisureTips();
-
+                    let tips = await app.tips.getLeisureTips();
                     let randomTips = [];
-                    if ( history.length >= 3){
+                    if ( tips.length >= 3){
                         let randomNumbers = [];
                         while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * history.length);
+                            let candidate = Math.floor(Math.random() * tips.length);
                             if(randomNumbers.indexOf(candidate) === -1){
                                 randomNumbers.push(candidate)
                             }
                         }
-                        randomTips.push(history[randomNumbers[0]]);
-                        randomTips.push(history[randomNumbers[1]]);
-                        randomTips.push(history[randomNumbers[2]]);
+                        randomTips.push(tips[randomNumbers[0]]);
+                        randomTips.push(tips[randomNumbers[1]]);
+                        randomTips.push(tips[randomNumbers[2]]);
                     } else {
-                        randomTips = history;
+                        randomTips = tips;
                     }
 
                     self.$setState({
