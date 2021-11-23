@@ -118,11 +118,10 @@
 
         <div id="card-physical-activity" class="padding-10" >
             <div class="card no-margin" >
+                <div class="card-question card-content card-content-padding">
+                    Quantas vezes praticou atividade física nos últimos 7 dias?
+                </div>
                 <div id="card-content-physical-activity" class="h100">
-                    <div class="card-question card-content card-content-padding">
-                        Quantas vezes praticou atividade física nos últimos 7 dias?
-                    </div>
-                    
                     <div class="row text-align-center pa-fontsize w100" >
                         <a href="#" @click="physicalActivityLevel(0)" class="w100 p-5px"><button class="button button-fill">Nenhuma</button></a>
                     </div>
@@ -141,12 +140,8 @@
                     <div class="row text-align-center pa-fontsize w100" >
                         <a href="#" @click="physicalActivityLevel(5)" class="w100 p-5px"><button class="button button-fill">5 ou mais</button></a>
                     </div>
-                    
                 </div>
                 <div class="display-none" id="thanks-for-response-physical-activity">
-                    <div class="card-question card-content card-content-padding">
-                        Como tem sido a qualidade da sua alimentação nos últimos 7 dias?
-                    </div>
                     <div class="row padding">
                         <div class="col-2" >
                         </div>
@@ -161,6 +156,31 @@
                         </div>
                     </div>
                     
+                    {{#if activityTips}}
+                        <div class="happynessTips row padding">
+                            {{#each activityTips}}
+                                <a href="/tips/activity#tip-{{this.id}}" class="row pa-fontsize w100">
+                                    <div class="col-30 text-align-right" >
+                                        {{#if this.icon}}
+                                            <img width="21px" height="21px" src="{{this.icon}}" >
+                                        {{else}}
+                                            <img width="21px" height="21px" src="https://cdn-icons-png.flaticon.com/128/3781/3781646.png" >
+                                        {{/if}}
+                                    </div>
+                                    <div class="col-60" >
+                                        {{#if this.title}}
+                                            <p class="tiptitle" >{{this.title}}</p>
+                                        {{else}}
+                                            <p class="tiptitle" >Dica sobre atividade Física</p>
+                                        {{/if}}
+                                    </div>
+                                    <div class="col-10" >
+                                    </div>
+                                </a> 
+                            {{/each}}
+                        </div>
+                    {{/if}}
+
                 </div>
             </div>
         </div>
@@ -208,7 +228,7 @@
                                         {{#if this.title}}
                                             <p class="tiptitle" >{{this.title}}</p>
                                         {{else}}
-                                            <p class="tiptitle" >Dicas sobre lazer</p>
+                                            <p class="tiptitle" >Dica sobre lazer</p>
                                         {{/if}}
                                     </div>
                                     <div class="col-10" >
@@ -373,6 +393,7 @@
         data: function () {
         return {
             leisureTips: null,
+            activityTips: null,
             }
         },
         methods: {
@@ -508,7 +529,7 @@
                         foodCard.addClass('display-none');   
                         }, 5000);
             },
-            physicalActivityLevel: function(awnser){
+            physicalActivityLevel: async function(awnser){
                 var self = this;
                 var app = self.$app;
         
@@ -518,13 +539,37 @@
 
                 app.storage.setPhysicalActivityHistory(awnser);
                 
+                if (awnser <= 1) {
+                    let history = await app.tips.getActivityTips();
+
+                    let randomTips = [];
+                    if ( history.length >= 3){
+                        let randomNumbers = [];
+                        while ( randomNumbers.length < 3 ){
+                            let candidate = Math.floor(Math.random() * history.length);
+                            if(randomNumbers.indexOf(candidate) === -1){
+                                randomNumbers.push(candidate)
+                            }
+                        }
+                        randomTips.push(history[randomNumbers[0]]);
+                        randomTips.push(history[randomNumbers[1]]);
+                        randomTips.push(history[randomNumbers[2]]);
+                    } else {
+                        randomTips = history;
+                    }
+
+                    self.$setState({
+                        activityTips: randomTips,
+                    });
+                }
+
                 pollCard.addClass('display-none');
                 pollThanks.removeClass('display-none');
                 setTimeout(function () {
                         pollThanks.addClass('display-none');
                         pollCard.removeClass('display-none');
                         physicalActivityCard.addClass('display-none');   
-                        }, 5000);
+                        }, 20000);
             },
             leisureLevel: async function(awnser){
                 var self = this;
