@@ -20,6 +20,7 @@ import HealthTipsPage from '../pages/health-tips.f7.html';
 import TipsPage from '../pages/tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
+import MyStatisticsPage from '../pages/my-statistics.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -223,6 +224,16 @@ const healthTipsPageRoute = function () {
   if (IsEnabled.contactPage) return route;
 }
 
+const myStatisticsPageRoute = function () {
+  let route = {
+    path: '/my-statistics/',
+    component: MyStatisticsPage,
+    // beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.MyStatisticsPage) return route;
+}
+
 
 const tipsPageRoute = function () {
   let route = {
@@ -264,6 +275,7 @@ var routes = [
   wellnessQuizPageRoute(),
   heartBeatPageRoute(),
   tipsPageRoute(),
+  myStatisticsPageRoute(),
 
   // Routes imported from: app-covid
   wherePageRoute(),
