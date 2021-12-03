@@ -703,16 +703,16 @@ const storage = {
 		localStorage["leisureHistory"] = JSON.stringify({history: oldHistory.history});
 	},
 
-	// Happyness history method
-	getHappynessHistory: () => {
-		let history = localStorage.getItem("happynessHistory");
+	// Happiness history method
+	getHappinessHistory: () => {
+		let history = localStorage.getItem("happinessHistory");
 		history = JSON.parse(history);
 		return history;
 	},
-	setHappynessHistory: (awnser) => {
-		let oldHistory = localStorage.getItem("happynessHistory");
+	setHappinessHistory: (awnser) => {
+		let oldHistory = localStorage.getItem("happinessHistory");
 		oldHistory = JSON.parse(oldHistory);
-		localStorage.removeItem("happynessHistory");
+		localStorage.removeItem("happinessHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 				'created_at': Date(),
@@ -726,7 +726,7 @@ const storage = {
 				}]
 			};
 		}
-		localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
+		localStorage["happinessHistory"] = JSON.stringify({history: oldHistory.history});
 	},
 
 };
