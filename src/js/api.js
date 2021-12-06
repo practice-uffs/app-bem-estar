@@ -39,8 +39,10 @@ export class Api {
     };
 
     logout () {
-		storage.removeAllButUserData();
-        storage.clearUserCredentials();
+        var self = this;
+        var app = self.app;
+		app.storage.removeAllButUserData();
+        app.storage.clearUserCredentials();
 	}
 
     async requestUserData() {
