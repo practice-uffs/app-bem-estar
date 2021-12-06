@@ -1,116 +1,160 @@
 <template>
   <div data-name="services">
         <div class="tab tab-active" id="tab-1">
-            <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="emoji-poll-swiper">
-                <div class="swiper-pagination"></div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" id="card-sleep">
-                        <div class="card">
-                            <div id="card-content-sleep" class="h100">
-                                <div class="card-question card-content card-content-padding">
-                                    <p>Como tem sido a qualidade do seu sono nos últimos 7 dias?</p>
+            <div class="accordion-item accordion-item-opened padding-top">
+                <div class="accordion-item-content">
+                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="emoji-poll-swiper">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="card-sleep">
+                                <div class="card">
+                                    <div id="card-content-sleep" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como tem sido a qualidade do seu sono nos últimos 7 dias?</p>
+                                        </div>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(0, 'sleep')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'sleep')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'sleep')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'sleep')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'sleep')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row padding">
-                                    <div class="row">
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(0, 'sleep')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                            </div>
+        
+                            <div class="swiper-slide" id="card-food">
+                                <div class="card">
+                                    <div id="card-content-food" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como tem sido a qualidade da sua alimentação nos últimos 7 dias?</p>
                                         </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(1, 'sleep')" class="lottie"
-                                                src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
-                                            </lottie-player>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(0, 'food')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'food')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'food')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'food')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'food')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(2, 'sleep')" class="lottie"
-                                                src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
-                                            </lottie-player>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="swiper-slide" id="card-happiness">
+                                <div class="card">
+                                    <div id="card-content-happiness" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como você está se sentindo agora?</p>
                                         </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(3, 'sleep')" class="lottie"
-                                                src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(4, 'sleep')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
-                                            </lottie-player>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player id="teste1" @click="pollLevel(0, 'hapiness')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'hapiness')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'hapiness')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'hapiness')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'hapiness')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="swiper-slide" id="card-food">
-                        <div class="card">
-                            <div id="card-content-food" class="h100">
-                                <div class="card-question card-content card-content-padding">
-                                    <p>Como tem sido a qualidade da sua alimentação nos últimos 7 dias?</p>
-                                </div>
-                                <div class="row padding">
-                                    <div class="row">
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(0, 'food')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                    
+        
+                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="button-poll-swiper">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="card-physical-activity">
+                                <div class="card">
+                                    <div id="card-content-physical-activity" class="h100 card-content-padding">
+                                        <div class="card-question card-content">
+                                            Quantas vezes praticou atividade física nos últimos 7 dias?
                                         </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(1, 'food')" class="lottie"
-                                                src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(2, 'food')" class="lottie"
-                                                src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(3, 'food')" class="lottie"
-                                                src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(4, 'food')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
-                                            </lottie-player>
+                            
+                                        <div class="row margin-top">
+                                            <button @click="pollLevel(0, 'physical-activity')" class="button col button-outline button-round">0</button>
+                                            <button @click="pollLevel(1, 'physical-activity')" class="button col button-outline button-round">1</button>
+                                            <button @click="pollLevel(2, 'physical-activity')" class="button col button-outline button-round">2</button>
+                                            <button @click="pollLevel(3, 'physical-activity')" class="button col button-outline button-round">3</button>
+                                            <button @click="pollLevel(4, 'physical-activity')" class="button col button-outline button-round">4</button>
+                                            <button @click="pollLevel(5, 'physical-activity')" class="button col button-outline button-round">5+</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide" id="card-happiness">
-                        <div class="card">
-                            <div id="card-content-happiness" class="h100">
-                                <div class="card-question card-content card-content-padding">
-                                    <p>Como você está se sentindo agora?</p>
-                                </div>
-                                <div class="row padding">
-                                    <div class="row">
-                                        <div class="col-20">
-                                            <lottie-player id="teste1" @click="pollLevel(0, 'hapiness')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+        
+                            <div class="swiper-slide" id="card-leisure">
+                                <div class="card padding-bottom">
+                                    <div id="card-content-leisure" class="h100 card-content-padding">
+                                        <div class="card-question card-content">
+                                            Realizou atividades de lazer nos últimos 7 dias?
                                         </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(1, 'hapiness')" class="lottie"
-                                                src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(2, 'hapiness')" class="lottie"
-                                                src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(3, 'hapiness')" class="lottie"
-                                                src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
-                                            </lottie-player>
-                                        </div>
-                                        <div class="col-20">
-                                            <lottie-player @click="pollLevel(4, 'hapiness')" class="lottie"
-                                                src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
-                                            </lottie-player>
+                            
+                                        <div class="row margin-top">
+                                            <button @click="pollLevel(1, 'leisure')" class="button col button-outline button-round">Sim</button>
+                                            <button @click="pollLevel(0, 'leisure')" class="button col button-outline button-round">Não</button>
                                         </div>
                                     </div>
                                 </div>
@@ -118,45 +162,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-
-            <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="button-poll-swiper">
-                <div class="swiper-pagination"></div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" id="card-physical-activity">
-                        <div class="card">
-                            <div id="card-content-physical-activity" class="h100 card-content-padding">
-                                <div class="card-question card-content">
-                                    Quantas vezes praticou atividade física nos últimos 7 dias?
-                                </div>
-                    
-                                <div class="row margin-top">
-                                    <button @click="pollLevel(0, 'physical-activity')" class="button col button-outline button-round">0</button>
-                                    <button @click="pollLevel(1, 'physical-activity')" class="button col button-outline button-round">1</button>
-                                    <button @click="pollLevel(2, 'physical-activity')" class="button col button-outline button-round">2</button>
-                                    <button @click="pollLevel(3, 'physical-activity')" class="button col button-outline button-round">3</button>
-                                    <button @click="pollLevel(4, 'physical-activity')" class="button col button-outline button-round">4</button>
-                                    <button @click="pollLevel(5, 'physical-activity')" class="button col button-outline button-round">5+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide" id="card-leisure">
-                        <div class="card padding-bottom">
-                            <div id="card-content-leisure" class="h100 card-content-padding">
-                                <div class="card-question card-content">
-                                    Realizou atividades de lazer nos últimos 7 dias?
-                                </div>
-                    
-                                <div class="row margin-top">
-                                    <button @click="pollLevel(1, 'leisure')" class="button col button-outline button-round">Sim</button>
-                                    <button @click="pollLevel(0, 'leisure')" class="button col button-outline button-round">Não</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="accordion-item-toggle row justify-content-center f7-icons" style="width: 100%; font-size: 35px;" id="arrow_toggle">
+                    chevron_compact_up
                 </div>
             </div>
 
@@ -418,11 +425,26 @@
         },
         on: {
             tabInit: function(){
+                var self = this;
+                var app = self.$app;
+
                 var types = ["sleep", "food", "physical-activity", "leisure"];
 
                 for(let type of types){
                     this.checkNeedQuestionnarie(type);
                 }
+
+                app.$$('#arrow_toggle').click((e) => {
+                    let accordion = app.$$('div.accordion-item');
+                    let arrow = app.$$(e.target);
+                    arrow.transition(600);
+
+                    if(accordion.hasClass('accordion-item-opened')){
+                        arrow.transform('rotateX(0deg)');
+                    } else {
+                        arrow.transform('rotateX(180deg)');
+                    }
+                })
             },
             tabMounted: function(){
                 this.lottieInit();
