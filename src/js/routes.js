@@ -27,8 +27,9 @@ import IsEnabled from "./isenabled";
 
 const authenticated = function (to, from, resolve, reject) {
   let self = this;
-
-  if (storage.getUserCredentials()) {
+  var app = self.app;
+  console.log("aqui")
+  if (app.storage.getUserCredentials()) {
     resolve();
   } else {
     reject();
@@ -36,22 +37,23 @@ const authenticated = function (to, from, resolve, reject) {
   }
 };
 
-// const unauthenticated = function (to, from, resolve, reject) {
-//   let self = this;
+const unauthenticated = function (to, from, resolve, reject) {
+  let self = this;
+  var app = self.app;
 
-//   if (!storage.getUserCredentials()) {
-//     resolve();
-//   } else {
-//     reject();
-//     self.navigate("/initial/");
-//   }
-// };
+  if (!app.storage.getUserCredentials()) {
+    resolve();
+  } else {
+    reject();
+    self.navigate("/");
+  }
+};
 
 const initialPageRoute = function () {
   return {
     path: "/initial/",
     component: InitialPage,
-    //beforeEnter: unauthenticated,
+    beforeEnter: unauthenticated,
   };
 };
 
@@ -59,7 +61,7 @@ const homePageRoute = function () {
   let route = {
     path: "/",
     component: HomePage,
-    //beforeEnter: unauthenticated,
+    beforeEnter: authenticated,
   };
 
   let tabs = [];
@@ -105,7 +107,7 @@ const rightPanelRoute = function () {
     panel: {
       component: RightPanelPage,
     },
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.rightPanel) return route;
@@ -116,7 +118,7 @@ const notificationsPageRoute = function () {
   let route = {
     path: "/notifications/",
     component: NotificationsPage,
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.notificationsPage) return route;
@@ -126,7 +128,7 @@ const heartBeatPageRoute = function () {
   let route = {
     path: "/hr/",
     component: HeartBeatPage,
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.heartBeatPage) return route;
@@ -136,7 +138,7 @@ const settingsPageRoute = function () {
   let route = {
     path: "/settings/",
     component: SettingsPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.settingsPage) return route;
@@ -146,7 +148,7 @@ const aboutPageRoute = function () {
   let route = {
     path: "/about/",
     component: AboutPage,
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.aboutPage) return route;
@@ -157,7 +159,7 @@ const wherePageRoute = function () {
   let route = {
     path: '/where-help/',
     component: WherePage,
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.wherePage) return route;
@@ -168,7 +170,7 @@ const aboutMorePageRoute = function () {
   let route = {
     path: '/about-more/',
     component: AboutMorePage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.wherePage) return route;
@@ -178,7 +180,7 @@ const preventionPageRoute = function () {
   let route = {
     path: '/prevention/',
     component: PreventionPage,
-    //beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.preventionPage) return route;
@@ -188,7 +190,7 @@ const reasonsPageRoute = function () {
   let route = {
     path: '/reasons/',
     component: ReasonsPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.reasonsPage) return route;
@@ -198,7 +200,7 @@ const wellnessQuizPageRoute = function () {
   let route = {
     path: '/wellness-quiz/',
     component: WellnessQuizPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.wellnessQuizPage) return route;
@@ -208,7 +210,7 @@ const contactPageRoute = function () {
   let route = {
     path: '/contact/',
     component: ContactPage,
-    //  beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;
@@ -218,7 +220,7 @@ const healthTipsPageRoute = function () {
   let route = {
     path: '/health-tips/',
     component: HealthTipsPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.contactPage) return route;
@@ -239,7 +241,7 @@ const tipsPageRoute = function () {
   let route = {
     path: '/tips/:category',
     component: TipsPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.tipsPage) return route;
@@ -252,7 +254,7 @@ const loginPageRoute = function () {
     loginScreen: {
       component: LoginPage,
     },
-    // beforeEnter: unauthenticated,
+    beforeEnter: unauthenticated,
   };
 };
 

@@ -15,6 +15,11 @@
         </div>
         <!-- Content -->
         <div class="page-content login-screen-content">
+          <div class="display-flex flex-direction-column justify-content-center" style="align-items: center;">
+            <div style="width: 50%;">
+              <img src="static/images/stickers/mental-health (1).png" style="width: 100%; max-width: 280px; height: auto; margin-left: 5%;" />
+            </div>
+          </div>
           <form
             class="list"
             id="login-form"
@@ -61,6 +66,17 @@
                   />
                 </div>
               </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <a
+                    href="#"
+                    class="link text-align-center login-screen-close"
+                    style="width: 100%"
+                  >
+                    Clique aqui para redefinir sua senha</a
+                  >
+                </div>
+              </li>
             </ul>
           </form>
         </div>
@@ -100,8 +116,8 @@
         let loginData = app.form.convertToData("#login-form");
 
         // Request login
-        app.storage
-          .requestLogin(loginData.iduffs, loginData.password)
+        app.api
+          .login(loginData.iduffs, loginData.password)
           .then((res) => {
             app.dialog.close();
             if (res) {

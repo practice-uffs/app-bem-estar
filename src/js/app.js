@@ -13,7 +13,8 @@ import cordovaApp from './cordova-app.js'
 import routes from './routes.js'
 // Import analytics stuff 
 // import Abalytics from './abalytics.js'
-import { storage } from './storage.js'
+import { Api } from './api';
+import { Storage } from './storage.js';
 import { Tips } from './tips.js'
 
 // Import main app component
@@ -71,8 +72,9 @@ var app = new Framework7({
       }
 
       // Abalytics.init(f7)
-      storage.init(f7)
       new Tips(f7);
+      new Storage(f7);
+      new Api(f7);
     },
   },
 })
