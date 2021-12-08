@@ -14,28 +14,36 @@
         </div>
         <div class="page-content">
 
-            <div class="block block-strong">
-                <p class="item-text">
-                    Mesmo em pleno século 21, o preconceito e a desinformação acerca dessas questões ainda é grande, o que resulta em uma série de consequências negativas para quem precisa de ajuda, principalmente na vergonha e no receio dessas pessoas em falarem sobre o que estão passando, seja por medo de serem excluídas e ignoradas, ou até mesmo terem seus sintomas menosprezados. Ocorre que esse preconceito não parte somente de pessoas distantes, mas também de amigos e familiares, fazendo com que a pessoa se sinta desamparada e incompreendida.
-                </p>
-            </div>
-
-            <div class="row">
-                <div class="col-100">
-                    <a href="/when-help/">
-                        <div class="card help-card no-margin-right">
-                            <div class="card-content padding">
-                                <div class="help-card__text">
-                                    Apesar da imensa gama de conteúdos que são frequentemente apresentados na televisão e nas redes sociais, ainda restam dúvidas sobre onde, como e quando buscar ajuda, considerando que nem sempre as alternativas apresentadas para solucionar o problema parecem confiáveis e adequadas. Por conta desse e de outros fatores, muitas pessoas passam a vida sem procurar atendimento psicológico com um profissional da área, fazendo com que nunca recebam um diagnóstico preciso, e o tratamento adequado.
-                                </div>
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="block block-strong">
+                            <div class="row">
+                                <div class="col-30"></div>
+                                <div class="col-40"><img src="static/images/stickers/mental-health (2).png" class="header-image"></div>
+                                <div class="col-30"></div>
                             </div>
+                            
+                            <p class="item-text text-align-center">
+                                Mesmo em pleno século 21, o preconceito e a desinformação acerca dessas questões ainda é grande, o que resulta em uma série de consequências negativas para quem precisa de ajuda, principalmente na vergonha e no receio dessas pessoas em falarem sobre o que estão passando, seja por medo de serem excluídas e ignoradas, ou até mesmo terem seus sintomas menosprezados. Ocorre que esse preconceito não parte somente de pessoas distantes, mas também de amigos e familiares, fazendo com que a pessoa se sinta desamparada e incompreendida.
+                            </p>
                         </div>
-                    </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="block block-strong ">
+                            <div class="row">
+                                <div class="col-30"></div>
+                                <div class="col-40"><img src="static/images/know-yourself.png" class="header-image"></div>
+                                <div class="col-30"></div>
+                            </div>
+                            <p class="item-text text-align-center">
+                                Apesar da imensa gama de conteúdos que são frequentemente apresentados na televisão e nas redes sociais, ainda restam dúvidas sobre onde, como e quando buscar ajuda, considerando que nem sempre as alternativas apresentadas para solucionar o problema parecem confiáveis e adequadas. Por conta desse e de outros fatores, muitas pessoas passam a vida sem procurar atendimento psicológico com um profissional da área, fazendo com que nunca recebam um diagnóstico preciso, e o tratamento adequado.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </template>
@@ -44,52 +52,7 @@
 </script>
 
 <style>
-    /* extra small */
-    .help-card {
-        height: 40vh;
-        position: relative;
-    }
-
-    /* small */
-    @media (min-width: 576px) {
-        .help-card {
-            height: 35vh;
-        }
-    }
-
-    /* medium */
-    @media (min-width: 768px) {
-        .help-card {
-            height: 30vh;
-        }
-    }
-
-    /* large */
-    @media (min-width: 992px) {
-        .help-card {
-            height: 25vh;
-        }
-    }
-
-    /* extra large */
-    @media (min-width: 1200px) {
-        .help-card {
-            height: 20vh;
-        }
-    }
-
-    .help-card div .card-content {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .help-card__text {
-        color: #1e2f42;
-        text-align: center;
-    }
-
-    .help-card__icon {
-        height: 55px;
+    .header-image{
+        width: 100%;
     }
 </style>
