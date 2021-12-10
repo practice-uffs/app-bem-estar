@@ -24,13 +24,13 @@ var IsEnabled = {
 
     symptomsPage: true,
 
-    contactPage: true,
+    seekHelpPage: true,
 
     aboutPage: true,
 
     prejudicesPage: true,
 
-    commonDisorders: true,
+    commonDisordersPage: true,
 
     reasonsPage: true,
 

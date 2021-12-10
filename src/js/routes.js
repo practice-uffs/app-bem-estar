@@ -15,7 +15,7 @@ import PrejudicesPage from "../pages/prejudices.f7.html";
 import CommonDisordersPage from "../pages/common-disorders.f7.html";
 import SymptomsPage from "../pages/symptoms.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
-import ContactPage from "../pages/contact.f7.html";
+import SeekHelpPage from "../pages/seek-help.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
 import TipsPage from '../pages/tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
@@ -171,7 +171,7 @@ const commonDisordersPageRoute = function () {
     // beforeEnter: authenticated,
   };
 
-  if (IsEnabled.commonDisorders) return route;
+  if (IsEnabled.commonDisordersPage) return route;
 }
 
 const symptomsPageRoute = function () {
@@ -204,14 +204,14 @@ const wellnessQuizPageRoute = function () {
   if (IsEnabled.wellnessQuizPage) return route;
 }
 
-const contactPageRoute = function () {
+const seekHelpPageRoute = function () {
   let route = {
-    path: '/contact/',
-    component: ContactPage,
+    path: '/seek-help/',
+    component: SeekHelpPage,
     //  beforeEnter: authenticated,
   };
 
-  if (IsEnabled.contactPage) return route;
+  if (IsEnabled.seekHelpPage) return route;
 }
 
 const healthTipsPageRoute = function () {
@@ -282,7 +282,7 @@ var routes = [
   commonDisordersPageRoute(),
   symptomsPageRoute(),
   reasonsPageRoute(),
-  contactPageRoute(),
+  seekHelpPageRoute(),
   healthTipsPageRoute(),
 
   // Unauthenticated routes
