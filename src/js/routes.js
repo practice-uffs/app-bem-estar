@@ -11,9 +11,9 @@ import SettingsPage from "../pages/settings.f7.html";
 import AboutPage from "../pages/about.f7.html";
 import LoginPage from "../pages/login.f7.html";
 import NotFoundPage from "../pages/404.f7.html";
-import WherePage from "../pages/where-help.f7.html";
-import AboutMorePage from "../pages/about-more.f7.html";
-import PreventionPage from "../pages/prevention.f7.html";
+import PrejudicesPage from "../pages/prejudices.f7.html";
+import CommonDisordersPage from "../pages/common-disorders.f7.html";
+import SymptomsPage from "../pages/symptoms.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import ContactPage from "../pages/contact.f7.html";
 import HealthTipsPage from '../pages/health-tips.f7.html';
@@ -153,35 +153,35 @@ const aboutPageRoute = function () {
 };
 
 
-const wherePageRoute = function () {
+const prejudicesPageRoute = function () {
   let route = {
-    path: '/where-help/',
-    component: WherePage,
+    path: '/prejudices/',
+    component: PrejudicesPage,
     //beforeEnter: authenticated,
   };
 
-  if (IsEnabled.wherePage) return route;
+  if (IsEnabled.prejudicesPage) return route;
 }
 
 
-const aboutMorePageRoute = function () {
+const commonDisordersPageRoute = function () {
   let route = {
-    path: '/about-more/',
-    component: AboutMorePage,
+    path: '/common-disorders/',
+    component: CommonDisordersPage,
     // beforeEnter: authenticated,
   };
 
-  if (IsEnabled.wherePage) return route;
+  if (IsEnabled.commonDisorders) return route;
 }
 
-const preventionPageRoute = function () {
+const symptomsPageRoute = function () {
   let route = {
-    path: '/prevention/',
-    component: PreventionPage,
+    path: '/symptoms/',
+    component: SymptomsPage,
     //beforeEnter: authenticated,
   };
 
-  if (IsEnabled.preventionPage) return route;
+  if (IsEnabled.symptomsPage) return route;
 }
 
 const reasonsPageRoute = function () {
@@ -278,9 +278,9 @@ var routes = [
   myStatisticsPageRoute(),
 
   // Routes imported from: app-covid
-  wherePageRoute(),
-  aboutMorePageRoute(),
-  preventionPageRoute(),
+  prejudicesPageRoute(),
+  commonDisordersPageRoute(),
+  symptomsPageRoute(),
   reasonsPageRoute(),
   contactPageRoute(),
   healthTipsPageRoute(),

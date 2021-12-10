@@ -22,13 +22,15 @@ var IsEnabled = {
 
     settingsPage: true,
 
-    preventionPage: true,
+    symptomsPage: true,
 
     contactPage: true,
 
     aboutPage: true,
 
-    wherePage: true,
+    prejudicesPage: true,
+
+    commonDisorders: true,
 
     reasonsPage: true,
 
