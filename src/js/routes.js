@@ -27,7 +27,6 @@ import IsEnabled from "./isenabled";
 const authenticated = function (to, from, resolve, reject) {
   let self = this;
   var app = self.app;
-  console.log("aqui")
   if (app.storage.getUserCredentials()) {
     resolve();
   } else {
