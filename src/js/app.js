@@ -22,8 +22,8 @@ import App from '../app.f7.html'
 var app = new Framework7({
   root: '#app', // App root element
   component: App, // App main component
-  id: 'cc.uffs.practice', // App bundle ID
-  name: 'PRACTICE', // App name
+  id: 'cc.uffs.app-sae', // App bundle ID
+  name: 'APP-SAE', // App name
   theme: 'auto', // Automatic theme detection
 
   // App routes

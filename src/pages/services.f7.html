@@ -1,5 +1,5 @@
 <template>
-  <div data-name="services">
+    <div data-name="services">
         <div class="tab tab-active" id="tab-1">
             <div class="accordion-item accordion-item-opened padding-top">
                 <div class="accordion-item-content">
@@ -16,7 +16,8 @@
                                             <div class="row">
                                                 <div class="col-20">
                                                     <lottie-player @click="pollLevel(0, 'sleep')" class="lottie"
-                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
                                                 </div>
                                                 <div class="col-20">
                                                     <lottie-player @click="pollLevel(1, 'sleep')" class="lottie"
@@ -43,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="swiper-slide" id="card-food">
                                 <div class="card">
                                     <div id="card-content-food" class="h100">
@@ -54,7 +55,8 @@
                                             <div class="row">
                                                 <div class="col-20">
                                                     <lottie-player @click="pollLevel(0, 'food')" class="lottie"
-                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
                                                 </div>
                                                 <div class="col-20">
                                                     <lottie-player @click="pollLevel(1, 'food')" class="lottie"
@@ -81,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="swiper-slide" id="card-happiness">
                                 <div class="card">
                                     <div id="card-content-happiness" class="h100">
@@ -91,8 +93,10 @@
                                         <div class="row padding">
                                             <div class="row">
                                                 <div class="col-20">
-                                                    <lottie-player id="teste1" @click="pollLevel(0, 'hapiness')" class="lottie"
-                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json"></lottie-player>
+                                                    <lottie-player id="teste1" @click="pollLevel(0, 'hapiness')"
+                                                        class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
                                                 </div>
                                                 <div class="col-20">
                                                     <lottie-player @click="pollLevel(1, 'hapiness')" class="lottie"
@@ -121,9 +125,10 @@
                             </div>
                         </div>
                     </div>
-                    
-        
-                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="button-poll-swiper">
+
+
+                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container"
+                        id="button-poll-swiper">
                         <div class="swiper-pagination"></div>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" id="card-physical-activity">
@@ -132,29 +137,37 @@
                                         <div class="card-question card-content">
                                             Quantas vezes praticou atividade física nos últimos 7 dias?
                                         </div>
-                            
+
                                         <div class="row margin-top">
-                                            <button @click="pollLevel(0, 'physical-activity')" class="button col button-outline button-round">0</button>
-                                            <button @click="pollLevel(1, 'physical-activity')" class="button col button-outline button-round">1</button>
-                                            <button @click="pollLevel(2, 'physical-activity')" class="button col button-outline button-round">2</button>
-                                            <button @click="pollLevel(3, 'physical-activity')" class="button col button-outline button-round">3</button>
-                                            <button @click="pollLevel(4, 'physical-activity')" class="button col button-outline button-round">4</button>
-                                            <button @click="pollLevel(5, 'physical-activity')" class="button col button-outline button-round">5+</button>
+                                            <button @click="pollLevel(0, 'physical-activity')"
+                                                class="button col button-outline button-round">0</button>
+                                            <button @click="pollLevel(1, 'physical-activity')"
+                                                class="button col button-outline button-round">1</button>
+                                            <button @click="pollLevel(2, 'physical-activity')"
+                                                class="button col button-outline button-round">2</button>
+                                            <button @click="pollLevel(3, 'physical-activity')"
+                                                class="button col button-outline button-round">3</button>
+                                            <button @click="pollLevel(4, 'physical-activity')"
+                                                class="button col button-outline button-round">4</button>
+                                            <button @click="pollLevel(5, 'physical-activity')"
+                                                class="button col button-outline button-round">5+</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="swiper-slide" id="card-leisure">
                                 <div class="card padding-bottom">
                                     <div id="card-content-leisure" class="h100 card-content-padding">
                                         <div class="card-question card-content">
                                             Realizou atividades de lazer nos últimos 7 dias?
                                         </div>
-                            
+
                                         <div class="row margin-top">
-                                            <button @click="pollLevel(1, 'leisure')" class="button col button-outline button-round">Sim</button>
-                                            <button @click="pollLevel(0, 'leisure')" class="button col button-outline button-round">Não</button>
+                                            <button @click="pollLevel(1, 'leisure')"
+                                                class="button col button-outline button-round">Sim</button>
+                                            <button @click="pollLevel(0, 'leisure')"
+                                                class="button col button-outline button-round">Não</button>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +175,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item-toggle row justify-content-center f7-icons" style="width: 100%; font-size: 35px;" id="arrow_toggle">
+                <div class="accordion-item-toggle row justify-content-center f7-icons"
+                    style="width: 100%; font-size: 35px;" id="arrow_toggle">
                     chevron_compact_up
                 </div>
             </div>
@@ -230,21 +244,21 @@
                         <div class="item-title">Dicas de Lazer</div>
                     </div>
                 </a>
-                
+
                 <a href="/contact/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/go-to-therapy.png" class="menu-grid__icon">
                         <div class="item-title">Atendimento Emergencial</div>
                     </div>
                 </a>
-            
+
                 <a href="/wellness-quiz/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/quiz.png" class="menu-grid__icon">
                         <div class="item-title">Questionário de Bem-Estar</div>
                     </div>
                 </a>
-            
+
                 <a href="/hr/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/heartbeat.png" class="menu-grid__icon">
@@ -267,10 +281,10 @@
             }
         },
         methods: {
-            swipersInit: async function(){
+            swipersInit: async function () {
                 var self = this;
                 var app = self.$app;
-                
+
                 app.swiper.create('.swiper-container', {
                     pagination: {
                         el: '.swiper-pagination',
@@ -282,7 +296,7 @@
                     buttonPollSwiper: app.swiper.get('#button-poll-swiper'),
                 });
             },
-            lottieInit: function(){
+            lottieInit: function () {
                 var self = this;
                 var app = self.$app;
 
@@ -340,24 +354,25 @@
                 let lastUpdate = new Date(lastUpdateFromStorage.created_at);
                 let now = new Date();
 
-                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()) {
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() &&
+                    now.getDate() === lastUpdate.getDate()) {
                     contentSlide.hide();
                     return;
-                } 
+                }
                 contentSlide.show();
                 return;
             },
-            pollLevel: async function(answer, type){
+            pollLevel: async function (answer, type) {
                 var self = this;
                 var app = self.$app;
-                
+
                 var pollCard;
                 var contentSlide;
                 var timeout = 600;
                 var animationTimeout = 3000;
                 var hideContentSlide = true;
 
-                switch(type){
+                switch (type) {
                     case "sleep":
                         pollCard = app.$$("#card-content-sleep");
                         contentSlide = app.$$("#card-sleep");
@@ -394,15 +409,12 @@
                 contentSlide.css("pointer-events", "none");
 
                 await new Promise(resolve => setTimeout(() => {
-                    pollCard.animate(
-                        {
-                            'opacity': 0,
-                        },
-                        {
-                            duration: 500,
-                            easing: 'ease-in'
-                        }
-                    );
+                    pollCard.animate({
+                        'opacity': 0,
+                    }, {
+                        duration: 500,
+                        easing: 'ease-in'
+                    });
                     resolve();
                 }, animationTimeout));
 
@@ -415,7 +427,7 @@
 
                 setTimeout(function () {
                     pollCard.show();
-                    if(hideContentSlide){
+                    if (hideContentSlide) {
                         contentSlide.hide();
                     }
                     self.emojiPollSwiper.update();
@@ -424,13 +436,13 @@
             },
         },
         on: {
-            tabInit: function(){
+            tabInit: function () {
                 var self = this;
                 var app = self.$app;
 
                 var types = ["sleep", "food", "physical-activity", "leisure"];
 
-                for(let type of types){
+                for (let type of types) {
                     this.checkNeedQuestionnarie(type);
                 }
 
@@ -439,14 +451,14 @@
                     let arrow = app.$$(e.target);
                     arrow.transition(600);
 
-                    if(accordion.hasClass('accordion-item-opened')){
+                    if (accordion.hasClass('accordion-item-opened')) {
                         arrow.transform('rotateX(0deg)');
                     } else {
                         arrow.transform('rotateX(180deg)');
                     }
                 })
             },
-            tabMounted: function(){
+            tabMounted: function () {
                 this.lottieInit();
                 this.swipersInit();
             }
@@ -491,16 +503,16 @@
     }
 
     .card-question {
-      font-size: 16px;
-      font-weight: 500;
-      text-align: justify;
-    }
-    
-    .pa-fontsize{
-        font-size:x-large;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: justify;
     }
 
-    .padding-10{
+    .pa-fontsize {
+        font-size: x-large;
+    }
+
+    .padding-10 {
         padding: 10px;
     }
 
@@ -515,5 +527,4 @@
     .p-5px {
         padding: 5px;
     }
-
 </style>
