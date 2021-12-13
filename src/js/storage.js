@@ -285,7 +285,7 @@ export class Storage {
 	setHappynessHistory(awnser) {
 		let oldHistory = localStorage.getItem("happynessHistory");
 		oldHistory = JSON.parse(oldHistory);
-		localStorage.removeItem("happynessHistory");
+		localStorage.removeItem("happinessHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 				'created_at': Date(),
@@ -301,5 +301,4 @@ export class Storage {
 		}
 		localStorage["happynessHistory"] = JSON.stringify({history: oldHistory.history});
 	};
-
 };

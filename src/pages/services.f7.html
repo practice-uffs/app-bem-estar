@@ -1,757 +1,466 @@
 <template>
-  <div data-name="services">
-      <div class="tab tab-active" id="tab-1">
+    <div data-name="services">
+        <div class="tab tab-active" id="tab-1">
+            <div class="accordion-item accordion-item-opened padding-top">
+                <div class="accordion-item-content">
+                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="emoji-poll-swiper">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="card-sleep">
+                                <div class="card">
+                                    <div id="card-content-sleep" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como tem sido a qualidade do seu sono nos últimos 7 dias?</p>
+                                        </div>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(0, 'sleep')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'sleep')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'sleep')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'sleep')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'sleep')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <div id="card-sleep" class="padding-10 display-none" >
-            <div class="card no-margin" >
-                <div id="card-content-sleep" class="h100">
-                    <div class="card-question card-content card-content-padding">
-                        Como tem sido a qualidade do seu sono nos últimos 7 dias?
+                            <div class="swiper-slide" id="card-food">
+                                <div class="card">
+                                    <div id="card-content-food" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como tem sido a qualidade da sua alimentação nos últimos 7 dias?</p>
+                                        </div>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(0, 'food')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'food')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'food')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'food')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'food')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide" id="card-happiness">
+                                <div class="card">
+                                    <div id="card-content-happiness" class="h100">
+                                        <div class="card-question card-content card-content-padding">
+                                            <p>Como você está se sentindo agora?</p>
+                                        </div>
+                                        <div class="row padding">
+                                            <div class="row">
+                                                <div class="col-20">
+                                                    <lottie-player id="teste1" @click="pollLevel(0, 'hapiness')"
+                                                        class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_pojzngga.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(1, 'hapiness')" class="lottie"
+                                                        src="https://assets7.lottiefiles.com/packages/lf20_21fbl4co.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(2, 'hapiness')" class="lottie"
+                                                        src="https://assets1.lottiefiles.com/packages/lf20_s1u9tqu9.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(3, 'hapiness')" class="lottie"
+                                                        src="https://assets2.lottiefiles.com/packages/lf20_xlbwcmun.json">
+                                                    </lottie-player>
+                                                </div>
+                                                <div class="col-20">
+                                                    <lottie-player @click="pollLevel(4, 'hapiness')" class="lottie"
+                                                        src="https://assets5.lottiefiles.com/packages/lf20_ivobmnxv.json">
+                                                    </lottie-player>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row padding">
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="sleepLevel(1)"><img src="static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
+
+
+                    <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container"
+                        id="button-poll-swiper">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="card-physical-activity">
+                                <div class="card">
+                                    <div id="card-content-physical-activity" class="h100 card-content-padding">
+                                        <div class="card-question card-content">
+                                            Quantas vezes praticou atividade física nos últimos 7 dias?
+                                        </div>
+
+                                        <div class="row margin-top">
+                                            <button @click="pollLevel(0, 'physical-activity')"
+                                                class="button col button-outline button-round">0</button>
+                                            <button @click="pollLevel(1, 'physical-activity')"
+                                                class="button col button-outline button-round">1</button>
+                                            <button @click="pollLevel(2, 'physical-activity')"
+                                                class="button col button-outline button-round">2</button>
+                                            <button @click="pollLevel(3, 'physical-activity')"
+                                                class="button col button-outline button-round">3</button>
+                                            <button @click="pollLevel(4, 'physical-activity')"
+                                                class="button col button-outline button-round">4</button>
+                                            <button @click="pollLevel(5, 'physical-activity')"
+                                                class="button col button-outline button-round">5+</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="sleepLevel(2)"><img src="static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="sleepLevel(3)"><img src="static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="sleepLevel(4)"><img src="static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="sleepLevel(5)"><img src="static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
+
+                            <div class="swiper-slide" id="card-leisure">
+                                <div class="card padding-bottom">
+                                    <div id="card-content-leisure" class="h100 card-content-padding">
+                                        <div class="card-question card-content">
+                                            Realizou atividades de lazer nos últimos 7 dias?
+                                        </div>
+
+                                        <div class="row margin-top">
+                                            <button @click="pollLevel(1, 'leisure')"
+                                                class="button col button-outline button-round">Sim</button>
+                                            <button @click="pollLevel(0, 'leisure')"
+                                                class="button col button-outline button-round">Não</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="display-none" id="thanks-for-response-sleep">
-                    <div class="card-question card-content card-content-padding">
-                        Como tem sido a qualidade do seu sono nos últimos 7 dias?
-                    </div>
-                    <div class="row padding">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-92 text-align-center" >
-                            <p>Obrigado pela sua resposta :)</p>
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                    </div>
-                    
-                    {{#if sleepTips}}
-                        <div class="row padding">
-                            {{#each sleepTips}}
-                                <a href="/tips/sleep#tip-{{this.id}}" class="row pa-fontsize w100">
-                                    <div class="col-30 text-align-right" >
-                                        {{#if this.icon}}
-                                            <img width="21px" height="21px" src="{{this.icon}}" >
-                                        {{else}}
-                                            <img width="21px" height="21px" src="https://cdn-icons-png.flaticon.com/128/3781/3781646.png" >
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-60" >
-                                        {{#if this.title}}
-                                            <p class="tiptitle" >{{this.title}}</p>
-                                        {{else}}
-                                            <p class="tiptitle" >Dica sobre sono</p>
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-10" >
-                                    </div>
-                                </a> 
-                            {{/each}}
-                        </div>
-                    {{/if}}
-
+                <div class="accordion-item-toggle row justify-content-center f7-icons"
+                    style="width: 100%; font-size: 35px;" id="arrow_toggle">
+                    chevron_compact_up
                 </div>
             </div>
-        </div>
 
+            <div class="menu-grid">
+                <a href="/about-more/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/ask-for-help.png" class="menu-grid__icon">
+                        <div class="item-title">Transtornos mais comuns</div>
+                    </div>
+                </a>
 
-		<div id="card-food" class="padding-10" >
-            <div class="card no-margin" >
-                <div id="card-content-food" class="h100">
-                    <div class="card-question card-content card-content-padding">
-                        Como tem sido a qualidade da sua alimentação nos últimos 7 dias?
+                <a href="/prevention/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/feeling-down.png" class="menu-grid__icon">
+                        <div class="item-title">Principais sintomas</div>
                     </div>
-                    <div class="row padding">
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="foodLevel(1)"><img src="static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="foodLevel(2)"><img src="static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="foodLevel(3)"><img src="static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="foodLevel(4)"><img src="static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="foodLevel(5)"><img src="static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="display-none" id="thanks-for-response-food">
-                    <div class="card-question card-content card-content-padding">
-                        Como tem sido a qualidade da sua alimentação nos últimos 7 dias?
-                    </div>
-                    <div class="row padding">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-92 text-align-center" >
-                            <p>Obrigado pela sua resposta :)</p>
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                    </div>
-                    
-                    {{#if feedingTips}}
-                        <div class="row padding">
-                            {{#each feedingTips}}
-                                <a href="/tips/feeding#tip-{{this.id}}" class="row pa-fontsize w100">
-                                    <div class="col-30 text-align-right" >
-                                        {{#if this.icon}}
-                                            <img width="21px" height="21px" src="{{this.icon}}" >
-                                        {{else}}
-                                            <img width="21px" height="21px" src="https://cdn-icons-png.flaticon.com/128/3781/3781646.png" >
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-60" >
-                                        {{#if this.title}}
-                                            <p class="tiptitle" >{{this.title}}</p>
-                                        {{else}}
-                                            <p class="tiptitle" >Dica sobre alimentação</p>
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-10" >
-                                    </div>
-                                </a> 
-                            {{/each}}
-                        </div>
-                    {{/if}}
+                </a>
 
-                </div>
+                <a href="/reasons/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/feeling-blue.png" class="menu-grid__icon">
+                        <div class="item-title">Fatores responsáveis</div>
+                    </div>
+                </a>
+
+                <a href="/where-help/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/know-yourself.png" class="menu-grid__icon">
+                        <div class="item-title">Preconceitos e tabus</div>
+                    </div>
+                </a>
+
+                <a href="/health-tips/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/nourish-your-mind.png" class="menu-grid__icon">
+                        <div class="item-title">Dicas</div>
+                    </div>
+                </a>
+
+                <a href="/tips/sleep" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/sleep.png" class="menu-grid__icon">
+                        <div class="item-title">Sono</div>
+                    </div>
+                </a>
+
+                <a href="/tips/feeding" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/health-food.png" class="menu-grid__icon">
+                        <div class="item-title">Dicas de Alimentação</div>
+                    </div>
+                </a>
+
+                <a href="/tips/activity" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/exercise.png" class="menu-grid__icon">
+                        <div class="item-title">Dicas de Atividade Física</div>
+                    </div>
+                </a>
+
+                <a href="/tips/leisure" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/leisure.png" class="menu-grid__icon">
+                        <div class="item-title">Dicas de Lazer</div>
+                    </div>
+                </a>
+
+                <a href="/contact/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/go-to-therapy.png" class="menu-grid__icon">
+                        <div class="item-title">Atendimento Emergencial</div>
+                    </div>
+                </a>
+
+                <a href="/wellness-quiz/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/quiz.png" class="menu-grid__icon">
+                        <div class="item-title">Questionário de Bem-Estar</div>
+                    </div>
+                </a>
+
+                <a href="/hr/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/heartbeat.png" class="menu-grid__icon">
+                        <div class="item-title">Batimento Cardíaco</div>
+                    </div>
+                </a>
+
             </div>
         </div>
-
-
-        <div id="card-physical-activity" class="padding-10" >
-            <div class="card no-margin" >
-                <div class="card-question card-content card-content-padding">
-                    Quantas vezes praticou atividade física nos últimos 7 dias?
-                </div>
-                <div id="card-content-physical-activity" class="h100">
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(0)" class="w100 p-5px"><button class="button button-fill">Nenhuma</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(1)" class="w100 p-5px"><button class="button button-fill">1</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(2)" class="w100 p-5px"><button class="button button-fill">2</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(3)" class="w100 p-5px"><button class="button button-fill">3</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(4)" class="w100 p-5px"><button class="button button-fill">4</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="physicalActivityLevel(5)" class="w100 p-5px"><button class="button button-fill">5 ou mais</button></a>
-                    </div>
-                </div>
-                <div class="display-none" id="thanks-for-response-physical-activity">
-                    <div class="row padding">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-92 text-align-center" >
-                            <p>Obrigado pela sua resposta :)</p>
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                    </div>
-                    
-                    {{#if activityTips}}
-                        <div class="row padding">
-                            {{#each activityTips}}
-                                <a href="/tips/activity#tip-{{this.id}}" class="row pa-fontsize w100">
-                                    <div class="col-30 text-align-right" >
-                                        {{#if this.icon}}
-                                            <img width="21px" height="21px" src="{{this.icon}}" >
-                                        {{else}}
-                                            <img width="21px" height="21px" src="https://cdn-icons-png.flaticon.com/128/3781/3781646.png" >
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-60" >
-                                        {{#if this.title}}
-                                            <p class="tiptitle" >{{this.title}}</p>
-                                        {{else}}
-                                            <p class="tiptitle" >Dica sobre atividade Física</p>
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-10" >
-                                    </div>
-                                </a> 
-                            {{/each}}
-                        </div>
-                    {{/if}}
-
-                </div>
-            </div>
-        </div>
-
-        <div id="card-leisure" class="padding-10" >
-            <div class="card no-margin" >
-                <div class="card-question card-content card-content-padding">
-                    Realizou atividades de lazer nos últimos 7 dias?
-                </div>
-                <div id="card-content-leisure" class="h100">
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="leisureLevel(1)" class="w100 p-5px"><button class="button button-fill">Sim</button></a>
-                    </div>
-                    <div class="row text-align-center pa-fontsize w100" >
-                        <a href="#" @click="leisureLevel(0)" class="w100 p-5px"><button class="button button-fill">Não</button></a>
-                    </div>    
-                </div>
-                <div class="display-none" id="thanks-for-response-leisure">
-                    <div class="row padding">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-92 text-align-center" >
-                            <p>Obrigado pela sua resposta :)</p>
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                    </div>
-
-                    {{#if leisureTips}}
-                        <div class="row padding">
-                            {{#each leisureTips}}
-                                <a href="/tips/leisure#tip-{{this.id}}" class="row pa-fontsize w100">
-                                    <div class="col-30 text-align-right" >
-                                        {{#if this.icon}}
-                                            <img width="21px" height="21px" src="{{this.icon}}" >
-                                        {{else}}
-                                            <img width="21px" height="21px" src="https://cdn-icons-png.flaticon.com/128/3781/3781646.png" >
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-60" >
-                                        {{#if this.title}}
-                                            <p class="tiptitle" >{{this.title}}</p>
-                                        {{else}}
-                                            <p class="tiptitle" >Dica sobre lazer</p>
-                                        {{/if}}
-                                    </div>
-                                    <div class="col-10" >
-                                    </div>
-                                </a> 
-                            {{/each}}
-                        </div>
-                    {{/if}}
-
-                </div>
-            </div>
-        </div>
-
-        <div class="padding-10" >
-            <div class="card no-margin" >
-                <div id="cardContent" class="h100">
-                    <div class="card-question card-content card-content-padding">
-                        Como você está se sentindo agora?
-                    </div>
-                    <div class="row padding">
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="happynessLevel(1)" id="unHappy"><img src="static/images/affective-slider/AS_unhappy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="happynessLevel(2)"><img src="static/images/affective-slider/AS_sleepy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="happynessLevel(3)"><img src="static/images/affective-slider/AS_wideawake.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="happynessLevel(4)"><img src="static/images/affective-slider/AS_intensity_cue.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                        <div class="col-20" >
-                            <div>
-                                <a href="#" @click="happynessLevel(5)"><img src="static/images/affective-slider/AS_happy.svg" style="width: 100%;"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="display-none" id="thanks-for-response">
-                    <div class="card-question card-content card-content-padding">
-                        Como você está se sentindo agora?
-                    </div>
-                    <div class="row padding">
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-92 text-align-center" >
-                            <p>Obrigado pela sua resposta :)</p>
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                        <div class="col-2" >
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-grid">
-            <a href="/about-more/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/ask-for-help.png" class="menu-grid__icon">
-                    <div class="item-title">Transtornos mais comuns</div>
-                </div>
-            </a>
-
-            <a href="/prevention/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/feeling-down.png" class="menu-grid__icon">
-                    <div class="item-title">Principais sintomas</div>
-                </div>
-            </a>
-
-            <a href="/reasons/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/feeling-blue.png" class="menu-grid__icon">
-                    <div class="item-title">Fatores responsáveis</div>
-                </div>
-            </a>
-
-            <a href="/where-help/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/know-yourself.png" class="menu-grid__icon">
-                    <div class="item-title">Preconceitos e tabus</div>
-                </div>
-            </a>
-
-            <a href="/health-tips/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/nourish-your-mind.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas</div>
-                </div>
-            </a>
-
-            <a href="/tips/sleep" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/sleep.png" class="menu-grid__icon">
-                    <div class="item-title">Sono</div>
-                </div>
-            </a>
-
-            <a href="/tips/feeding" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/health-food.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas de Alimentação</div>
-                </div>
-            </a>
-
-            <a href="/tips/activity" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/exercise.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas de Atividade Física</div>
-                </div>
-            </a>
-
-            <a href="/tips/leisure" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/leisure.png" class="menu-grid__icon">
-                    <div class="item-title">Dicas de Lazer</div>
-                </div>
-            </a>
-            
-            <a href="/contact/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/go-to-therapy.png" class="menu-grid__icon">
-                    <div class="item-title">Atendimento Emergencial</div>
-                </div>
-            </a>
-          
-            <a href="/wellness-quiz/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/quiz.png" class="menu-grid__icon">
-                    <div class="item-title">Questionário de Bem-Estar</div>
-                </div>
-            </a>
-          
-            <a href="/hr/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/heartbeat.png" class="menu-grid__icon">
-                    <div class="item-title">Batimento Cardíaco</div>
-                </div>
-            </a>
-
-            <a href="/my-statistics/" class="menu-grid__item">
-                <div class="item-inner">
-                    <img src="static/images/ask-for-help.png" class="menu-grid__icon">
-                    <div class="item-title">Minhas estatísticas</div>
-                </div>
-            </a>
-
-          </div>
-      </div>
-  </div>
+    </div>
 </template>
 <script>
-    
+    import * as LottiePlayer from "@lottiefiles/lottie-player";
+
     export default {
         data: function () {
-        return {
-            leisureTips: null,
-            activityTips: null,
-            feedingTips: null,
-            sleepTips: null
+            return {
+                emojiPollSwiper: null,
+                buttonPollSwiper: null,
             }
         },
         methods: {
-            checkNeedSleepQuestionnarie: function(){
+            swipersInit: async function () {
                 var self = this;
                 var app = self.$app;
 
-                let sleepCard = this.$$("#card-sleep");
-                let sleepHistory = app.storage.getSleepHistory();
-                
-                if(sleepHistory == null) {
-                    sleepCard.removeClass('display-none');
-                    return true;
-                }
-
-                let lastUpdateFromStorage = sleepHistory.history[sleepHistory.history.length - 1];
-                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
-                let now = new Date();
-
-                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
-                    sleepCard.addClass('display-none');
-                    return false;
-                } else {
-                    sleepCard.removeClass('display-none');
-                    return true;
-                }
+                app.swiper.create('.swiper-container', {
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets',
+                    },
+                });
+                await self.$setState({
+                    emojiPollSwiper: app.swiper.get('#emoji-poll-swiper'),
+                    buttonPollSwiper: app.swiper.get('#button-poll-swiper'),
+                });
             },
-			checkNeedFoodQuestionnarie: function(){
+            lottieInit: function () {
                 var self = this;
                 var app = self.$app;
 
-                let foodCard = this.$$("#card-food");
-                let foodHistory = app.storage.getFoodHistory();
-                
-                if(foodHistory == null) {
-                    foodCard.removeClass('display-none');
-                    return true;
-                }
-
-                let lastUpdateFromStorage = foodHistory.history[foodHistory.history.length - 1];
-                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
-                let now = new Date();
-
-                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
-                    foodCard.addClass('display-none');
-                    return false;
-                } else {
-                    foodCard.removeClass('display-none');
-                    return true;
-                }
-            },
-            checkNeedPhysicalActivityQuestionnarie: function(){
-                var self = this;
-                var app = self.$app;
-
-                let physicalActivityCard = this.$$("#card-physical-activity");
-                let physicalActivityHistory = app.storage.getPhysicalActivityHistory();
-                
-                if(physicalActivityHistory == null) {
-                    physicalActivityCard.removeClass('display-none');
-                    return true;
-                }
-
-                let lastUpdateFromStorage = physicalActivityHistory.history[physicalActivityHistory.history.length - 1];
-                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
-                let now = new Date();
-                
-                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
-                    physicalActivityCard.addClass('display-none');
-                    return false;
-                } else {
-                    physicalActivityCard.removeClass('display-none');
-                    return true;
-                }
-            },
-            checkNeedLeisureQuestionnarie: function(){
-                var self = this;
-                var app = self.$app;
-
-                let leisureCard = this.$$("#card-leisure");
-                let leisureHistory = app.storage.getLeisureHistory();
-                
-                if(leisureHistory == null) {
-                    leisureCard.removeClass('display-none');
-                    return true;
-                }
-
-                let lastUpdateFromStorage = leisureHistory.history[leisureHistory.history.length - 1];
-                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
-                let now = new Date();
-                
-                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() && now.getDate() === lastUpdate.getDate()){
-                    leisureCard.addClass('display-none');
-                    return false;
-                } else {
-                    leisureCard.removeClass('display-none');
-                    return true;
-                }
-            },
-            sleepLevel: async function(awnser){
-                var self = this;
-                var app = self.$app;
-        
-                let pollCard = this.$$("#card-content-sleep");
-                let pollThanks = this.$$("#thanks-for-response-sleep");
-                let sleepCard = this.$$("#card-sleep");
-
-                app.storage.setSleepHistory(awnser);
-                
-                let history = app.storage.getSleepHistory();
-                let average = 0;
-                history.history.forEach(element => {
-                    average = average + element.awnser;
+                app.$$('.lottie').on('load', function (e) {
+                    const player = e.target;
+                    player.stop();
+                    player.play();
                 });
 
-                if(awnser < average/history.history.length){
-                    let tips = await app.tips.getSleepTips();
-                    let randomTips = [];
-                    if ( tips.length >= 3){
-                        let randomNumbers = [];
-                        while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * tips.length);
-                            if(randomNumbers.indexOf(candidate) === -1){
-                                randomNumbers.push(candidate)
-                            }
-                        }
-                        randomTips.push(tips[randomNumbers[0]]);
-                        randomTips.push(tips[randomNumbers[1]]);
-                        randomTips.push(tips[randomNumbers[2]]);
-                    } else {
-                        randomTips = tips;
-                    }
-
-                    self.$setState({
-                        sleepTips: randomTips,
-                    });
-                }
-
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        sleepCard.addClass('display-none');   
-                        }, 15000);
-            },
-			foodLevel: async function(awnser){
-                var self = this;
-                var app = self.$app;
-        
-                let pollCard = this.$$("#card-content-food");
-                let pollThanks = this.$$("#thanks-for-response-food");
-                let foodCard = this.$$("#card-food");
-
-                app.storage.setFoodHistory(awnser);
-                
-                let history = app.storage.getFoodHistory();
-                let average = 0;
-                history.history.forEach(element => {
-                    average = average + element.awnser;
+                app.$$('.lottie').on('click', async function (e) {
+                    let emoji = e.target;
+                    emoji.stop();
+                    emoji.play();
+                    app.$$(emoji).transition(1000);
+                    await app.$$(emoji).transform('scale(1.3)');
+                    setTimeout(() => {
+                        app.$$(emoji).transform('scale(1)');
+                    }, 2000);
                 });
-
-                if(awnser < average/history.history.length){
-                    let tips = await app.tips.getFeedingTips();
-                    let randomTips = [];
-                    if ( tips.length >= 3){
-                        let randomNumbers = [];
-                        while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * tips.length);
-                            if(randomNumbers.indexOf(candidate) === -1){
-                                randomNumbers.push(candidate)
-                            }
-                        }
-                        randomTips.push(tips[randomNumbers[0]]);
-                        randomTips.push(tips[randomNumbers[1]]);
-                        randomTips.push(tips[randomNumbers[2]]);
-                    } else {
-                        randomTips = tips;
-                    }
-
-                    self.$setState({
-                        feedingTips: randomTips,
-                    });
-                }
-
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        foodCard.addClass('display-none');   
-                        }, 15000);
             },
-            physicalActivityLevel: async function(awnser){
+            checkNeedQuestionnarie: function (type) {
                 var self = this;
                 var app = self.$app;
-        
-                let pollCard = this.$$("#card-content-physical-activity");
-                let pollThanks = this.$$("#thanks-for-response-physical-activity");
-                let physicalActivityCard = this.$$("#card-physical-activity");
 
-                app.storage.setPhysicalActivityHistory(awnser);
-                
-                if (awnser <= 1) {
-                    let tips = await app.tips.getActivityTips();
-                    let randomTips = [];
-                    if ( tips.length >= 3){
-                        let randomNumbers = [];
-                        while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * tips.length);
-                            if(randomNumbers.indexOf(candidate) === -1){
-                                randomNumbers.push(candidate)
-                            }
-                        }
-                        randomTips.push(tips[randomNumbers[0]]);
-                        randomTips.push(tips[randomNumbers[1]]);
-                        randomTips.push(tips[randomNumbers[2]]);
-                    } else {
-                        randomTips = tips;
-                    }
+                var contentSlide;
+                var itemHistory;
 
-                    self.$setState({
-                        activityTips: randomTips,
-                    });
+                switch (type) {
+                    case "sleep":
+                        contentSlide = app.$$("#card-sleep");
+                        itemHistory = app.storage.getSleepHistory();
+                        break;
+                    case "food":
+                        contentSlide = app.$$("#card-food");
+                        itemHistory = app.storage.getFoodHistory();
+                        break;
+                    case "physical-activity":
+                        contentSlide = app.$$("#card-physical-activity");
+                        itemHistory = app.storage.getPhysicalActivityHistory();
+                        break;
+                    case "leisure":
+                        contentSlide = app.$$("#card-leisure");
+                        itemHistory = app.storage.getLeisureHistory();
+                        break;
+                    default:
+                        console.log("error");
                 }
 
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
-                setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        physicalActivityCard.addClass('display-none');   
-                        }, 15000);
+                if (itemHistory == null) {
+                    contentSlide.show();
+                    return true;
+                }
+
+                let lastUpdateFromStorage = itemHistory.history[itemHistory.history.length - 1];
+                let lastUpdate = new Date(lastUpdateFromStorage.created_at);
+                let now = new Date();
+
+                if (now.getFullYear() === lastUpdate.getFullYear() && now.getMonth() === lastUpdate.getMonth() &&
+                    now.getDate() === lastUpdate.getDate()) {
+                    contentSlide.hide();
+                    return;
+                }
+                contentSlide.show();
+                return;
             },
-            leisureLevel: async function(awnser){
+            pollLevel: async function (answer, type) {
                 var self = this;
                 var app = self.$app;
-        
-                let pollCard = this.$$("#card-content-leisure");
-                let pollThanks = this.$$("#thanks-for-response-leisure");
-                let leisureCard = this.$$("#card-leisure");
 
-                app.storage.setLeisureHistory(awnser);
+                var pollCard;
+                var contentSlide;
+                var timeout = 600;
+                var animationTimeout = 3000;
+                var hideContentSlide = true;
 
-                if (awnser == 0) {
-                    let tips = await app.tips.getLeisureTips();
-                    let randomTips = [];
-                    if ( tips.length >= 3){
-                        let randomNumbers = [];
-                        while ( randomNumbers.length < 3 ){
-                            let candidate = Math.floor(Math.random() * tips.length);
-                            if(randomNumbers.indexOf(candidate) === -1){
-                                randomNumbers.push(candidate)
-                            }
-                        }
-                        randomTips.push(tips[randomNumbers[0]]);
-                        randomTips.push(tips[randomNumbers[1]]);
-                        randomTips.push(tips[randomNumbers[2]]);
-                    } else {
-                        randomTips = tips;
-                    }
-
-                    self.$setState({
-                        leisureTips: randomTips,
-                    });
+                switch (type) {
+                    case "sleep":
+                        pollCard = app.$$("#card-content-sleep");
+                        contentSlide = app.$$("#card-sleep");
+                        app.storage.setSleepHistory(answer);
+                        break;
+                    case "food":
+                        pollCard = app.$$("#card-content-food");
+                        contentSlide = app.$$("#card-food");
+                        app.storage.setFoodHistory(answer);
+                        break;
+                    case "hapiness":
+                        pollCard = app.$$("#card-content-happiness");
+                        contentSlide = app.$$("#card-happiness");
+                        app.storage.setHappinessHistory(answer);
+                        timeout = 30000;
+                        hideContentSlide = false;
+                        break;
+                    case "physical-activity":
+                        pollCard = app.$$("#card-content-physical-activity");
+                        contentSlide = app.$$("#card-physical-activity");
+                        app.storage.setPhysicalActivityHistory(answer);
+                        animationTimeout = 0;
+                        break;
+                    case "leisure":
+                        pollCard = app.$$("#card-content-leisure");
+                        contentSlide = app.$$("#card-leisure");
+                        app.storage.setLeisureHistory(answer);
+                        animationTimeout = 0;
+                        break;
+                    default:
+                        console.log("error");
                 }
 
-                pollCard.addClass('display-none');
-                pollThanks.removeClass('display-none');
+                contentSlide.css("pointer-events", "none");
+
+                await new Promise(resolve => setTimeout(() => {
+                    pollCard.animate({
+                        'opacity': 0,
+                    }, {
+                        duration: 500,
+                        easing: 'ease-in'
+                    });
+                    resolve();
+                }, animationTimeout));
+
+                setTimeout(() => {
+                    pollCard.hide();
+                    pollCard.css('opacity', '1');
+                    app.dialog.alert('Obrigado por sua resposta :)');
+                    contentSlide.css("pointer-events", "auto");
+                }, 600);
+
                 setTimeout(function () {
-                        pollThanks.addClass('display-none');
-                        pollCard.removeClass('display-none');
-                        leisureCard.addClass('display-none');   
-                        }, 15000);
-            },
-            happynessLevel: function(awnser){
-				var self = this;
-				var app = self.$app;
-		
-				var pollCard = this.$$("#cardContent");
-				var pollThanks = this.$$("#thanks-for-response");
-
-				app.storage.setHappynessHistory(awnser);
-
-				pollCard.addClass('display-none');
-				pollThanks.removeClass('display-none');
-				setTimeout(function () {
-						pollThanks.addClass('display-none');
-						pollCard.removeClass('display-none');   
-						}, 30000);
+                    pollCard.show();
+                    if (hideContentSlide) {
+                        contentSlide.hide();
+                    }
+                    self.emojiPollSwiper.update();
+                    self.buttonPollSwiper.update();
+                }, timeout);
             },
         },
         on: {
-            tabInit: function(){
-                this.checkNeedSleepQuestionnarie();
-				this.checkNeedFoodQuestionnarie();
-                this.checkNeedPhysicalActivityQuestionnarie();
-                this.checkNeedLeisureQuestionnarie();
+            tabInit: function () {
+                var self = this;
+                var app = self.$app;
+
+                var types = ["sleep", "food", "physical-activity", "leisure"];
+
+                for (let type of types) {
+                    this.checkNeedQuestionnarie(type);
+                }
+
+                app.$$('#arrow_toggle').click((e) => {
+                    let accordion = app.$$('div.accordion-item');
+                    let arrow = app.$$(e.target);
+                    arrow.transition(600);
+
+                    if (accordion.hasClass('accordion-item-opened')) {
+                        arrow.transform('rotateX(0deg)');
+                    } else {
+                        arrow.transform('rotateX(180deg)');
+                    }
+                })
+            },
+            tabMounted: function () {
+                this.lottieInit();
+                this.swipersInit();
             }
         }
     };
@@ -794,16 +503,16 @@
     }
 
     .card-question {
-      font-size: 16px;
-      font-weight: 500;
-      text-align: justify;
-    }
-    
-    .pa-fontsize{
-        font-size:x-large;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: justify;
     }
 
-    .padding-10{
+    .pa-fontsize {
+        font-size: x-large;
+    }
+
+    .padding-10 {
         padding: 10px;
     }
 
@@ -817,24 +526,5 @@
 
     .p-5px {
         padding: 5px;
-    }
-
-    .w100 {
-        width: 100%;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-
-    .tiptitle {
-        font-size: large;
-        margin-top: 3px;
-        margin-right: 0;
-        margin-bottom: 0;
-        margin-left: 0;
-        white-space: nowrap; 
-        overflow: hidden;
-        text-overflow: ellipsis; 
     }
 </style>
