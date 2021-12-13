@@ -1,0 +1,76 @@
+<template>
+    <div class="page" data-name="prejudicesPage">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Preconceitos e Tabus</div>
+            </div>
+        </div>
+        <div class="page-content">
+
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="block block-strong inset">
+                            <div class="row">
+                                <div class="col-30"></div>
+                                <div class="col-40"><img src="static/images/stickers/mental-health (2).png" class="header-image"></div>
+                                <div class="col-30"></div>
+                            </div>
+                            
+                            <h3 class="item-text text-align-center">
+                                Medo de se sentir desamparado
+                            </h3>
+                            <p class="item-text text-align-center">
+                                Mesmo em pleno século 21, o preconceito e a desinformação acerca dessas questões ainda é grande, o que resulta em uma série de consequências negativas para quem precisa de ajuda, principalmente na vergonha e no receio dessas pessoas em falarem sobre o que estão passando, seja por medo de serem excluídas e ignoradas, ou até mesmo terem seus sintomas menosprezados. Ocorre que esse preconceito não parte somente de pessoas distantes, mas também de amigos e familiares, fazendo com que a pessoa se sinta desamparada e incompreendida.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="block block-strong inset ">
+                            <div class="row">
+                                <div class="col-30"></div>
+                                <div class="col-40"><img src="static/images/ask-for-help.png" class="header-image"></div>
+                                <div class="col-30"></div>
+                            </div>
+
+                            <h3 class="item-text text-align-center">
+                                Procure atendimento
+                            </h3>
+                            <p class="item-text text-align-center">
+                                Apesar da imensa gama de conteúdos que são frequentemente apresentados na televisão e nas redes sociais, ainda restam dúvidas sobre onde, como e quando buscar ajuda, considerando que nem sempre as alternativas apresentadas para solucionar o problema parecem confiáveis e adequadas. Por conta desse e de outros fatores, muitas pessoas passam a vida sem procurar atendimento psicológico com um profissional da área, fazendo com que nunca recebam um diagnóstico preciso, e o tratamento adequado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {};
+</script>
+
+<style>
+    .header-image{
+        width: 100%;
+    }
+
+    .block{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    .swiper-pagination{
+        position: fixed;
+        bottom: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>

@@ -4,6 +4,15 @@ export class Tips {
 		app.tips = this;
 	}
 
+    getHealthTips() {
+        var self = this;
+        var app = self.app;
+        return app.request.promise.json('static/example-data/health-tips.json')
+        .then((res) => {
+            return res.data;
+        });  
+    }
+
 	getActivityTips() {
         var self = this;
         var app = self.app;

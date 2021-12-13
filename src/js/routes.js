@@ -11,12 +11,11 @@ import SettingsPage from "../pages/settings.f7.html";
 import AboutPage from "../pages/about.f7.html";
 import LoginPage from "../pages/login.f7.html";
 import NotFoundPage from "../pages/404.f7.html";
-import WherePage from "../pages/where-help.f7.html";
-import AboutMorePage from "../pages/about-more.f7.html";
-import PreventionPage from "../pages/prevention.f7.html";
+import PrejudicesPage from "../pages/prejudices.f7.html";
+import CommonDisordersPage from "../pages/common-disorders.f7.html";
+import SymptomsPage from "../pages/symptoms.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
-import ContactPage from "../pages/contact.f7.html";
-import HealthTipsPage from '../pages/health-tips.f7.html';
+import SeekHelpPage from "../pages/seek-help.f7.html";
 import TipsPage from '../pages/tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
@@ -28,7 +27,6 @@ import IsEnabled from "./isenabled";
 const authenticated = function (to, from, resolve, reject) {
   let self = this;
   var app = self.app;
-  console.log("aqui")
   if (app.storage.getUserCredentials()) {
     resolve();
   } else {
@@ -155,35 +153,34 @@ const aboutPageRoute = function () {
 };
 
 
-const wherePageRoute = function () {
+const prejudicesPageRoute = function () {
   let route = {
-    path: '/where-help/',
-    component: WherePage,
+    path: '/prejudices/',
+    component: PrejudicesPage,
     beforeEnter: authenticated,
   };
 
-  if (IsEnabled.wherePage) return route;
+  if (IsEnabled.prejudicesPage) return route;
 }
 
 
-const aboutMorePageRoute = function () {
+const commonDisordersPageRoute = function () {
   let route = {
-    path: '/about-more/',
-    component: AboutMorePage,
-    beforeEnter: authenticated,
+    path: '/common-disorders/',
+    component: CommonDisordersPage,
   };
 
-  if (IsEnabled.wherePage) return route;
+  if (IsEnabled.commonDisordersPage) return route;
 }
 
-const preventionPageRoute = function () {
+const symptomsPageRoute = function () {
   let route = {
-    path: '/prevention/',
-    component: PreventionPage,
+    path: '/symptoms/',
+    component: SymptomsPage,
     beforeEnter: authenticated,
   };
 
-  if (IsEnabled.preventionPage) return route;
+  if (IsEnabled.symptomsPage) return route;
 }
 
 const reasonsPageRoute = function () {
@@ -206,25 +203,17 @@ const wellnessQuizPageRoute = function () {
   if (IsEnabled.wellnessQuizPage) return route;
 }
 
-const contactPageRoute = function () {
+const seekHelpPageRoute = function () {
   let route = {
-    path: '/contact/',
-    component: ContactPage,
+    path: '/seek-help/',
+    component: SeekHelpPage,
     beforeEnter: authenticated,
   };
 
-  if (IsEnabled.contactPage) return route;
+  if (IsEnabled.seekHelpPage) return route
+
 }
 
-const healthTipsPageRoute = function () {
-  let route = {
-    path: '/health-tips/',
-    component: HealthTipsPage,
-    beforeEnter: authenticated,
-  };
-
-  if (IsEnabled.contactPage) return route;
-}
 
 const myStatisticsPageRoute = function () {
   let route = {
@@ -280,12 +269,11 @@ var routes = [
   myStatisticsPageRoute(),
 
   // Routes imported from: app-covid
-  wherePageRoute(),
-  aboutMorePageRoute(),
-  preventionPageRoute(),
+  prejudicesPageRoute(),
+  commonDisordersPageRoute(),
+  symptomsPageRoute(),
   reasonsPageRoute(),
-  contactPageRoute(),
-  healthTipsPageRoute(),
+  seekHelpPageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),

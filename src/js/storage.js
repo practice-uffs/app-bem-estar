@@ -276,13 +276,13 @@ export class Storage {
 	};
 
 	// Happyness history method
-	getHappynessHistory() {
+	getHappinessHistory() {
 		let history = localStorage.getItem("happynessHistory");
 		history = JSON.parse(history);
 		return history;
 	};
 
-	setHappynessHistory(awnser) {
+	setHappinessHistory(awnser) {
 		let oldHistory = localStorage.getItem("happynessHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("happinessHistory");
