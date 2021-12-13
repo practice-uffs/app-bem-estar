@@ -93,6 +93,12 @@
                 var app = self.$app;
 
                 switch (category) {
+                    case 'health':
+                        self.$setState({
+                            content: await app.tips.getHealthTips(),
+                            pageTitle: "Dicas de Saúde",
+                        });
+                        break;
                     case 'sleep':
                         self.$setState({
                             content: await app.tips.getSleepTips(),
