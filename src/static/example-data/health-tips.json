@@ -1,11 +1,58 @@
 [
     {
         "id": 1,
-        "title": "ansidedade",
-        "text": "A caminhada pode ser uma das maneiras mais simples de vencer o sedentarismo. Que tal começar agora?",
+        "title": "Respire",
+        "text": "Respiração - “respire profunda e lentamente. A respiração oxigena as células e a concentração no ato de respirar auxilia a mudar o foco da daquilo que causa ansiedade, com efeito tranquilizante.",
         "video": null,
-        "image": "https://cdn.pixabay.com/photo/2017/08/12/19/01/legs-2635038_960_720.jpg",
+        "image": null,
         "icon": null
-        
+    },
+    {
+        "id": 2,
+        "title": "Relaxe",
+        "text": "Relaxe a musculatura. Quando estamos tensos, tendemos a contrair a musculatura, mesmo que inconsciente, causando tensão e dores.",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 3,
+        "title": "Descubra algo novo",
+        "text": "Você sabe fazer algum trabalho manual? O que você acha de retomar a atividade ou aprender algo novo?! Atividades manuais tem efeito terapeutico, auxilia no manejo do estresse, estimula a criatividade, acalma e sentimento de felicidade.",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 4,
+        "title": "De um tempo",
+        "text": "Caso algo esteja te preocupando excessivamente, de um tempo! Às vezes se afastar permite que você possa analisar a situação por outro ângulo e encontrar alternativas.",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 5,
+        "title": "Desvende um novo hobby",
+        "text": "Já tirou um momento de descontração nessa semana? que tal escutar música, assistir filmes, se possível sair com os amigos, cuidar de plantas, tocar/aprender instrumento musical.",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 6,
+        "title": "Converse",
+        "text": "Interagir faz bem/proporciona bem-estar. Que tal chamar um velho amigo para conversar/fazer contato com alguém que você não conversa há algum tempo?",
+        "video": null,
+        "image": null,
+        "icon": null
+    },
+    {
+        "id": 6,
+        "title": "Comunique-se",
+        "text": "Fale como se sente com alguém de sua confiança.",
+        "video": null,
+        "image": null,
+        "icon": "https://w7.pngwing.com/pngs/718/928/png-transparent-computer-icons-conversation-chatting-miscellaneous-text-computer-program.png"
     }
 ]
