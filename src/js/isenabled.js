@@ -37,6 +37,8 @@ var IsEnabled = {
     wellnessQuizPage: true,
     
     heartBeatPage: true,
+
+    MyStatisticsPage: true,
 }
 
 export default IsEnabled;

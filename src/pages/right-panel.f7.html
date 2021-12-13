@@ -118,20 +118,8 @@
         let app = self.$app;
 
         app.dialog.confirm("Tem certeza que deseja sair?", function () {
-          app.storage
-            .requestLogout()
-            .then((res) => {
-              if (res) {
-                app.view.main.router.navigate("/");
-              } else {
-                app.dialog.alert(
-                  "Não foi possível te desconectar, tente novamente!"
-                );
-              }
-            })
-            .catch(() => {
-              app.dialog.alert("Ocorreu um erro em sua rede, tente novamente!");
-            });
+          app.api.logout();
+          app.view.main.router.navigate("/initial/");
         });
       },
     },
