@@ -16,7 +16,6 @@ import CommonDisordersPage from "../pages/common-disorders.f7.html";
 import SymptomsPage from "../pages/symptoms.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import SeekHelpPage from "../pages/seek-help.f7.html";
-import HealthTipsPage from '../pages/health-tips.f7.html';
 import TipsPage from '../pages/tips.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
@@ -214,16 +213,6 @@ const seekHelpPageRoute = function () {
   if (IsEnabled.seekHelpPage) return route;
 }
 
-const healthTipsPageRoute = function () {
-  let route = {
-    path: '/health-tips/',
-    component: HealthTipsPage,
-    // beforeEnter: authenticated,
-  };
-
-  if (IsEnabled.contactPage) return route;
-}
-
 const myStatisticsPageRoute = function () {
   let route = {
     path: '/my-statistics/',
@@ -283,7 +272,6 @@ var routes = [
   symptomsPageRoute(),
   reasonsPageRoute(),
   seekHelpPageRoute(),
-  healthTipsPageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),
