@@ -14,7 +14,7 @@
         </div>
         <div class="page-content">
             <form class="list" id="quiz">
-                <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container">
+                <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="wellness-quiz-swiper">
                     <div class="swiper-pagination"></div>
                     <div class="swiper-wrapper">
                         {{#each questions}}
@@ -152,14 +152,14 @@
                     self.$setState({
                         questions: data,
                     }).then(async () => {
-                        await app.swiper.create('.swiper-container', {
+                        await app.swiper.create('#wellness-quiz-swiper', {
                             pagination: {
                             el: '.swiper-pagination',
                                 type: 'bullets',
                             },
                         });
                         await self.$setState({
-                            swiper: app.swiper.get('.swiper-container'),
+                            swiper: app.swiper.get('#wellness-quiz-swiper'),
                         });
                     })
                 });

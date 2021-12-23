@@ -4,7 +4,7 @@
     "pwa",
     "cordova"
   ],
-  "name": "app-sae",
+  "name": "app-saude",
   "framework": "core",
   "template": "tabs",
   "bundler": "webpack",
@@ -24,7 +24,7 @@
     "preserveAssetsPaths": false,
     "inlineAssets": true
   },
-  "pkg": "cc.uffs.practice",
+  "pkg": "cc.uffs.practice.app_saude",
   "cordova": {
     "folder": "cordova",
     "platforms": [

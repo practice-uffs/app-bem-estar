@@ -12,8 +12,9 @@
                 <div class="title">Buscar ajuda</div>
             </div>
         </div>
-        <div class="page-content">
-            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
+        <div class="page-content" id="seek-help">
+            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50"
+            	class="swiper-container swiper-init demo-swiper" id="seek-help-swiper">
                 <div class="swiper-pagination" ></div>
                 <div class="swiper-wrapper">
 
@@ -119,7 +120,40 @@
     </div>
 </template>
 <script>
-    export default {};
+    export default {
+		data: function() {
+			return {
+				swiper: null,
+			}
+		},
+		methods: {
+			autoScrolltoInit: function(){
+				var self = this;
+				var app = self.$app;
+
+				var doc = app.$$('#seek-help');
+				doc.scrollTop(0,0);
+			},
+			getSwiper: async function() {
+				var self = this;
+				var app = self.$app;
+
+				var swiper = app.swiper.get('#seek-help-swiper');
+				
+				console.log(swiper);
+
+				swiper.on('slideChange', () => {
+					self.autoScrolltoInit();
+				})
+				
+			}
+		},
+		on:{
+			pageAfterIn: function(){
+				this.getSwiper();
+			}
+		}
+	};
 </script>
 
 <style>

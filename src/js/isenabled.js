@@ -18,7 +18,7 @@ var IsEnabled = {
 
     envPage: false,
 
-    servicesPage: true,
+    mainMenuPage: true,
 
     settingsPage: true,
 
