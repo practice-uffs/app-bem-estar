@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="cc.uffs.practice" version="0.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>APP-SAE</name>
+<widget id="cc.uffs.practice.app_saude" version="0.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>APP Saúde</name>
     <description>
       Toda inovação que o PRACTICE oferece ao alcance de um toque na tela!
     </description>
@@ -33,6 +33,7 @@
       <preference name="StatusBarOverlaysWebView" value="false" />
       <preference name="android-minSdkVersion" value="22" />
       <preference name="SplashMaintainAspectRatio" value="true" />
+      <preference name="AndroidInsecureFileModeEnabled" value="true" />
       <splash density="land-hdpi" src="res/screen/android/drawable-hdpi/screen.png" />
       <splash density="land-mdpi" src="res/screen/android/drawable-mdpi/screen.png" />
       <splash density="land-xhdpi" src="res/screen/android/drawable-xhdpi/screen.png" />
@@ -49,6 +50,12 @@
       <icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/ic_launcher.png" />
       <icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/ic_launcher.png" />
       <icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/ic_launcher.png" />
+	  <config-file parent="/manifest/" target="app/src/main/AndroidManifest.xml">
+        <uses-permission android:name="android.permission.CAMERA" />
+      </config-file>
+      <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <application android:usesCleartextTraffic="true" />
+      </edit-config>
     </platform>
 
 

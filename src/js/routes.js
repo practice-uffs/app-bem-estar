@@ -3,7 +3,7 @@ import HomePage from "../pages/home.f7.html";
 import RightPanelPage from "../pages/right-panel.f7.html";
 
 import EnvPage from "../pages/env.f7.html";
-import ServicesPage from "../pages/services.f7.html";
+import MainMenuPage from "../pages/main-menu.f7.html";
 import AffectiveSliderPage from "../pages/affectiveSlider.f7.html";
 
 import NotificationsPage from "../pages/notifications.f7.html";
@@ -71,11 +71,11 @@ const homePageRoute = function () {
   //     component: InitialPage,
   //   });
 
-  if (IsEnabled.servicesPage)
+  if (IsEnabled.mainMenuPage)
     tabs.push({
       path: "/",
-      id: "services",
-      component: ServicesPage,
+      id: "main-menu",
+      component: MainMenuPage,
     });
 
   if (IsEnabled.envPage)
