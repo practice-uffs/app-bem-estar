@@ -5,7 +5,7 @@
       <div class="navbar-bg"></div>
       <div class="navbar-inner">
         <div class="left">
-          <img src="static/images/logo/icon.svg" class="navbar-icon">
+          <img src="{{icon}}" class="navbar-icon">
           <div class="title">APP-Saúde</div>
         </div>
 
@@ -43,14 +43,18 @@
         installAd: function () {
           return !window.matchMedia('(display-mode: standalone)').matches && IsEnabled.installAd;
         },
-        shareAd: IsEnabled.shareAd
+        shareAd: IsEnabled.shareAd,
+        icon: null,
+        icon_white_mode: "static/icons/icon_practice.png",
+        icon_dark_mode: "static/icons/icon_practice_white.png"
       }
     },
 
     on: {
-      pageInit: function (e, page) {
+      pageInit: async function (e, page) {
         var app = this.$app;
         var link = document.getElementById('link-install-app');
+        this.darkTheme(await app.storage.getDarkTheme());
 
         if (!link) {
           return;
@@ -64,6 +68,7 @@
 
           link.style.display = 'none';
         });
+
       }
     },
 
@@ -133,7 +138,29 @@
           text: 'Nossa cartilha sobre saúde mental ao alcance de um toque!',
           url: this.appShareURL,
         });
-      }
+      },
+
+      darkTheme: function (active) {
+        let self = this;
+				let app = self.$app;
+
+				var appPage = app.$$("#app");
+        var navbarIcon = app.$$(".navbar");
+        // console.log(navbarIcon)
+
+        if (active == 'true') {
+          self.$setState({
+            icon: self.icon_dark_mode,
+          });
+          appPage.addClass("theme-dark");
+          return;
+        }
+        self.$setState({
+          icon: self.icon_white_mode,
+        });
+        appPage.removeClass("theme-dark");
+        
+      },
     }
   }
 </script>

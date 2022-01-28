@@ -15,14 +15,23 @@
   --f7-theme-color-shade: var(--color-1);
   --f7-theme-color-tint: #fff;
   --f7-page-bg-color: #eee;
+  --f7-panel-top-color: #dd086c;
+}
+
+:root .theme-dark {
+  --f7-panel-bg-color: #121212;
+  --f7-panel-top-color: #a3064f;
+}
+
+.color-primary {
+  --f7-theme-color: #a3064f;
+  --f7-theme-color-rgb: 163, 6, 79;
+  --f7-theme-color-shade: #7c053c;
+  --f7-theme-color-tint: #ca0762;
 }
 
 /* Invert navigation bars to fill style */
-:root,
-:root.theme-dark,
-:root .theme-dark {
-  --f7-bars-bg-color: white;
-  --f7-bars-bg-color-rgb: white;
+:root {
   --f7-bars-border-color: transparent;
   --f7-bars-translucent-opacity: 0.9;
   --f7-bars-text-color: var(--color-1);
@@ -92,6 +101,7 @@ div.stat div.card-footer {
     width: 40px;
     width: 40px;
     margin-left: 0.5em;
+    color: var(--f7-navbar-text-colo);
 }
 
 .card-header-pic .card-header {
@@ -105,9 +115,9 @@ div.stat div.card-footer {
     color: #8e8e93;
 }
 
-a.link {
+/* a.link {
   color: var(--f7-tabbar-link-active-color)
-}
+} */
 
 .panel {
   min-width: 100px;
@@ -161,42 +171,6 @@ a.link {
 
 
 /* css imported from app-covid */
-
-.menu-grid {
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, calc(50% - 5px));
-  grid-gap: 10px;
-}
-
-.menu-grid__item {
-  background-color: #f6f6f6;
-  text-align: center;
-  text-transform: uppercase;
-  color: #1e2f42;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.menu-grid__item.small {
-  vertical-align: middle;
-  font-weight: 400;
-  padding: 8px;
-  text-align: left;
-  background-color: #dff1e0;
-  font-size: 0.8em;
-}
-
-.menu-grid__item.small i {
-  float: left;
-  margin-top: 8px;
-  margin-right: 10px;
-  font-size: 1.8em;
-}
-
-.menu-grid__icon {
-  height: 90px;
-}
 
 .prevention-list .item-text {
   overflow: initial;
