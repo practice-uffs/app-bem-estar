@@ -28,7 +28,7 @@
               <div class="item-inner">
                 <div class="item-title">Baixar dados para acesso offline</div>
                 <div class="item-after">
-                  <label class="toggle toggle-init color-blue">
+                  <label class="toggle toggle-init color-primary">
                     <input type="checkbox" name="offlineStorage" {{#if settings}}{{#if settings.offlineStorage}}checked{{/if}}{{/if}} @change="toogleCheckbox">
                     <span class="toggle-icon"></span>
                   </label>
@@ -62,7 +62,7 @@
               <div class="item-inner">
                 <div class="item-title">Receber notificações no dispositivo</div>
                 <div class="item-after">
-                  <label class="toggle toggle-init color-blue">
+                  <label class="toggle toggle-init color-primary">
                     <input type="checkbox" name="allowNotifications" {{#if settings}}{{#if settings.allowNotifications}}checked{{/if}}{{/if}} @change="toogleCheckbox">
                     <span class="toggle-icon"></span>
                   </label>
@@ -86,7 +86,7 @@
               <div class="item-inner">
                 <div class="item-title">Modo de desenvolvedor</div>
                 <div class="item-after">
-                  <label class="toggle toggle-init color-blue">
+                  <label class="toggle toggle-init color-primary">
                     <input type="checkbox" name="devMode" {{#if settings}}{{#if settings.devMode}}checked{{/if}}{{/if}} @change="toogleCheckbox">
                     <span class="toggle-icon"></span>
                   </label>
@@ -104,7 +104,7 @@
                   <div class="item-inner">
                     <div class="item-title">Usar API de testes</div>
                     <div class="item-after">
-                      <label class="toggle toggle-init color-blue">
+                      <label class="toggle toggle-init color-primary">
                         <input type="checkbox" name="testApi" {{#if settings}}{{#if settings.testApi}}checked{{/if}}{{/if}} @change="toogleCheckbox">
                         <span class="toggle-icon"></span>
                       </label>
@@ -169,18 +169,25 @@
           // Disable all dev options
           if (self.settings['devMode']) {
             app.dialog.confirm('Deseja realmente desativar o modo de desenvolvimento?', function () {
+              console.log(e)
               self.changeSetting('devMode', false)
               self.changeSetting('testApi', false)
+            }, function () {
+              e.target.checked = true
             })
           }
           // Enable dev options
           else
-            app.dialog.password('Digite a senha:', function (password) {
+          app.dialog.password('Digite a senha:', function (password) {
               if (password != 'dev!Practice5918?') {
                 app.dialog.alert('Senha incorreta, modo de desenvolvedor não permitido!')
+                e.target.checked = false
               }
               else
                 self.changeSetting('devMode', true)
+            },
+            function() {
+              e.target.checked = false
             })
         } else if (e.target.name === 'allowNotifications') {
           if (e.target.checked) {

@@ -1,7 +1,7 @@
 <template>
   <div class="panel panel-right panel-cover">
     <div class="content-block">
-      <div class="no-gutter padding" style="background-color: var(--color-3)">
+      <div class="no-gutter padding" style="background-color: var(--f7-panel-top-color);">
         <div class="margin-top padding-top">
           {{#if user}}
           <p class="no-margin"><strong>{{user.name}}</strong></p>
@@ -57,8 +57,6 @@
               </div>
             </a>
           </li>
-          
-          <hr class="no-margin" />
           {{/if}} {{#if isEnabled.settingsPage}}
           <li>
             <a href="/settings/" class="item-link item-content">
@@ -67,22 +65,19 @@
                 <div class="item-title">Configurações</div>
               </div>
             </a>
-            <hr class="no-margin">
           </li>
           {{/if}} {{#if isEnabled.darkTheme}}
           <li class="item-content">
             <div class="item-media"><i class="f7-icons">paintbrush</i></div>
             <div class="item-inner">
               <div class="item-title">Tema escuro</div>
-              <label class="toggle toggle-init " >
+              <label class="toggle toggle-init color-primary" >
                 <input type="checkbox" id="dark-theme-toggle">
                 <span class="toggle-icon"></span>
               </label>
             </div>
-            <hr class="no-margin">
           </li>
           {{/if}}
-          <hr class="no-margin" />
           <li>
             <a href="#" class="item-link item-content" @click="logout()">
               <div class="item-media">
