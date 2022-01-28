@@ -41,6 +41,8 @@ var IsEnabled = {
     heartBeatPage: true,
 
     MyStatisticsPage: true,
+
+    darkTheme: true,
 }
 
 export default IsEnabled;
