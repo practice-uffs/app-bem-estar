@@ -106,6 +106,15 @@ export class Storage {
 		localStorage["settings"] = JSON.stringify(settings);
 	};
 
+	// dark theme
+	async setDarkTheme(state) {
+		localStorage.setItem("darkTheme", state);
+	}
+
+	async getDarkTheme() {
+		return localStorage.getItem("darkTheme");
+	}
+
 	// User credentials methods
 	getUserCredentials(){
 		var self = this;

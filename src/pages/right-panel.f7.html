@@ -67,6 +67,19 @@
                 <div class="item-title">Configurações</div>
               </div>
             </a>
+            <hr class="no-margin">
+          </li>
+          {{/if}} {{#if isEnabled.darkTheme}}
+          <li class="item-content">
+            <div class="item-media"><i class="f7-icons">paintbrush</i></div>
+            <div class="item-inner">
+              <div class="item-title">Tema escuro</div>
+              <label class="toggle toggle-init " >
+                <input type="checkbox" id="dark-theme-toggle">
+                <span class="toggle-icon"></span>
+              </label>
+            </div>
+            <hr class="no-margin">
           </li>
           {{/if}}
           <hr class="no-margin" />
@@ -93,6 +106,8 @@
       return {
         user: null,
         isEnabled: IsEnabled,
+        icon_white_mode: "static/icons/icon_practice.png",
+        icon_dark_mode: "static/icons/icon_practice_white.png"
       };
     },
 
@@ -122,11 +137,51 @@
           app.view.main.router.navigate("/initial/");
         });
       },
+
+      initDarkThemeToggle: async function() {
+				let self = this;
+				let app = self.$app;
+
+				var toggle = app.$$('#dark-theme-toggle');
+
+				if(await app.storage.getDarkTheme() == "true"){
+					toggle.prop('checked', true);
+				} else {
+					toggle.prop('checked', false);
+				}
+
+				this.darkThemeSelection();
+
+				toggle.on('change', () => {
+					this.darkThemeSelection();
+				});
+			},
+
+			darkThemeSelection: function(){
+				let self = this;
+				let app = self.$app;
+
+				var appPage = app.$$("#app");
+
+        var toggle = app.$$('#dark-theme-toggle');
+        var navbarIcon = app.$$(".navbar-icon");
+
+				if(toggle.prop('checked')){
+          navbarIcon.attr('src', self.icon_dark_mode)
+					app.storage.setDarkTheme("true");
+					appPage.addClass("theme-dark");
+					return;
+				}
+        navbarIcon.attr('src', self.icon_white_mode)
+				app.storage.setDarkTheme("false");
+				appPage.removeClass("theme-dark");
+			},
     },
 
     on: {
       panelInit: function () {
         this.loadUser();
+        this.initDarkThemeToggle();
       },
     },
   };
