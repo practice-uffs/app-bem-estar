@@ -38,6 +38,8 @@ var IsEnabled = {
 
     wellnessQuizPage: true,
     
+    meditationPage: true,
+    
     heartBeatPage: true,
 
     MyStatisticsPage: true,

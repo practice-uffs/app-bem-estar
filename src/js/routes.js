@@ -14,6 +14,7 @@ import NotFoundPage from "../pages/404.f7.html";
 import PrejudicesPage from "../pages/prejudices.f7.html";
 import CommonDisordersPage from "../pages/common-disorders.f7.html";
 import SymptomsPage from "../pages/symptoms.f7.html";
+import MeditationPage from "../pages/meditation.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import SeekHelpPage from "../pages/seek-help.f7.html";
 import TipsPage from '../pages/tips.f7.html';
@@ -92,7 +93,6 @@ const homePageRoute = function () {
       component: AffectiveSliderPage,
     });
 
-
   route.tabs = tabs;
 
   return route;
@@ -161,6 +161,16 @@ const prejudicesPageRoute = function () {
   };
 
   if (IsEnabled.prejudicesPage) return route;
+}
+
+const meditationPageRoute = function () {
+  let route = {
+    path: '/meditation/',
+    component: MeditationPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.meditationPage) return route;
 }
 
 
@@ -265,9 +275,8 @@ var routes = [
   heartBeatPageRoute(),
   tipsPageRoute(),
   myStatisticsPageRoute(),
-
-  // Routes imported from: app-covid
   prejudicesPageRoute(),
+  meditationPageRoute(),
   commonDisordersPageRoute(),
   symptomsPageRoute(),
   reasonsPageRoute(),
