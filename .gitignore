@@ -1,5 +1,6 @@
 .idea
 package-lock.json
+cordova/package-lock.json
 
 # Intermediary/compiled files
 .class
