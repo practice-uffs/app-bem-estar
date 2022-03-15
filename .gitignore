@@ -17,6 +17,7 @@ www/
 # res
 resources/signing
 node_modules
+cordova/node_modules
 
 # Created by https://www.gitignore.io/api/windows,visualstudio
 
