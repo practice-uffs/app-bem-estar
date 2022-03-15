@@ -1,4 +1,6 @@
 .idea
+package-lock.json
+cordova/package-lock.json
 
 # Intermediary/compiled files
 .class
@@ -16,6 +18,7 @@ www/
 # res
 resources/signing
 node_modules
+cordova/node_modules
 
 # Created by https://www.gitignore.io/api/windows,visualstudio
 
