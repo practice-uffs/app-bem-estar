@@ -1,110 +1,116 @@
 <template>
-    <div class="page" data-name="MeditationPage">
-        <div class="navbar">
-            <div class="navbar-bg"></div>
-            <div class="navbar-inner sliding">
-                <div class="left">
-                    <a href="#" class="link back">
-                        <i class="icon icon-back"></i>
-                        <span class="if-not-md">Back</span>
-                    </a>
-                </div>
-                <div class="title">Meditação Guiada</div>
-            </div>
-        </div>
-        <div class="page-content">
+	<div class="page" data-name="MeditationPage">
+		<div class="navbar">
+			<div class="navbar-bg"></div>
+			<div class="navbar-inner sliding">
+				<div class="left">
+					<a href="#" class="link back">
+						<i class="icon icon-back"></i>
+						<span class="if-not-md">Back</span>
+					</a>
+				</div>
+				<div class="title">Meditação Guiada</div>
+			</div>
+		</div>
+		<div class="page-content">
 
-            <p class="block block-strong inset">Acalme-se ouvindo essas meditações guiadas produzidas especialmente para você por <strong>Alan David Evaristo Panizzi</strong>, psicólogo do Instituto Federal Santa Catarina, campus Chapecó/SC.<br><br> Encontre um lugar calmo, sente-se e reflita com os áudios.</p>
+			<p class="block block-strong inset">Acalme-se ouvindo essas meditações guiadas produzidas especialmente para
+				você por <strong>Alan David Evaristo Panizzi</strong>, psicólogo do Instituto Federal Santa Catarina,
+				campus Chapecó/SC.<br><br> Encontre um lugar calmo, sente-se e reflita com os áudios.</p>
 
-            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
-                <div class="swiper-pagination"></div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="block block-strong inset">
-                            <h3 class="item-text text-align-center">
-                                Lugar Seguro
-                            </h3>
-                            <div class="row">
-                                <div class="col-30"></div>
-                                <div class="col-40"><img src="../static/images/Meditation/safe-place.png" class="header-image"></div>
-                                <div class="col-30"></div>
-                            </div>
-                            <p class="item-text text-align-center">
-                                <audio controls>
-                                    <source src="../static/audios/lugar seguro.mp3" type="audio/mpeg">
-                                    Erro ao reproduzir o áudio.
-                                </audio>    
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="block block-strong inset ">
-                            <h3 class="item-text text-align-center">
-                                Respiração Calma
-                            </h3>
-                            <div class="row">
-                                <div class="col-30"></div>
-                                <div class="col-40"><img src="../static/images/Meditation/calm-breathe.png" class="header-image"></div>
-                                <div class="col-30"></div>
-                            </div>
-                            <p class="item-text text-align-center">
-                                <p class="item-text text-align-center">
-                                    <audio controls>
-                                        <source src="../static/audios/respiração calma.mp3" type="audio/mpeg">
-                                        Erro ao reproduzir o áudio.
-                                    </audio>    
-                                </p>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="block block-strong inset ">
-                            <h3 class="item-text text-align-center">
-                                Cor Compassiva
-                            </h3>
-                            <div class="row">
-                                <div class="col-30"></div>
-                                <div class="col-40"><img src="../static/images/Meditation/compassive-color.png" class="header-image"></div>
-                                <div class="col-30"></div>
-                            </div>
+			<div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50"
+				class="swiper-container swiper-init demo-swiper">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="block block-strong inset">
+							<h3 class="item-text text-align-center">
+								Lugar Seguro
+							</h3>
+							<div class="row">
+								<div class="col-30"></div>
+								<div class="col-40"><img src="static/images/Meditation/safe-place.png"
+										class="header-image"></div>
+								<div class="col-30"></div>
+							</div>
+							<p class="item-text text-align-center">
+								<audio controls>
+									<source src="static/audios/lugar seguro.mp3" type="audio/mpeg">
+									Erro ao reproduzir o áudio.
+								</audio>
+							</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="block block-strong inset ">
+							<h3 class="item-text text-align-center">
+								Respiração Calma
+							</h3>
+							<div class="row">
+								<div class="col-30"></div>
+								<div class="col-40"><img src="static/images/Meditation/calm-breathe.png"
+										class="header-image"></div>
+								<div class="col-30"></div>
+							</div>
+							<p class="item-text text-align-center">
+								<p class="item-text text-align-center">
+									<audio controls>
+										<source src="static/audios/respiração calma.mp3" type="audio/mpeg">
+										Erro ao reproduzir o áudio.
+									</audio>
+								</p>
+							</p>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="block block-strong inset ">
+							<h3 class="item-text text-align-center">
+								Cor Compassiva
+							</h3>
+							<div class="row">
+								<div class="col-30"></div>
+								<div class="col-40"><img src="static/images/Meditation/compassive-color.png"
+										class="header-image"></div>
+								<div class="col-30"></div>
+							</div>
 
-                            <p class="item-text text-align-center">
-                                <p class="item-text text-align-center">
-                                    <audio controls>
-                                        <source src="../static/audios/cor compassiva.mp3" type="audio/mpeg">
-                                        Erro ao reproduzir o áudio.
-                                    </audio>    
-                                </p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							<p class="item-text text-align-center">
+								<p class="item-text text-align-center">
+									<audio controls>
+										<source src="static/audios/cor compassiva.mp3" type="audio/mpeg">
+										Erro ao reproduzir o áudio.
+									</audio>
+								</p>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
-    export default {};
+	export default {};
 </script>
 
 <style>
-    .header-image{
-        width: 100%;
-    }
+	.header-image {
+		width: 100%;
+	}
 
-    .block{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-    }
-    
-    .swiper-pagination{
-        position: fixed;
-        bottom: 0px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    
-    audio::-webkit-media-controls-panel{
-        color: white;
-        background-color: #c92e76;
-    }
+	.block {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	.swiper-pagination {
+		position: fixed;
+		bottom: 0px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	audio::-webkit-media-controls-panel {
+		color: white;
+		background-color: #c92e76;
+	}
 </style>
