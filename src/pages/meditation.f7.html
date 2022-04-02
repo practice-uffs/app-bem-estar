@@ -2,7 +2,7 @@
 	<div class="page" data-name="MeditationPage">
 		<div class="navbar">
 			<div class="navbar-bg"></div>
-			<div class="navbar-inner sliding">
+			<div class="navbar-inner">
 				<div class="left">
 					<a href="#" class="link back">
 						<i class="icon icon-back"></i>
@@ -12,85 +12,200 @@
 				<div class="title">Meditação Guiada</div>
 			</div>
 		</div>
-		<div class="page-content">
 
+		<div class="page-content">
 			<p class="block block-strong inset">Acalme-se ouvindo essas meditações guiadas produzidas especialmente para
 				você por <strong>Alan David Evaristo Panizzi</strong>, psicólogo do Instituto Federal Santa Catarina,
-				campus Chapecó/SC.<br><br> Encontre um lugar calmo, sente-se e reflita com os áudios.</p>
+				campus Chapecó/SC.<br><br> Encontre um lugar calmo, sente-se e reflita com os áudios.
+			</p>
 
-			<div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50"
-				class="swiper-container swiper-init demo-swiper">
-				<div class="swiper-pagination"></div>
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="block block-strong inset">
-							<h3 class="item-text text-align-center">
-								Lugar Seguro
-							</h3>
-							<div class="row">
-								<div class="col-30"></div>
-								<div class="col-40"><img src="static/images/Meditation/safe-place.png"
-										class="header-image"></div>
-								<div class="col-30"></div>
+			<div>
+				<div class="block block-strong inset">
+					<a class="button popup-open" href="#" data-popup=".popup-safePlace" style="height: 100%;">
+						<h3 class="item-text text-align-center">
+							Lugar Seguro
+						</h3>
+
+						<div class="row">
+							<div class="col-30"></div>
+							<div class="col-40"><img src="static/images/Meditation/safe-place.png" class="header-image">
 							</div>
-							<p class="item-text text-align-center">
-								<audio controls>
-									<source src="static/audios/lugar seguro.mp3" type="audio/mpeg">
-									Erro ao reproduzir o áudio.
-								</audio>
-							</p>
+							<div class="col-30"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div>
+				<div class="block block-strong inset">
+					<a class="button popup-open" href="#" data-popup=".popup-calmBreathe" style="height: 100%;">
+						<h3 class="item-text text-align-center">
+							Respiração Calma
+						</h3>
+
+						<div class="row">
+							<div class="col-30"></div>
+							<div class="col-40"><img src="static/images/Meditation/calm-breathe.png" class="header-image"></div>
+							<div class="col-30"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div>
+				<div class="block block-strong inset">
+					<a class="button popup-open" href="#" data-popup=".popup-compasiveColor" style="height: 100%;">
+						<h3 class="item-text text-align-center">
+							Cor Compassiva
+						</h3>
+						<div class="row">
+							<div class="col-30"></div>
+							<div class="col-40"><img src="static/images/Meditation/compassive-color.png" class="header-image"></div>
+							<div class="col-30"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="popup popup-safePlace">
+			<div class="navbar">
+				<div class="navbar-bg"></div>
+				<div class="navbar-inner">
+					<div class="left">
+						<!-- <a href="#" class="link back"> -->
+						<a class="link popup-close" href="#">
+							<i class="icon icon-back"></i> </a>
+						<span class="if-not-md">Back</span>
+						</a>
+					</div>
+					<div class="title">Meditação Guiada</div>
+				</div>
+			</div>
+			<div class="page-content card-audio">
+				<div class="block block-strong inset">
+					<h2 style="text-align: center; width: 100%;">Lugar Seguro</h2>
+					<div class="row">
+						<div class="col-30"></div>
+						<div class="col-40"><img src="static/images/Meditation/safe-place.png" class="header-image">
+						</div>
+						<div class="col-30"></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc.
+						Quisque sodales scelerisque est, at porta justo cursus ac. Integer vitae quam a ante lobortis
+						lobortis. Nam vehicula sagittis quam, sit amet congue purus consequat sed. Maecenas eget mattis lectus.
+						Aliquam et elementum neque. Vestibulum sed egestas ipsum.</p>
+					<p>Boa audição!</p>
+					<p class="item-text text-align-center">
+						<audio controls class="audio-meditation" @play="pauseAll('0');">
+							<source src="static/audios/lugar seguro.mp3" type="audio/mpeg">
+							Erro ao reproduzir o áudio.
+						</audio>
+					</p>
+				</div>
+			</div>
+
+			<div class="popup popup-compasiveColor">
+				<div class="navbar">
+					<div class="navbar-bg"></div>
+					<div class="navbar-inner">
+						<div class="left">
+							<!-- <a href="#" class="link back"> -->
+							<a class="link popup-close" href="#">
+								<i class="icon icon-back"></i> </a>
+							<span class="if-not-md">Back</span>
+							</a>
+						</div>
+						<div class="title">Meditação Guiada</div>
+					</div>
+				</div>
+				<div class="page-content card-audio">
+					<div class="block block-strong inset">
+						<h2 style="text-align: center; width: 100%;">Cor Compassiva</h2>
+						<div class="row">
+							<div class="col-30"></div>
+							<div class="col-40"><img src="static/images/Meditation/safe-place.png" class="header-image">
+							</div>
+							<div class="col-30"></div>
+						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc.
+							Quisque sodales scelerisque est, at porta justo cursus ac. Integer vitae quam a ante lobortis
+							lobortis. Nam vehicula sagittis quam, sit amet congue purus consequat sed. Maecenas eget mattis lectus.
+							Aliquam et elementum neque. Vestibulum sed egestas ipsum.</p>
+						<p>Boa audição!</p>
+						<p class="item-text text-align-center">
+							<audio controls class="audio-meditation" @play="pauseAll('1');">
+								<source src="static/audios/cor compassiva.mp3" type="audio/mpeg">
+								Erro ao reproduzir o áudio.
+							</audio>
+						</p>
+					</div>
+				</div>
+
+				<div class="popup popup-calmBreathe">
+					<div class="navbar">
+						<div class="navbar-bg"></div>
+						<div class="navbar-inner">
+							<div class="left">
+								<!-- <a href="#" class="link back"> -->
+								<a class="link popup-close" href="#">
+									<i class="icon icon-back"></i> </a>
+								<span class="if-not-md">Back</span>
+								</a>
+							</div>
+							<div class="title">Meditação Guiada</div>
 						</div>
 					</div>
-					<div class="swiper-slide">
-						<div class="block block-strong inset ">
-							<h3 class="item-text text-align-center">
-								Respiração Calma
-							</h3>
-							<div class="row">
-								<div class="col-30"></div>
-								<div class="col-40"><img src="static/images/Meditation/calm-breathe.png"
-										class="header-image"></div>
-								<div class="col-30"></div>
-							</div>
-							<p class="item-text text-align-center">
-								<p class="item-text text-align-center">
-									<audio controls>
-										<source src="static/audios/respiração calma.mp3" type="audio/mpeg">
-										Erro ao reproduzir o áudio.
-									</audio>
-								</p>
-							</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="block block-strong inset ">
-							<h3 class="item-text text-align-center">
-								Cor Compassiva
-							</h3>
-							<div class="row">
-								<div class="col-30"></div>
-								<div class="col-40"><img src="static/images/Meditation/compassive-color.png"
-										class="header-image"></div>
-								<div class="col-30"></div>
-							</div>
 
-							<p class="item-text text-align-center">
-								<p class="item-text text-align-center">
-									<audio controls>
-										<source src="static/audios/cor compassiva.mp3" type="audio/mpeg">
-										Erro ao reproduzir o áudio.
-									</audio>
-								</p>
-							</p>
+				<div class="page-content card-audio">
+					<div class="block block-strong inset">
+						<h2 style="text-align: center; width: 100%;">Respiração Calma</h2>
+						<div class="row">
+							<div class="col-30"></div>
+							<div class="col-40"><img src="static/images/Meditation/calm-breathe.png" class="header-image"></div>
+							<div class="col-30"></div>
 						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac diam ac quam euismod porta vel a nunc.
+							Quisque sodales scelerisque est, at porta justo cursus ac. Integer vitae quam a ante lobortis
+							lobortis. Nam vehicula sagittis quam, sit amet congue purus consequat sed. Maecenas eget mattis lectus.
+							Aliquam et elementum neque. Vestibulum sed egestas ipsum.</p>
+						<p>Boa audição!</p>
+						<p class="item-text text-align-center">
+							<audio controls class="audio-meditation" @play="pauseAll('2');">
+								<source src="static/audios/respiração calma.mp3" type="audio/mpeg">
+								Erro ao reproduzir o áudio.
+							</audio>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </template>
+
 <script>
-	export default {};
+	export default {
+		methods: {
+			pauseAll: function (audio_player) {
+				var self = this;
+				var app = self.$app;
+
+				var elements = app.$$('audio');
+				console.log(elements)
+
+				elements.forEach((element, index) => {
+					if (index == audio_player) {
+						console.log('Igual')
+
+					} else {
+						console.log('diferente')
+						elements[index].pause();
+					}
+				}
+				);
+				//enigma.pause();
+			}
+		},
+	}
 </script>
 
 <style>
@@ -100,6 +215,23 @@
 
 	.block {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	.card-audio {
+		background-color: var(--f7-page-bg-color);
+		padding-top: 0;
+    	margin-top: 0;
+		align-items: center;
+	}
+
+	.title-audio {
+		flex-shrink: 10;
+		font-weight: var(--f7-navbar-title-font-weight);
+		line-height: var(--f7-navbar-title-line-height);
+		text-align: var(--f7-navbar-title-text-align);
+		font-size: var(--f7-navbar-title-font-size);
+		margin-left: var(--f7-navbar-title-margin-left);
+		margin-right: var(--f7-navbar-title-margin-left);
 	}
 
 	.swiper-pagination {
