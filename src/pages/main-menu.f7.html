@@ -7,7 +7,7 @@
                         <div class="swiper-pagination"></div>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" id="card-sleep">
-                                <div class="card">
+                                <div class="card padding-bottom">
                                     <div id="card-content-sleep" class="h100">
                                         <div class="card-question card-content card-content-padding">
                                             <p>Como tem sido a qualidade do seu sono nos últimos 7 dias?</p>
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="swiper-slide" id="card-food">
-                                <div class="card">
+                                <div class="card padding-bottom">
                                     <div id="card-content-food" class="h100">
                                         <div class="card-question card-content card-content-padding">
                                             <p>Como tem sido a qualidade da sua alimentação nos últimos 7 dias?</p>
@@ -85,10 +85,10 @@
                             </div>
 
                             <div class="swiper-slide" id="card-happiness">
-                                <div class="card">
+                                <div class="card padding-bottom">
                                     <div id="card-content-happiness" class="h100">
                                         <div class="card-question card-content card-content-padding">
-                                            <p>Como você está se sentindo agora?</p>
+                                            <p>Como você está se sentindo agora? <br><br></p>
                                         </div>
                                         <div class="row padding">
                                             <div class="row">
@@ -132,7 +132,7 @@
                         <div class="swiper-pagination"></div>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" id="card-physical-activity">
-                                <div class="card">
+                                <div class="card padding-bottom">
                                     <div id="card-content-physical-activity" class="h100 card-content-padding">
                                         <div class="card-question card-content">
                                             Quantas vezes praticou atividade física nos últimos 7 dias?
@@ -181,15 +181,16 @@
                 </div>
             </div>
 
+            <!-- Menu -->
             <div class="menu-grid">
                 <a href="/common-disorders/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/ask-for-help.png" class="menu-grid__icon">
-                        <div class="item-title">Transtornos mais comuns</div>
+                        <div class="item-title">Transtornos comuns</div>
                     </div>
                 </a>
 
-                <a href="/symptoms/" class="menu-grid__item">
+                <!-- <a href="/symptoms/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/feeling-down.png" class="menu-grid__icon">
                         <div class="item-title">Principais sintomas</div>
@@ -230,21 +231,23 @@
                         <div class="item-title">Batimento Cardíaco</div>
                     </div>
                 </a>
-
-                <a href="/tips/health" class="menu-grid__item">
+            -->
+                <a href="/tip-menu/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/mental-health.png" class="menu-grid__icon">
-                        <div class="item-title">Saúde</div>
+                        <div class="item-title">Dicas</div>
                     </div>
                 </a>
 
-                <a href="/tips/sleep" class="menu-grid__item">
-                    <div class="item-inner">
-                        <img src="static/images/sleep.png" class="menu-grid__icon">
-                        <div class="item-title">Sono</div>
-                    </div>
-                </a>
+                <!-- 
 
+                    <a href="/tips/sleep" class="menu-grid__item">
+                        <div class="item-inner">
+                            <img src="static/images/sleep.png" class="menu-grid__icon">
+                            <div class="item-title">Sono</div>
+                        </div>
+                </a>
+                
                 <a href="/tips/feeding" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/health-food.png" class="menu-grid__icon">
@@ -258,25 +261,18 @@
                         <div class="item-title">Atividade Física</div>
                     </div>
                 </a>
-
-                <a href="/tips/leisure" class="menu-grid__item">
-                    <div class="item-inner">
-                        <img src="static/images/leisure.png" class="menu-grid__icon">
-                        <div class="item-title">Dicas de Lazer</div>
-                    </div>
-                </a>
-                
-                <a href="/my-statistics/" class="menu-grid__item">
-                    <div class="item-inner">
-                        <img src="static/images/know-yourself.png" class="menu-grid__icon">
-                        <div class="item-title">Minhas estatísticas</div>
-                    </div>
-                </a>
-                
+            
+            -->
                 <a href="/meditation/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/meditation2.png" class="menu-grid__icon">
                         <div class="item-title">Meditação Guiada</div>
+                    </div>
+                </a>
+                <a href="/my-statistics/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/know-yourself.png" class="menu-grid__icon">
+                        <div class="item-title">Minhas estatísticas</div>
                     </div>
                 </a>
             </div>
@@ -495,6 +491,11 @@
         color: #1e2f42;
         font-weight: bold;
         padding: 10px;
+        display: flex;
+        aspect-ratio: 1;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
     }
 
     .theme-dark .menu-grid__item {
