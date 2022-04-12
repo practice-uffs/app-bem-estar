@@ -18,6 +18,7 @@ import MeditationPage from "../pages/meditation.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import SeekHelpPage from "../pages/seek-help.f7.html";
 import TipsPage from '../pages/tips.f7.html';
+import TipMenuPage from '../pages/tip-menu.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
 import MyStatisticsPage from '../pages/my-statistics.f7.html';
@@ -246,6 +247,16 @@ const tipsPageRoute = function () {
   if (IsEnabled.tipsPage) return route;
 }
 
+const tipMenuPageRoute = function () {
+  let route = {
+    path: '/tip-menu/',
+    component: TipMenuPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.tipMenu) return route;
+}
+
 
 const loginPageRoute = function () {
   return {
@@ -274,6 +285,7 @@ var routes = [
   wellnessQuizPageRoute(),
   heartBeatPageRoute(),
   tipsPageRoute(),
+  tipMenuPageRoute(),
   myStatisticsPageRoute(),
   prejudicesPageRoute(),
   meditationPageRoute(),

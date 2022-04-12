@@ -36,6 +36,8 @@ var IsEnabled = {
 
     tipsPage: true,
 
+    tipMenu: true,
+
     wellnessQuizPage: true,
     
     meditationPage: true,
