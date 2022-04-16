@@ -1,8 +1,28 @@
 <template>
     <div data-name="main-menu">
         <div class="tab tab-active" id="tab-1">
-            <div class="accordion-item accordion-item-opened padding-top">
+            <div id="accordion" class="accordion-item accordion-item-opened padding-top">
                 <div class="accordion-item-content">
+                    <!-- Conssentimento -->
+                    <div id="consent" class="consentTab">
+                        <div class="card padding-bottom">
+                            <div id="card-content-leisure" class="h100 card-content-padding">
+                                <div class="card-question card-content">
+                                    Você permite que o aplicativo armazene as informações que você responder neste questionário?
+                                    <br>Elas podem ser úteis para manter o registro de como anda sua saúde mental. 
+                                </div>
+
+                                <div class="row margin-top">
+                                    <button @click="haveConsent()" class="button col button-outline button-round">Sim</button>
+                                    <button id="button_toggle" class="button col button-outline button-round accordion-item-toggle">Não</button>
+                                </div>
+                                <div style="width: 100%; text-align: center; padding-top: 35px;">
+                                    <a href="/consent/">saiba mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container" id="emoji-poll-swiper">
                         <div class="swiper-pagination"></div>
                         <div class="swiper-wrapper">
@@ -88,7 +108,7 @@
                                 <div class="card padding-bottom">
                                     <div id="card-content-happiness" class="h100">
                                         <div class="card-question card-content card-content-padding">
-                                            <p>Como você está se sentindo agora? <br><br></p>
+                                            <p>Como você está se sentindo agora?</p>
                                         </div>
                                         <div class="row padding">
                                             <div class="row">
@@ -210,14 +230,14 @@
                         <div class="item-title">Preconceitos e tabus</div>
                     </div>
                 </a>
-                
-                <a href="/seek-help/" class="menu-grid__item">
+                 -->
+                <!-- <a href="/seek-help/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/go-to-therapy.png" class="menu-grid__icon">
                         <div class="item-title">Buscar ajuda</div>
                     </div>
-                </a>
-            
+                </a> -->
+                <!-- 
                 <a href="/wellness-quiz/" class="menu-grid__item">
                     <div class="item-inner">
                         <img src="static/images/quiz.png" class="menu-grid__icon">
@@ -290,6 +310,23 @@
             }
         },
         methods: {
+            haveConsent: function () {
+                var self = this;
+                var app = self.$app;
+                app.storage.setConsent();
+                this.checkConsent();
+            },
+           
+            checkConsent: function () {
+                var self = this;
+                var app = self.$app;
+                let blocker;
+                blocker = app.$$("#consent");
+                if (app.storage.getConsent() == "true"){
+                    blocker.hide();
+                };
+            },
+
             swipersInit: async function () {
                 var self = this;
                 var app = self.$app;
@@ -430,8 +467,9 @@
                 setTimeout(() => {
                     pollCard.hide();
                     pollCard.css('opacity', '1');
-                    app.dialog.alert('Obrigado por sua resposta :)');
+                    //app.dialog.alert('Obrigado por sua resposta :)');
                     contentSlide.css("pointer-events", "auto");
+                    this.showToastBottom();
                 }, 600);
 
                 setTimeout(function () {
@@ -442,6 +480,21 @@
                     self.emojiPollSwiper.update();
                     self.buttonPollSwiper.update();
                 }, timeout);
+            },
+
+            showToastBottom: function () {
+                let toastBottom;
+                var self = this;
+                var app = self.$app;
+                // Create toast
+                if (!toastBottom) {
+                    toastBottom = app.toast.create({
+                        text: 'Obrigado pela sua resposta! :)',
+                        closeTimeout: 3000,
+                    });
+                }
+                // Open it
+                toastBottom.open();
             },
         },
         on: {
@@ -466,10 +519,22 @@
                         arrow.transform('rotateX(180deg)');
                     }
                 })
+
+                app.$$('#button_toggle').click((e) => {
+                    let accordion = app.$$('#accordion');
+                    let arrow = app.$$('#arrow_toggle');
+                    arrow.transition(600);
+                    
+                    if (accordion.hasClass('accordion-item-opened')) {
+                        arrow.transform('rotateX(180deg)');
+                        app.accordion.close('#accordion');
+                    }
+                })
             },
             tabMounted: function () {
                 this.lottieInit();
                 this.swipersInit();
+                this.checkConsent();
             }
         }
     };
@@ -526,6 +591,17 @@
         font-size: 16px;
         font-weight: 500;
         text-align: justify;
+    }
+
+    .consentTab {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 2;
+        background-color: var(--f7-page-bg-color);
     }
 
     .pa-fontsize {
