@@ -13,6 +13,7 @@ import LoginPage from "../pages/login.f7.html";
 import NotFoundPage from "../pages/404.f7.html";
 import PrejudicesPage from "../pages/prejudices.f7.html";
 import CommonDisordersPage from "../pages/common-disorders.f7.html";
+import ConsentPage from "../pages/consent.f7.html";
 import SymptomsPage from "../pages/symptoms.f7.html";
 import MeditationPage from "../pages/meditation.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
@@ -109,6 +110,15 @@ const rightPanelRoute = function () {
     beforeEnter: authenticated,
   };
 
+  if (IsEnabled.rightPanel) return route;
+};
+
+const consentPageRoute = function () {
+  let route = {
+    path: "/consent/",
+    component: ConsentPage,
+    beforeEnter: authenticated,
+  };
   if (IsEnabled.rightPanel) return route;
 };
 
@@ -289,6 +299,7 @@ var routes = [
   myStatisticsPageRoute(),
   prejudicesPageRoute(),
   meditationPageRoute(),
+  consentPageRoute(),
   commonDisordersPageRoute(),
   symptomsPageRoute(),
   reasonsPageRoute(),

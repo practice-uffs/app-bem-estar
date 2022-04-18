@@ -291,6 +291,15 @@ export class Storage {
 		return history;
 	};
 
+	setConsent() {
+		localStorage["consent"] = true;
+	};
+
+	getConsent() {
+		let consent = localStorage.getItem("consent");
+		return consent;
+	};
+
 	setHappinessHistory(awnser) {
 		let oldHistory = localStorage.getItem("happynessHistory");
 		oldHistory = JSON.parse(oldHistory);
