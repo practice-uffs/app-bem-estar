@@ -37,6 +37,8 @@ var IsEnabled = {
     tipsPage: true,
 
     tipMenu: true,
+    
+    trackMenu: true,
 
     wellnessQuizPage: true,
     

@@ -126,7 +126,8 @@
       logout: function () {
         let self = this;
         let app = self.$app;
-
+       
+        
         app.dialog.confirm("Tem certeza que deseja sair?", function () {
           app.api.logout();
           app.view.main.router.navigate("/initial/");
