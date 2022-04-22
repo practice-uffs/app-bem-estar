@@ -1,0 +1,132 @@
+<template>
+    <div class="page" data-name="track-menu">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Acompanhamento</div>
+            </div>
+        </div>
+
+        <div class="page-content">
+            <p class="block block-strong inset">Aqui você poderá manter o registro de como você está se sentindo ao
+                longo do tempo, isso vai ajudar você ao falar com algum especialista sobre como você se sentiu.</p>
+            <div class="menu-grid">
+                <a href="/wellness-quiz/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/quiz.png" class="menu-grid__icon">
+                        <div class="item-title">Questionário de Bem-Estar</div>
+                    </div>
+                </a>
+
+                <a href="/hr/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/heartbeat.png" class="menu-grid__icon">
+                        <div class="item-title">Batimento Cardíaco</div>
+                    </div>
+                </a>
+
+                <a href="/my-statistics/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/exercise.png" class="menu-grid__icon">
+                        <div class="item-title">Minhas estatísticas</div>
+                    </div>
+                </a>
+               
+                <a href="/seek-help/" class="menu-grid__item">
+                    <div class="item-inner">
+                        <img src="static/images/go-to-therapy.png" class="menu-grid__icon">
+                        <div class="item-title">Buscar ajuda</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</template>
+<script>
+    export default {};
+</script>
+<style>
+    .menu-grid {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(50% - 5px));
+        grid-gap: 10px;
+    }
+    
+    .block {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-grid__item {
+        background-color: var(--f7-bars-bg-color);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+        text-align: center;
+        text-transform: uppercase;
+        color: #1e2f42;
+        font-weight: bold;
+        padding: 10px;
+        display: flex;
+        aspect-ratio: 1;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .theme-dark .menu-grid__item {
+        color: #efefef;
+    }
+
+    .menu-grid__item.small {
+        vertical-align: middle;
+        font-weight: 400;
+        padding: 8px;
+        text-align: left;
+        background-color: #dff1e0;
+        font-size: 0.8em;
+    }
+
+    .menu-grid__item.small i {
+        float: left;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 1.8em;
+    }
+
+    .menu-grid__icon {
+        height: 55px;
+    }
+
+    .card-question {
+        font-size: 16px;
+        font-weight: 500;
+        text-align: justify;
+    }
+
+    .pa-fontsize {
+        font-size: x-large;
+    }
+
+    .padding-10 {
+        padding: 10px;
+    }
+
+    .h100 {
+        height: 100%;
+    }
+
+    .w100 {
+        width: 100%;
+    }
+
+    .p-5px {
+        padding: 5px;
+    }
+</style>

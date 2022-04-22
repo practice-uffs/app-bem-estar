@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "title": null,
+        "title": "Prefira sempre comer alimentos naturais",
         "text": "Evite a ingestão de alimentos processados.",
         "video": null,
         "image": null,
-        "icon": "static/images/health-food.png"
+        "icon": null
         
     },
     {
@@ -18,10 +18,10 @@
     },
     {
         "id": 3,
-        "title": null,
+        "title": "Beba água!",
         "text": "Busque ingerir aproximadamente dois litros de água todos os dias.",
         "video": null,
         "image": null,
-        "icon": "https://cdn.pixabay.com/photo/2019/05/18/12/58/water-4211792_960_720.png"
+        "icon": null
     }
 ]
