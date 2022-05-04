@@ -13,11 +13,14 @@ import LoginPage from "../pages/login.f7.html";
 import NotFoundPage from "../pages/404.f7.html";
 import PrejudicesPage from "../pages/prejudices.f7.html";
 import CommonDisordersPage from "../pages/common-disorders.f7.html";
+import ConsentPage from "../pages/consent.f7.html";
 import SymptomsPage from "../pages/symptoms.f7.html";
 import MeditationPage from "../pages/meditation.f7.html";
 import ReasonsPage from "../pages/reasons.f7.html";
 import SeekHelpPage from "../pages/seek-help.f7.html";
 import TipsPage from '../pages/tips.f7.html';
+import TipMenuPage from '../pages/tip-menu.f7.html';
+import TrackMenuPage from '../pages/track-menu.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
 import MyStatisticsPage from '../pages/my-statistics.f7.html';
@@ -108,6 +111,15 @@ const rightPanelRoute = function () {
     beforeEnter: authenticated,
   };
 
+  if (IsEnabled.rightPanel) return route;
+};
+
+const consentPageRoute = function () {
+  let route = {
+    path: "/consent/",
+    component: ConsentPage,
+    beforeEnter: authenticated,
+  };
   if (IsEnabled.rightPanel) return route;
 };
 
@@ -229,7 +241,7 @@ const myStatisticsPageRoute = function () {
   let route = {
     path: '/my-statistics/',
     component: MyStatisticsPage,
-    // beforeEnter: authenticated,
+    beforeEnter: authenticated,
   };
 
   if (IsEnabled.MyStatisticsPage) return route;
@@ -244,6 +256,26 @@ const tipsPageRoute = function () {
   };
 
   if (IsEnabled.tipsPage) return route;
+}
+
+const tipMenuPageRoute = function () {
+  let route = {
+    path: '/tip-menu/',
+    component: TipMenuPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.tipMenu) return route;
+}
+
+const trackMenuPageRoute = function () {
+  let route = {
+    path: '/track-menu/',
+    component: TrackMenuPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.trackMenu) return route;
 }
 
 
@@ -274,9 +306,12 @@ var routes = [
   wellnessQuizPageRoute(),
   heartBeatPageRoute(),
   tipsPageRoute(),
+  tipMenuPageRoute(),
+  trackMenuPageRoute(),
   myStatisticsPageRoute(),
   prejudicesPageRoute(),
   meditationPageRoute(),
+  consentPageRoute(),
   commonDisordersPageRoute(),
   symptomsPageRoute(),
   reasonsPageRoute(),

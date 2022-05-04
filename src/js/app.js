@@ -27,6 +27,11 @@ var app = new Framework7({
   name: 'APP-SAE', // App name
   theme: 'auto', // Automatic theme detection
 
+  dialog: {
+    buttonOk: 'Sim',
+    buttonCancel: 'Não'
+  },
+
   // App routes
   routes: routes,
 

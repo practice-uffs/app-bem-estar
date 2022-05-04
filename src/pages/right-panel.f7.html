@@ -126,7 +126,8 @@
       logout: function () {
         let self = this;
         let app = self.$app;
-
+       
+        
         app.dialog.confirm("Tem certeza que deseja sair?", function () {
           app.api.logout();
           app.view.main.router.navigate("/initial/");
@@ -164,10 +165,15 @@
 				if(toggle.prop('checked')){
           navbarIcon.attr('src', self.icon_dark_mode)
 					app.storage.setDarkTheme("true");
+              
+          app.statusbar.setBackgroundColor("#161616");
+				  app.statusbar.setTextColor("white");	
 					appPage.addClass("theme-dark");
 					return;
 				}
         navbarIcon.attr('src', self.icon_white_mode)
+        app.statusbar.setBackgroundColor("#acacad");
+				app.statusbar.setTextColor("black");	
 				app.storage.setDarkTheme("false");
 				appPage.removeClass("theme-dark");
 			},
@@ -177,6 +183,30 @@
       panelInit: function () {
         this.loadUser();
         this.initDarkThemeToggle();
+      },
+      panelClosed: async function () {
+        let self = this;
+				let app = self.$app;
+        if(await app.storage.getDarkTheme() == 'true'){
+          app.statusbar.setBackgroundColor("#202020");
+				  app.statusbar.setTextColor("white");
+          
+        } else {
+          app.statusbar.setBackgroundColor("#f7f7f7");
+		  		app.statusbar.setTextColor("black");	
+        }
+      },
+      panelOpened: async function () {
+        let self = this;
+				let app = self.$app;
+        if(await app.storage.getDarkTheme() == 'true'){
+          app.statusbar.setBackgroundColor("#161616");
+				  app.statusbar.setTextColor("white");
+          
+        } else {
+          app.statusbar.setBackgroundColor("#acacad");
+			  	app.statusbar.setTextColor("black");
+        }
       },
     },
   };

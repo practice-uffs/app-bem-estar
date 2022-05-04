@@ -11,5 +11,20 @@
 </template>
 <script>
     export default {
+        on: {
+            pageInit: async function (page) {
+                let self = this;
+                let app = self.$app;
+                app.storage.getDarkTheme();
+                if (await app.storage.getDarkTheme() == 'true') {
+                    app.statusbar.setBackgroundColor("#202020");
+                    app.statusbar.setTextColor("white");
+
+                } else {
+                    app.statusbar.setBackgroundColor("#f7f7f7");
+                    app.statusbar.setTextColor("black");
+                }
+            }
+        },
     }
 </script>
