@@ -177,9 +177,14 @@
                     </div>
                 </div>
             </div>
-            <div class="block-title">Estatísticas Diárias</div>
-            <div class="block block-strong no-padding">
-                <div id="demo-calendar-inline-container"></div>
+            <div class="card">
+                <div class="card-header">Estatísticas Diárias</div>
+                <div class="card-content card-content-padding">
+                    <p>Aqui você consegue visualizar suas estatísticas diárias de humor e também suas respostas ao Questionário de Bem-Estar</p>
+                </div>
+                <div class="block no-padding">
+                    <div id="demo-calendar-inline-container"></div>
+                </div>
             </div>
         </div>
 
@@ -272,7 +277,9 @@
                 var calendarInline = app.calendar.create({
                     containerEl: '#demo-calendar-inline-container',
                     value: [new Date()],
-                    weekHeader: false,
+                    weekHeader: true,
+                    dayNamesShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+                    firstDay: 0,
                     renderToolbar: function () {
                         return '<div class="toolbar calendar-custom-toolbar no-shadow">' +
                             '<div class="toolbar-inner">' +
@@ -350,9 +357,6 @@
 
                                             $$('.daily-popup-content').html(popupContent)
                                         },
-                                        opened: function (popup) {
-                                            console.log('Popup opened');
-                                        },
                                     }
                                 });
                                 dynamicPopup.open();
@@ -367,14 +371,25 @@
                     }
                 });
             },
-            getQuestionnaireAnswerByDay: function (calendarDate, answers) {
+            getQuestionnaireAnswerAverage: function (calendarDate, answers) {
+                let sum = 0;
+                let numAnswers = 0;
                 for (let i = 0; i < answers.length; i++) {
                     const happynessHistoryDate = new Date(answers[i].created_at);
+                    const answerTimestamp = new Date(happynessHistoryDate.getFullYear(), happynessHistoryDate.getMonth(), happynessHistoryDate.getDate()).getTime();
 
-                    if (happynessHistoryDate.getDate() == calendarDate.day && happynessHistoryDate.getMonth() == calendarDate.month && happynessHistoryDate.getFullYear() == calendarDate.year) {
-                        return answers[i].awnser;
+                    if (calendarDate == answerTimestamp) {
+                        sum += answers[i].awnser;
+                        numAnswers++;
+                    } else if (calendarDate < answerTimestamp) {
+                        break;
                     }
                 }
+
+                if (numAnswers > 0) {
+                    return Math.round(sum/numAnswers);
+                }
+
                 return -1;
             },
             colorCalendarDays: function () {
@@ -385,23 +400,25 @@
 
                 $$('.calendar-day').forEach((day) => {
                     const colors = {
-                        0: "#ff4d4d",
-                        1: "#cc6600",
-                        2: "#cc9900",
-                        3: "#cccc00",
-                        4: "#00cc33"
+                        0: "#cc3333",
+                        1: "#cc5933",
+                        2: "#cca633",
+                        3: "#739900",
+                        4: "#009926"
                     }
                     const date = {
                         day: day.attributes['data-day'].value,
                         month: day.attributes['data-month'].value,
                         year: day.attributes['data-year'].value
-
                     }
 
+                    const dateTimestamp = new Date(date.year, date.month, date.day).getTime();
+
                     if (!$$(day).hasClass('calendar-day-prev') && !$$(day).hasClass('calendar-day-next')) {
-                        let answer = self.getQuestionnaireAnswerByDay(date, happynessHistory);
-                        if (answer != -1) {
-                            $$($$(day)[0].childNodes[1]).css('background-color', colors[answer])
+                        let answerAverage = self.getQuestionnaireAnswerAverage(dateTimestamp, happynessHistory);
+                        if (answerAverage != -1) {
+                            console.log(answerAverage, date)
+                            $$($$(day)[0].childNodes[1]).css('background-color', colors[answerAverage])
                         }
                     }
                 });
