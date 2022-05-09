@@ -2,7 +2,7 @@
     <img src="https://img.shields.io/badge/IN-CONSTRUCTION%20:)-brightgreen" title="Status do projeto">
 </p>
 
-# App SAE
+# App Bem Estar
 
 Esse repositório contém o código-fonte para o aplicativo desenvolvido em conjunto com o *SAE*.
 
@@ -28,7 +28,7 @@ npm i framework7-cli cordova -g
 Faça um `fork` deste repositório em seu próprio GitHub e clone seu `fork` em seu computador:
 
 ```
-git clone https://github.com/SEU_USUARIO/apps-sae && cd app-sae
+git clone https://github.com/SEU_USUARIO/apps-bem-estar && cd app-bem-estar
 ```
 
 Instale todas as dependências:
