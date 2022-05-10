@@ -277,7 +277,7 @@
                 let average = 0;
                 if (history != null) {
                     history.history.forEach(element => {
-                        average = average + element.awnser;
+                        average = average + element.answer;
                     });
                     average = average / history.history.length;
                     let percentage = average / scaleMax;
@@ -397,7 +397,7 @@
                     const answerTimestamp = new Date(happynessHistoryDate.getFullYear(), happynessHistoryDate.getMonth(), happynessHistoryDate.getDate()).getTime();
 
                     if (calendarDate == answerTimestamp) {
-                        sum += answers[i].awnser;
+                        sum += answers[i].answer;
                         numAnswers++;
                     } else if (calendarDate < answerTimestamp) {
                         break;
