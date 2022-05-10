@@ -14,7 +14,7 @@
         </div>
         <div class="page-content" id="seek-help">
             <p class="block block-strong inset">Aqui estão listadas algumas opções de lugares no quais você pode buscar auxílio. Note que são apenas algumas opções, mas onde você vive devem existir outros formas de buscar ajuda.</p>
-            <div class="block">
+            <div class="shadowless-block">
                 <div class="list block-strong about-list media-list">
                     <a class="button popup-open" href="#" data-popup=".popup-uffs" style="height: 100%;">
                         <div class="item-content">
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="block">
+            <div class="shadowless-block">
                 <div class="list block-strong about-list media-list">
                     <a class="button popup-open" href="#" data-popup=".popup-cvv" style="height: 100%;">
                         <div class="item-content">
@@ -43,7 +43,7 @@
                     </a>
                 </div>
             </div>
-            <div class="block">
+            <div class="shadowless-block">
                 <div class="list block-strong about-list media-list">
                     <a class="button popup-open" href="#" data-popup=".popup-apps" style="height: 100%;">
                         <div class="item-content">
@@ -57,7 +57,7 @@
                     </a>
                 </div>
             </div>
-            <div class="block">
+            <div class="shadowless-block">
                 <div class="list block-strong about-list media-list">
                     <a class="button popup-open" href="#" data-popup=".popup-cas" style="height: 100%;">
                         <div class="item-content">
@@ -272,8 +272,12 @@
         width: 100%;
     }
 
-    .block {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    .shadowless-block{
+        margin: var(--f7-block-margin-vertical) 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: calc(var(--f7-block-padding-horizontal) + var(--f7-safe-area-left));
+        padding-right: calc(var(--f7-block-padding-horizontal) + var(--f7-safe-area-right));
     }
 
     .align-center {
