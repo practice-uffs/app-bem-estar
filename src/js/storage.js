@@ -182,20 +182,20 @@ export class Storage {
 		return history;
 	};
 
-	setSleepHistory (awnser) {
+	setSleepHistory (answer) {
 		let oldHistory = localStorage.getItem("sleepHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("sleepHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 				'created_at': Date(),
-				'awnser': awnser
+				'answer': answer
 			});
 		} else {
 			oldHistory = { 
 				"history":[{
 					'created_at': Date(),
-					'awnser': awnser
+					'answer': answer
 				}]
 			};
 		}
@@ -210,20 +210,20 @@ export class Storage {
 		return history;
 	};
 
-	setFoodHistory(awnser) {
+	setFoodHistory(answer) {
 		let oldHistory = localStorage.getItem("foodHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("foodHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 				'created_at': Date(),
-				'awnser': awnser
+				'answer': answer
 			});
 		} else {
 			oldHistory = { 
 				"history":[{
 					'created_at': Date(),
-					'awnser': awnser
+					'answer': answer
 				}]
 			};
 		}
@@ -237,20 +237,20 @@ export class Storage {
 		return history;
 	};
 
-	setPhysicalActivityHistory(awnser) {
+	setPhysicalActivityHistory(answer) {
 		let oldHistory = localStorage.getItem("physicalActivityHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("physicalActivityHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 			'created_at': Date(),
-			'awnser': awnser
+			'answer': answer
 			});
 		} else {
 			oldHistory = { 
 				"history":[{
 					'created_at': Date(),
-					'awnser': awnser
+					'answer': answer
 				}]
 			};
 		}
@@ -264,20 +264,20 @@ export class Storage {
 		return history;
 	};
 
-	setLeisureHistory(awnser) {
+	setLeisureHistory(answer) {
 		let oldHistory = localStorage.getItem("leisureHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("leisureHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 			'created_at': Date(),
-			'awnser': awnser
+			'answer': answer
 		});
 		} else {
 			oldHistory = { 
 				"history":[{
 					'created_at': Date(),
-					'awnser': awnser
+					'answer': answer
 				}]
 			};
 		}
@@ -300,20 +300,20 @@ export class Storage {
 		return consent;
 	};
 
-	setHappinessHistory(awnser) {
+	setHappinessHistory(answer) {
 		let oldHistory = localStorage.getItem("happynessHistory");
 		oldHistory = JSON.parse(oldHistory);
 		localStorage.removeItem("happinessHistory");
 		if (oldHistory != null){
 			oldHistory['history'].push({
 				'created_at': Date(),
-				'awnser': awnser
+				'answer': answer
 			});
 		} else {
 			oldHistory = { 
 				"history":[{
 					'created_at': Date(),
-					'awnser': awnser
+					'answer': answer
 				}]
 			};
 		}

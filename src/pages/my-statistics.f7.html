@@ -27,16 +27,11 @@
                                 </lottie-player>
                             </div>
 
-                            <div class="col-70" >
+                            <div class="col-70">
                                 <div class="display-flex align-content-center">
-                                    <div
-                                        class="gauge gauge-init my-gauge-feeding"
-                                        data-type="semicircle"
-                                        data-value="0.44"
-                                        data-value-text="44%"
-                                        data-value-text-color="#ff9800"
-                                        data-border-color="#ff9800"
-                                    ></div>
+                                    <div class="gauge gauge-init my-gauge-feeding" data-type="semicircle"
+                                        data-value="0.44" data-value-text="44%" data-value-text-color="#ff9800"
+                                        data-border-color="#ff9800"></div>
                                 </div>
                             </div>
 
@@ -46,7 +41,7 @@
                                 </lottie-player>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -200,11 +195,17 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">Estatísticas Diárias</div>
+                <div class="card-content card-content-padding">
+                    <p>Aqui você consegue visualizar suas estatísticas diárias de humor e também suas respostas ao Questionário de Bem-Estar</p>
+                </div>
+                <div class="block no-padding">
+                    <div id="demo-calendar-inline-container"></div>
+                </div>
+            </div>
         </div>
 
-        
-
-      
     </div>
 </template>
 <script>
@@ -222,18 +223,18 @@
                 var gaugeSleep = app.gauge.get('.my-gauge-sleep');
                 var gaugeActivity = app.gauge.get('.my-gauge-activity');
                 var gaugeHappyness = app.gauge.get('.my-gauge-happyness');
-                
+
                 gaugeFeeding.update({
                     value: this.getAverageInPercentage('feeding'),
-                    valueText: (this.getAverageInPercentage('feeding')*100) + '%'
+                    valueText: (this.getAverageInPercentage('feeding') * 100) + '%'
                 });
                 gaugeLeisure.update({
                     value: this.getAverageInPercentage('leisure'),
-                    valueText: (this.getAverageInPercentage('leisure')*100) + '%'
+                    valueText: (this.getAverageInPercentage('leisure') * 100) + '%'
                 });
                 gaugeSleep.update({
                     value: this.getAverageInPercentage('sleep'),
-                    valueText: (this.getAverageInPercentage('sleep')*100) + '%'
+                    valueText: (this.getAverageInPercentage('sleep') * 100) + '%'
                 });
                 gaugeActivity.update({
                     value: this.getAverageInPercentage('activity'),
@@ -241,14 +242,14 @@
                 });
                 gaugeHappyness.update({
                     value: this.getAverageInPercentage('happyness'),
-                    valueText: (this.getAverageInPercentage('happyness')*100) + '%'
+                    valueText: (this.getAverageInPercentage('happyness') * 100) + '%'
                 });
 
             },
             getAverageInPercentage: function(type){
                 var self = this;
                 var app = self.$app;
-                
+
                 let history;
                 let scaleMax;
                 switch (type) {
@@ -262,37 +263,190 @@
                         break;
                     case 'sleep':
                         scaleMax = 4;
-                        history = app.storage.getSleepHistory();    
+                        history = app.storage.getSleepHistory();
                         break;
                     case 'activity':
                         scaleMax = 5;
-                        history = app.storage.getPhysicalActivityHistory();    
+                        history = app.storage.getPhysicalActivityHistory();
                         break;
                     case 'happyness':
                         scaleMax = 4;
-                        history = app.storage.getHappinessHistory();    
+                        history = app.storage.getHappinessHistory();
                         break;
-                }         
+                }
                 let average = 0;
-                if(history != null){
+                if (history != null) {
                     history.history.forEach(element => {
-                        average = average + element.awnser;
-                    }); 
-                    average = average/history.history.length;
-                    let percentage = average/scaleMax;
+                        average = average + element.answer;
+                    });
+                    average = average / history.history.length;
+                    let percentage = average / scaleMax;
                     return percentage.toFixed(2);
                 } else {
                     return 0;
                 }
-                
+
             },
-            
+            calendar: function () {
+                let self = this;
+                let app = self.$app;
+                var $$ = Dom7;
+                var monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                var calendarInline = app.calendar.create({
+                    containerEl: '#demo-calendar-inline-container',
+                    value: [new Date()],
+                    weekHeader: true,
+                    dayNamesShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+                    firstDay: 0,
+                    renderToolbar: function () {
+                        return '<div class="toolbar calendar-custom-toolbar no-shadow">' +
+                            '<div class="toolbar-inner">' +
+                            '<div class="left">' +
+                            '<a href="#" class="link icon-only"><i class="icon icon-back ' + (app.theme === 'md' ? 'color-black' : '') + '"></i></a>' +
+                            '</div>' +
+                            '<div class="center"></div>' +
+                            '<div class="right">' +
+                            '<a href="#" class="link icon-only"><i class="icon icon-forward ' + (app.theme === 'md' ? 'color-black' : '') + '"></i></a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                    },
+
+                    on: {
+                        init: function (c) {
+                            $$('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);
+                            $$('.calendar-custom-toolbar .left .link').on('click', function () {
+                                calendarInline.prevMonth();
+                                self.colorCalendarDays();
+                            });
+                            $$('.calendar-custom-toolbar .right .link').on('click', function () {
+                                calendarInline.nextMonth();
+                                self.colorCalendarDays();
+                            });
+                            $$('.calendar-day').on('click', function (e) {
+                                var dynamicPopup = app.popup.create({
+                                    content: `
+                                        <div class="popup">
+                                            <div class="view popup-view">
+                                                <div class="page">
+                                                    <div class="toolbar">
+                                                        <div class="toolbar-inner toolbar">
+                                                            <div class="left title">Minhas Respostas</div>
+                                                            <div class="right"><a class="link popup-close" href="#"><i class="f7-icons link-color">xmark</i></a></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="page-content">
+                                                        <div class="card">
+                                                            <div class="card-content card-content-padding daily-popup-content">                           
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `,
+                                    on: {
+                                        open: function (popup) {
+                                            var popupContent = `
+                                                <h1 class="popup-question">[Sintomas físicos] Nos últimos 7 dias você percebeu algum sintoma a seguir, associado a ansiedade?</h1>
+                                                <div class="popup-answer">
+                                                    <i class="f7-icons link-color">chevron_right</i><p>Boca Seca</p>
+                                                </div>
+                                                <hr class="divider">
+                                                <h1 class="popup-question">[Sintomas físicos] Nos últimos sete 7 dias você evitou ou pensou em evitar alguma situação por medo/ansiedade? Marque as opções abaixo que representam o seu estado de humor na maioria dos dias, nos últimos 7 dias.</h1>
+                                                <div class="popup-answer">
+                                                    <i class="f7-icons link-color">chevron_right</i><p>Nervosismo</p>
+                                                </div>
+                                                <hr class="divider">
+                                                <h1 class="popup-question">[Sintomas físicos] Nos últimos sete dias sentiu-se preocupado excessivamente ou angustiado pela proximidade de algo ruim acontecer?</h1>
+                                                <div class="popup-answer">
+                                                    <i class="f7-icons link-color">chevron_right</i><p>Sim</p>
+                                                </div>
+                                                <hr class="divider">
+                                                <h1 class="popup-question">[DSM] Nos últimos sete dias sentiu-se ansioso ou preocupado em excesso?</h1>
+                                                <div class="popup-answer">
+                                                    <i class="f7-icons link-color">chevron_right</i><p>Sim</p>
+                                                </div>                                        <hr class="divider">
+                                                <h1 class="popup-question">Assinale as opções abaixo em relação ao uso de substâncias psicoativas:</h1>
+                                                <div class="popup-answer">
+                                                    <i class="f7-icons link-color">chevron_right</i><p>Medicamentos</p>
+                                                </div>         
+                                            `;
+
+                                            $$('.daily-popup-content').html(popupContent)
+                                        },
+                                    }
+                                });
+                                dynamicPopup.open();
+
+                            });
+                            self.colorCalendarDays();
+
+                        },
+                        monthYearChangeStart: function (c) {
+                            $$('.calendar-custom-toolbar .center').text(monthNames[c.currentMonth] + ', ' + c.currentYear);
+                        }
+                    }
+                });
+            },
+            getQuestionnaireAnswerAverage: function (calendarDate, answers) {
+                let sum = 0;
+                let numAnswers = 0;
+                for (let i = 0; i < answers.length; i++) {
+                    const happynessHistoryDate = new Date(answers[i].created_at);
+                    const answerTimestamp = new Date(happynessHistoryDate.getFullYear(), happynessHistoryDate.getMonth(), happynessHistoryDate.getDate()).getTime();
+
+                    if (calendarDate == answerTimestamp) {
+                        sum += answers[i].answer;
+                        numAnswers++;
+                    } else if (calendarDate < answerTimestamp) {
+                        break;
+                    }
+                }
+
+                if (numAnswers > 0) {
+                    return Math.round(sum/numAnswers);
+                }
+
+                return -1;
+            },
+            colorCalendarDays: function () {
+                let self = this;
+                let app = self.$app;
+                var $$ = Dom7;
+                const happynessHistory = app.storage.getHappinessHistory().history;
+
+                $$('.calendar-day').forEach((day) => {
+                    const colors = {
+                        0: "#cc3333",
+                        1: "#cc5933",
+                        2: "#cca633",
+                        3: "#739900",
+                        4: "#009926"
+                    }
+                    const date = {
+                        day: day.attributes['data-day'].value,
+                        month: day.attributes['data-month'].value,
+                        year: day.attributes['data-year'].value
+                    }
+
+                    const dateTimestamp = new Date(date.year, date.month, date.day).getTime();
+
+                    if (!$$(day).hasClass('calendar-day-prev') && !$$(day).hasClass('calendar-day-next')) {
+                        let answerAverage = self.getQuestionnaireAnswerAverage(dateTimestamp, happynessHistory);
+                        if (answerAverage != -1) {
+                            console.log(answerAverage, date)
+                            $$($$(day)[0].childNodes[1]).css('background-color', colors[answerAverage])
+                        }
+                    }
+                });
+            },
         },
         on: {
             pageAfterin: function (e, page) {
                 this.updateGauges();
+                this.calendar();
             },
-            
         },
     };
 </script>
@@ -308,5 +462,39 @@
     .gauge-level-icon{
         display: inline-block;
         align-self: flex-end;
+    }
+    .calendar-day.calendar-day-selected .calendar-day-number {
+        background-color: inherit;
+        color: var(--f7-calendar-day-text-color);
+    }
+    .toolbar .title {
+        font-weight: bold;
+        font-size: 1rem;
+        margin-left: 24px;
+    }
+    .popup-question {
+        font-size: .85rem;
+        text-align: justify;
+    }
+    .popup-answer {
+        display: flex;
+        align-items: center;
+        font-size: .85rem;
+        margin-left: 10px;
+    }
+    .popup-answer i {
+        margin-right: 5px;
+        font-size: 24px;
+    }
+    .page-content.block {
+        margin-top: 48px;
+        margin-bottom: 40px;
+        padding-top: 10px;
+    }
+    .divider {
+        border: solid 1px var(--f7-card-header-border-color);
+    }
+    .popup .card {
+        margin: 60px 20px 30px 20px;
     }
 </style>
