@@ -1,0 +1,82 @@
+<template>
+    <div class="page" data-name="diary">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Voltar</span>
+                    </a>
+                </div>
+                <div class="title">Meu Diário</div>
+            </div>
+        </div>
+        <div class="page-content" >
+            <p class="block block-strong inset">Boas vindas ao seu diário! 😄 <br> Aqui você poderá relatar como você está se sentindo, é terapêutico, e vai ajudar você ao falar com mais certeza à algum especialista sobre como você se sentiu em determinado dia. Os registros ficam salvos nas suas <a href="/my-statistics/"> estatísticas!</a></p>
+
+
+            <div class="text-editor text-editor-init" data-placeholder="Como você está se sentindo agora?" data-buttons='[["bold", "italic", "underline", "strikeThrough"], []]'>
+              <div class="text-editor-content" contenteditable></div>
+            </div>
+
+            <button @click="saveText()" class="button col button-outline button-round save-button">Salvar</button>
+
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        methods: {
+            saveText: function () {
+                var self = this;
+                var app = self.$app;
+
+                var textEditor = app.textEditor.get('.text-editor');
+                
+		        let date = new Date();
+                let data = ""+ (date.getDate()<10 ? "0" + date.getDate() : date.getDate()) + (date.getMonth()<10 ? "0" + date.getMonth() : date.getMonth()) + date.getFullYear();
+
+                app.storage.setDiaryText(data, textEditor.getValue());
+                this.showToastBottom();
+            },
+
+            showToastBottom: function () {
+                let toastBottom;
+                var self = this;
+                var app = self.$app;
+                if (!toastBottom) {
+                    toastBottom = app.toast.create({
+                        text: 'Seu texto foi salvo!',
+                        closeTimeout: 3000,
+                    });
+                }
+                toastBottom.open();
+            },
+        },
+        on: {
+            pageBeforein: async function () {
+                let self = this;
+                let app = self.$app;
+		        
+                let date = new Date();
+                let data = ""+ (date.getDate()<10 ? "0" + date.getDate() : date.getDate()) + (date.getMonth()<10 ? "0" + date.getMonth() : date.getMonth()) + date.getFullYear();
+
+                var textEditor = app.textEditor.get('.text-editor');
+                let texto = localStorage.getItem(data);
+                if (texto) {
+                    textEditor.setValue(texto);
+                } 
+
+            }
+        },
+    };
+</script>
+
+<style>
+    .save-button{
+        background-color: var(--f7-bars-bg-color);
+        width: 85%;
+        margin-left: 7.5%;
+    }
+</style>

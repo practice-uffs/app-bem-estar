@@ -24,6 +24,7 @@ import TrackMenuPage from '../pages/track-menu.f7.html';
 import WellnessQuizPage from '../pages/wellness-quiz.f7.html';
 import HeartBeatPage from '../pages/hr.f7.html';
 import MyStatisticsPage from '../pages/my-statistics.f7.html';
+import DiaryPage from '../pages/diary.f7.html';
 
 import { storage } from "../js/storage.js";
 import IsEnabled from "./isenabled";
@@ -258,6 +259,16 @@ const tipsPageRoute = function () {
   if (IsEnabled.tipsPage) return route;
 }
 
+const diaryPageRoute = function () {
+  let route = {
+    path: '/diary/',
+    component: DiaryPage,
+    beforeEnter: authenticated,
+  };
+
+  if (IsEnabled.diaryPage) return route;
+}
+
 const tipMenuPageRoute = function () {
   let route = {
     path: '/tip-menu/',
@@ -316,6 +327,7 @@ var routes = [
   symptomsPageRoute(),
   reasonsPageRoute(),
   seekHelpPageRoute(),
+  diaryPageRoute(),
 
   // Unauthenticated routes
   initialPageRoute(),

@@ -14,6 +14,16 @@
         </div>
         
         <div class="page-content" >
+            <div class="card">
+                <div class="card-header">Estatísticas Diárias</div>
+                <div class="card-content card-content-padding">
+                    <p>Aqui você consegue visualizar suas estatísticas diárias de humor e também suas respostas ao Questionário de Bem-Estar</p>
+                </div>
+                <div class="block no-padding">
+                    <div id="demo-calendar-inline-container"></div>
+                </div>
+            </div>
+
             <div class="padding-10" >
                 <div class="card no-margin " >
                     <div class="card-header">
@@ -195,15 +205,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">Estatísticas Diárias</div>
-                <div class="card-content card-content-padding">
-                    <p>Aqui você consegue visualizar suas estatísticas diárias de humor e também suas respostas ao Questionário de Bem-Estar</p>
-                </div>
-                <div class="block no-padding">
-                    <div id="demo-calendar-inline-container"></div>
-                </div>
-            </div>
+           
         </div>
 
     </div>
@@ -324,6 +326,13 @@
                                 self.colorCalendarDays();
                             });
                             $$('.calendar-day').on('click', function (e) {
+                                //Data recupera a data do dia no qual o usuário clicou.
+                                let data = "" +
+                                   (this.attributes['data-day'].value<10 ? "0" + this.attributes['data-day'].value : this.attributes['data-day'].value) +
+                                   (this.attributes['data-month'].value<10 ? "0" + this.attributes['data-month'].value : this.attributes['data-month'].value) +
+                                    this.attributes['data-year'].value;
+                                //console.log(data); //Caso necessário verificar o formato
+
                                 var dynamicPopup = app.popup.create({
                                     content: `
                                         <div class="popup">
@@ -370,7 +379,22 @@
                                                 <h1 class="popup-question">Assinale as opções abaixo em relação ao uso de substâncias psicoativas:</h1>
                                                 <div class="popup-answer">
                                                     <i class="f7-icons link-color">chevron_right</i><p>Medicamentos</p>
-                                                </div>         
+                                                </div> 
+                                                <br><hr> 
+                                                <div class="list accordion-list">
+                                                    <ul>
+                                                        <li class="accordion-item"><a class="item-content item-link" href="#">
+                                                        <div class="item-inner">
+                                                            <div class="item-title"><b>Diário</b></div>
+                                                        </div>
+                                                        </a>
+                                                        <div class="accordion-item-content">
+                                                        <div class="block" style="margin: 10px 0px;">`+
+                                                           (app.storage.getDiaryText(data) == null ? "Você não registrou nada este dia!" : app.storage.getDiaryText(data))
+                                                        +`</div>
+                                                        </div>
+                                                    </li>
+                                                </div>
                                             `;
 
                                             $$('.daily-popup-content').html(popupContent)

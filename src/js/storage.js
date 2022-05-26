@@ -114,6 +114,15 @@ export class Storage {
 	async getDarkTheme() {
 		return localStorage.getItem("darkTheme");
 	}
+	
+	async setDiaryText(data, text) {
+		localStorage.setItem(data, text);
+	}
+
+	getDiaryText(date) {
+		let text = localStorage.getItem(date);
+		return text;
+	}
 
 	// User credentials methods
 	getUserCredentials(){
