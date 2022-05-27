@@ -47,6 +47,8 @@ var IsEnabled = {
     heartBeatPage: true,
 
     MyStatisticsPage: true,
+    
+    diaryPage: true,
 
     darkTheme: true,
 }
