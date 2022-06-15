@@ -213,8 +213,9 @@ div.stat div.card-footer {
 .source {
   color: var(--f7-list-item-text-text-color);
 }
-
-
+.page-content {
+  background-color: var(--f7-page-bg-color)
+}
 .help-card {
   height: 40vh;
   position: relative;
