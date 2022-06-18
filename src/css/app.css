@@ -36,6 +36,7 @@
   --f7-bars-translucent-opacity: 0.9;
   --f7-bars-text-color: var(--color-1);
   --f7-bars-link-color: var(--color-2);
+  --f7-bars-bg-color: var(--f7-theme-color-tint);
   --f7-tabbar-link-active-color: var(--color-1);
   --f7-tabbar-link-inactive-color: var(--color-1);
   --f7-sheet-border-color: transparent;
@@ -212,8 +213,9 @@ div.stat div.card-footer {
 .source {
   color: var(--f7-list-item-text-text-color);
 }
-
-
+.page-content {
+  background-color: var(--f7-page-bg-color)
+}
 .help-card {
   height: 40vh;
   position: relative;

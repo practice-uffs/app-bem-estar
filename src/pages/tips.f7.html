@@ -23,7 +23,7 @@
                         <div class="list media-list prevention-list">
                             <ul>
                                 <li>
-                                    <div class="item-content margin-top-half">
+                                    <div class="item-content shadow-box margin-top-half">
                                         {{#if this.icon}}
                                         <div class="item-media">
                                             <img src="{{this.icon}}" alt="hand-wash" height="60">
@@ -63,7 +63,7 @@
                     <div class="list media-list prevention-list">
                         <ul>
                             <li>
-                                <div class="item-content margin-top-half">
+                                <div class="item-content shadow-box margin-top-half">
                                     <div class="item-inner">
                                         <div class="item-text">
                                             <p>Em breve as dicas serão adicionadas!</p>
@@ -135,6 +135,10 @@
 </script>
 
 <style>
+    .shadow-box{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
     .reponsive {
         position: relative;
     }
